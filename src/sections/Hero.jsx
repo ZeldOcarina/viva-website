@@ -33,8 +33,6 @@ const Hero = () => {
     },
   } = useStaticQuery(query);
 
-  console.log(localFile);
-
   return (
     <StyledHero className="container">
       <h1>{title}</h1>

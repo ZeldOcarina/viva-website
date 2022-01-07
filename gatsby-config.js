@@ -5,6 +5,10 @@ require("dotenv").config({
 const rawSingleTypes = [
   "home-hero?populate=*",
   "home-customer-logos?populate[0]=customerLogo&populate[1]=customerLogo.logo",
+  "home-testimonials-section?populate[homeTestimonial][populate]=*",
+  "home-more-patients-section?populate=*",
+  "home-features-section?populate[homeFeature][populate]=*",
+  "home-problems-section?populate=*",
 ];
 
 const singleTypes = rawSingleTypes.map((singleType) => {

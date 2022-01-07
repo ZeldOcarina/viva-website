@@ -96,8 +96,6 @@ const VideoOverlay = ({ videoId, _, setPlaying, vimeoH }) => {
 const ImageVideo = ({ image, alt, video, noVideo, vimeoH }) => {
   const [playing, setPlaying] = useState(false);
 
-  console.log(image);
-
   return (
     <Wrapper className="video-wrapper">
       <GatsbyImage image={image} alt={alt} />

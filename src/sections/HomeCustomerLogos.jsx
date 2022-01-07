@@ -27,7 +27,6 @@ const HomeCustomerLogos = () => {
       },
     },
   } = useStaticQuery(query);
-  console.log(customerLogo);
   return (
     <StyledHomeCustomerLogos className="container">
       <h2>{title}</h2>
@@ -42,8 +41,9 @@ const HomeCustomerLogos = () => {
                 },
               },
             },
+            id,
           }) => {
-            return <img src={publicURL} alt={alternativeText} />;
+            return <img src={publicURL} alt={alternativeText} key={id} />;
           }
         )}
       </div>
@@ -57,6 +57,7 @@ const query = graphql`
       data {
         attributes {
           customerLogo {
+            id
             logo {
               data {
                 attributes {
