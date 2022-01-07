@@ -1,0 +1,7 @@
+node_modules/
+.cache/
+public
+.env.development
+.env.production
+GTM--CookieHub_v2.json
+.DS_STORE
