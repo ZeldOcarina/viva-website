@@ -49,9 +49,8 @@ function HomeFeatures() {
       <div className="container">
         <h2 className="mb-5">{title}</h2>
         <div className="features">
-          {homeFeature.map((feature) => {
-            console.log(feature);
-            const {
+          {homeFeature.map(
+            ({
               description,
               id,
               title,
@@ -63,16 +62,16 @@ function HomeFeatures() {
                   },
                 },
               },
-            } = feature;
-
-            return (
-              <div className="feature-card" key={id}>
-                <img src={publicURL} alt={alternativeText} />
-                <h5>{title}</h5>
-                <p>{description}</p>
-              </div>
-            );
-          })}
+            }) => {
+              return (
+                <div className="feature-card" key={id}>
+                  <img src={publicURL} alt={alternativeText} />
+                  <h5>{title}</h5>
+                  <p>{description}</p>
+                </div>
+              );
+            }
+          )}
         </div>
       </div>
     </StyledHomeFeatures>

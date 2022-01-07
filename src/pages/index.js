@@ -9,6 +9,8 @@ import Divider from "../components/Divider";
 import HomeMorePatients from "../sections/HomeMorePatients";
 import HomeFeatures from "../sections/HomeFeatures";
 import HomeProblems from "../sections/HomeProblems";
+import HomeFounder from "../sections/HomeFounder";
+import HomeScale from "../sections/HomeScale";
 
 const IndexPage = ({ location }) => {
   return (
@@ -23,6 +25,8 @@ const IndexPage = ({ location }) => {
           <HomeMorePatients />
           <HomeFeatures />
           <HomeProblems />
+          <HomeFounder />
+          <HomeScale />
         </main>
       </Layout>
     </>

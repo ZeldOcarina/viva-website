@@ -9,6 +9,8 @@ const rawSingleTypes = [
   "home-more-patients-section?populate=*",
   "home-features-section?populate[homeFeature][populate]=*",
   "home-problems-section?populate=*",
+  "home-founder-section?populate=*",
+  "home-how-to-scale?populate=*",
 ];
 
 const singleTypes = rawSingleTypes.map((singleType) => {
