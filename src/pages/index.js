@@ -11,6 +11,7 @@ import HomeFeatures from "../sections/HomeFeatures";
 import HomeProblems from "../sections/HomeProblems";
 import HomeFounder from "../sections/HomeFounder";
 import HomeScale from "../sections/HomeScale";
+import HomeMarketing from "../sections/HomeMarketing";
 
 const IndexPage = ({ location }) => {
   return (
@@ -27,6 +28,7 @@ const IndexPage = ({ location }) => {
           <HomeProblems />
           <HomeFounder />
           <HomeScale />
+          <HomeMarketing />
         </main>
       </Layout>
     </>

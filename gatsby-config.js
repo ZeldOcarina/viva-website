@@ -11,6 +11,7 @@ const rawSingleTypes = [
   "home-problems-section?populate=*",
   "home-founder-section?populate=*",
   "home-how-to-scale?populate=*",
+  "home-marketing-section?populate=*",
 ];
 
 const singleTypes = rawSingleTypes.map((singleType) => {
