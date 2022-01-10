@@ -2,8 +2,9 @@ import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
 import styled from "styled-components";
+import Button from "../components/Button";
 
-const StyledHomeMarketing = styled.section`
+const StyledHomeSystem = styled.section`
   padding-top: 6rem;
 
   h2 {
@@ -24,66 +25,70 @@ const StyledHomeMarketing = styled.section`
     font-size: 1.6rem;
   }
 
-  .red-text {
-    margin: 2rem 0;
-    color: var(--color-secondary);
-    font-weight: 700;
-    font-size: 2rem;
+  .button {
+    background-color: var(--color-secondary);
+    margin: 3rem auto 0 auto;
   }
 `;
 
-const HomeMarketing = () => {
+const HomeSystem = () => {
   const {
-    homeMarketing: {
+    homeSystem: {
       data: {
         attributes: {
           title,
           text,
-          redText,
-          underlinedWord,
+          firstBoldParagraph,
+          cta,
+          ctaLink,
           image: {
-            data: {
-              attributes: { alternativeText, localFile },
-            },
+            data: [
+              {
+                attributes: { alternativeText, localFile },
+              },
+            ],
           },
         },
       },
     },
   } = useStaticQuery(query);
 
+  // console.log(attributes);
   //Parse new lines to paragraphs and filter out empty strings from the array
   const copy = text.split("\n").filter((item) => item);
 
   return (
-    <StyledHomeMarketing className="container">
+    <StyledHomeSystem className="container">
       <h2 className="mb-4">{title}</h2>
       <div className="bottom-container">
         <div className="left-container">
           <GatsbyImage image={getImage(localFile)} alt={alternativeText} />
-          <p className="red-text">
-            {redText} <span className="underlined">{underlinedWord}</span>.
-          </p>
         </div>
 
         <div className="copy">
+          <p className="bold">{firstBoldParagraph}</p>
           {copy.map((paragraph, i) => {
             return <p key={i}>{paragraph}</p>;
           })}
         </div>
       </div>
-    </StyledHomeMarketing>
+      <Button className="button" url={ctaLink}>
+        {cta}
+      </Button>
+    </StyledHomeSystem>
   );
 };
 
 const query = graphql`
-  query HomeMarketing {
-    homeMarketing: strapiApiHomeMarketingSectionPopulate {
+  query HomeSystem {
+    homeSystem: strapiApiHomeSystemDeliversSectionPopulate {
       data {
         attributes {
-          redText
+          cta
+          ctaLink
+          firstBoldParagraph
           text
           title
-          underlinedWord
           image {
             data {
               attributes {
@@ -102,4 +107,4 @@ const query = graphql`
   }
 `;
 
-export default HomeMarketing;
+export default HomeSystem;

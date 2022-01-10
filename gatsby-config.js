@@ -12,6 +12,10 @@ const rawSingleTypes = [
   "home-founder-section?populate=*",
   "home-how-to-scale?populate=*",
   "home-marketing-section?populate=*",
+  "home-viva-difference-section?populate[difference][populate]=*",
+  "home-system-delivers-section?populate=*",
+  "home-client-testimonials-bottom-section?populate[videoTestimonial][populate]=*",
+  "home-costs-section?populate=*",
 ];
 
 const singleTypes = rawSingleTypes.map((singleType) => {

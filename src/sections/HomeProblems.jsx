@@ -51,7 +51,7 @@ const HomeProblems = () => {
   } = useStaticQuery(query);
 
   //Parse new lines to paragraphs and filter out empty strings from the array
-  const splittedCopy = featuredParagraph.split("\n").filter((item) => item);
+  const splittedCopy = text.split("\n").filter((item) => item);
 
   return (
     <StyledHomeProblems className="container">

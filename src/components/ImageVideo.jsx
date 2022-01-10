@@ -93,11 +93,11 @@ const VideoOverlay = ({ videoId, _, setPlaying, vimeoH }) => {
   );
 };
 
-const ImageVideo = ({ image, alt, video, noVideo, vimeoH }) => {
+const ImageVideo = ({ image, alt, video, noVideo, vimeoH, className }) => {
   const [playing, setPlaying] = useState(false);
 
   return (
-    <Wrapper className="video-wrapper">
+    <Wrapper className={className ? `video-wrapper ${className}` : "video-wrapper"}>
       <GatsbyImage image={image} alt={alt} />
       {/* eslint-disable-next-line */}
       {!noVideo && <img src={playIcon} alt="Play icon" className="play-icon" onClick={() => setPlaying(true)} />}

@@ -12,6 +12,10 @@ import HomeProblems from "../sections/HomeProblems";
 import HomeFounder from "../sections/HomeFounder";
 import HomeScale from "../sections/HomeScale";
 import HomeMarketing from "../sections/HomeMarketing";
+import HomeDifference from "../sections/HomeDifference";
+import HomeSystem from "../sections/HomeSystem";
+import HomeBottomTestimonials from "../sections/HomeBottomTestimonials";
+import HomeCosts from "../sections/HomeCosts";
 
 const IndexPage = ({ location }) => {
   return (
@@ -29,6 +33,12 @@ const IndexPage = ({ location }) => {
           <HomeFounder />
           <HomeScale />
           <HomeMarketing />
+          <HomeDifference />
+          <Divider />
+          <HomeSystem />
+          <Divider />
+          <HomeBottomTestimonials />
+          <HomeCosts />
         </main>
       </Layout>
     </>
