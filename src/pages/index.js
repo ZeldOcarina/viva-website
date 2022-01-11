@@ -16,6 +16,9 @@ import HomeDifference from "../sections/HomeDifference";
 import HomeSystem from "../sections/HomeSystem";
 import HomeBottomTestimonials from "../sections/HomeBottomTestimonials";
 import HomeCosts from "../sections/HomeCosts";
+import HomeOldWayNewWay from "../sections/HomeOldWayNewWay";
+import HomeTeam from "../sections/HomeTeam";
+import HomeQuestions from "../sections/HomeQuestions";
 
 const IndexPage = ({ location }) => {
   return (
@@ -39,6 +42,9 @@ const IndexPage = ({ location }) => {
           <Divider />
           <HomeBottomTestimonials />
           <HomeCosts />
+          <HomeOldWayNewWay />
+          <HomeTeam />
+          <HomeQuestions />
         </main>
       </Layout>
     </>

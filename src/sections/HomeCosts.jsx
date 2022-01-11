@@ -93,7 +93,6 @@ const HomeCosts = () => {
       },
     },
   } = useStaticQuery(query);
-  console.log(title);
   return (
     <StyledHomeCosts className="container">
       <h2>{title}</h2>
@@ -105,9 +104,7 @@ const HomeCosts = () => {
           <p className="features">{features}</p>
         </div>
         <div className="right-container">
-          {featuresListItem.map((featureItem) => {
-            console.log(feature);
-            const { id, feature } = featureItem;
+          {featuresListItem.map(({ id, feature }) => {
             return (
               <ul key={id}>
                 <li>
