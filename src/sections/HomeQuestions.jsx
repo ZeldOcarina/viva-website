@@ -39,7 +39,7 @@ const HomeQuestions = () => {
       },
     },
   } = useStaticQuery(query);
-  console.log(questionAnswerBlock);
+
   return (
     <StyledHomeQuestions className="container">
       <SectionTitle title={title} />
