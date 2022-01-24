@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 70%;
   margin: 0 auto;
+
   .play-icon {
     position: absolute;
     top: 50%;
@@ -37,6 +38,7 @@ const VideoOverlayWrapper = styled.div`
   width: 100%;
   height: 100%;
   z-index: 200;
+
   #video-iframe {
     position: absolute;
     top: 50%;
@@ -98,7 +100,7 @@ const ImageVideo = ({ image, alt, video, noVideo, vimeoH, className }) => {
 
   return (
     <Wrapper className={className ? `video-wrapper ${className}` : "video-wrapper"}>
-      <GatsbyImage image={image} alt={alt} />
+      <GatsbyImage className="thumbnail" image={image} alt={alt} />
       {/* eslint-disable-next-line */}
       {!noVideo && <img src={playIcon} alt="Play icon" className="play-icon" onClick={() => setPlaying(true)} />}
       {playing && <VideoOverlay {...{ videoId: video, playing, setPlaying, vimeoH }} />}

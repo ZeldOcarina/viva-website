@@ -17,6 +17,17 @@ const StyledHomeCustomerLogos = styled.section`
     gap: 4rem;
     flex-wrap: wrap;
   }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    width: 16rem;
+  }
+
+  .logo {
+    width: 100%;
+    height: max-content;
+  }
 `;
 
 const HomeCustomerLogos = () => {
@@ -43,7 +54,11 @@ const HomeCustomerLogos = () => {
             },
             id,
           }) => {
-            return <img src={publicURL} alt={alternativeText} key={id} />;
+            return (
+              <div className="logo-container" key={id}>
+                <img className="logo" src={publicURL} alt={alternativeText} />
+              </div>
+            );
           }
         )}
       </div>
