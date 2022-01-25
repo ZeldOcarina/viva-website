@@ -23,6 +23,7 @@ const StyledHomeTestimonials = styled.section`
   .card {
     text-align: left;
     font-size: 1.6rem;
+    width: calc(33% - 2rem);
 
     blockquote {
       font-style: italic;
