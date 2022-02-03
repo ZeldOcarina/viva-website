@@ -4,23 +4,36 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledHomeTeam = styled.section`
-  text-align: center;
   font-size: 1.6rem;
   font-family: "Nunito", sans-serif;
 
   .title {
     margin-bottom: 4rem;
+    text-align: center;
   }
 
   .team-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3rem;
-    justify-content: center;
+    width: 70%;
+    margin: 0 auto;
+
+    .figure {
+      margin-right: 3rem;
+    }
+    .figure--alt {
+      margin-left: 3rem;
+    }
   }
 
   .team-member {
-    width: 30rem;
+    display: flex;
+
+    &--alt {
+      flex-direction: row-reverse;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
   }
 
   .position {
@@ -32,13 +45,14 @@ const StyledHomeTeam = styled.section`
     margin-top: 1.5rem;
   }
   .text {
-    margin-top: 1.3rem;
+    margin-top: 1.6rem;
     font-style: italic;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
 
   .image {
-    width: 13rem;
+    width: 35rem;
+    border-radius: 10px;
   }
 `;
 
@@ -55,22 +69,29 @@ const HomeTeam = () => {
       <h2 className="title">{title}</h2>
       <div className="team-container">
         {teamMember.map(
-          ({
-            id,
-            name,
-            position,
-            text,
-            avatar: {
-              data: {
-                attributes: { localFile, alternativeText },
+          (
+            {
+              id,
+              name,
+              position,
+              text,
+              avatar: {
+                data: {
+                  attributes: { localFile, alternativeText },
+                },
               },
             },
-          }) => {
+            i
+          ) => {
             return (
-              <article key={id} className="team-member">
-                <GatsbyImage image={getImage(localFile)} alt={alternativeText} className="image" />
-                <p className="bold name">{name}</p>
-                <p className="position">{position}</p>
+              <article key={id} className={i % 2 === 0 ? "team-member" : "team-member team-member--alt"}>
+                <figure className={i % 2 === 0 ? "figure" : "figure--alt"}>
+                  <GatsbyImage image={getImage(localFile)} alt={alternativeText} className="image" quality={100} />
+                  <figcaption className="bold name">
+                    <p>{name}</p> <p className="position">{position}</p>
+                  </figcaption>
+                </figure>
+
                 <p className="text">{text}</p>
               </article>
             );

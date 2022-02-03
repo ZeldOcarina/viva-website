@@ -149,21 +149,26 @@ const Navbar = () => {
           {navbarLinks.map(({ name, url }, i) => {
             const isAhp = name === "AHP";
             return (
+              /* eslint-disable */
               <li
                 key={i}
                 className="li"
                 onMouseEnter={isAhp ? handleMouseEnter : null}
                 onMouseLeave={isAhp ? handleMouseLeave : null}
               >
+                {/* eslint-enable */}
                 <a href={`${url}`} className={isAhp ? "link--ahp" : "link"}>
                   {name}
                 </a>
                 {isAhp && (
+                  /* eslint-disable */
                   <div
                     className={isHovered ? "square square-shown" : "square"}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
+                    role="dialog"
                   >
+                    {/* eslint-enable */}
                     <ul>
                       <li>
                         <a href="https://www.ddsturningpoint.com/orientation">ORIENTATION</a>
