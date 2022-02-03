@@ -17,7 +17,7 @@ const OldWayNewWay = () => {
       <div className="container">
         {data.map((article, i) => {
           const last = i + 1 === data.length;
-          return <EnlightmentTemplate {...article} key={article.id} last={last} />;
+          return <EnlightmentTemplate {...article} key={article.id} last={last} noVideo={true} />;
         })}
       </div>
     </StyledOldWayNewWay>

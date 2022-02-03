@@ -32,7 +32,7 @@ const HomeScale = () => {
   } = useStaticQuery(query);
 
   return (
-    <StyledHomeScale>
+    <StyledHomeScale className="container">
       <SectionTitle title={title} className="title" />
       <ImageVideo image={getImage(localFile)} alt={alternativeText} video={videoId} vimeoH={vimeoH} />
     </StyledHomeScale>

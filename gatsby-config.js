@@ -30,7 +30,7 @@ module.exports = {
     siteUrl: "https://vivadigitalconepts.com",
     title: "Viva Digital",
     navbarLinks: [
-      { name: "Contact Us", url: "/contacts" },
+      { name: "Dashboard", url: "https://www.ddsturningpoint.com/dasbhoard" },
       { name: "AHP", url: "https://www.ddsturningpoint.com/orientation" },
     ],
     socialLinks: {
