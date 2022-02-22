@@ -3,12 +3,24 @@ const path = require("path");
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const result = await graphql(`
     query CaseStudyTemplate {
-      caseStudies: strapiApiCaseStudiesPopulate0BodyImageIconBannerimageFeatureVideo {
+      caseStudies: strapiApiCaseStudiesPopulate0BodyImageIconBannerimageFeatureVideoVideothumb {
         data {
           id
           attributes {
             video {
               videoId
+              videoThumb {
+                data {
+                  attributes {
+                    alternativeText
+                    localFile {
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+                  }
+                }
+              }
               vimeoH
             }
             slug

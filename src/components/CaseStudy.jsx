@@ -4,7 +4,8 @@ import styled from "styled-components";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Button from "./Button";
-import VimeoEmbed from "./VimeoEmbed";
+//import VimeoEmbed from "./VimeoEmbed";
+import ImageVideo from "./ImageVideo";
 
 const StyledCaseStudy = styled.div`
   .case-study-banner {
@@ -102,7 +103,11 @@ const StyledCaseStudy = styled.div`
   }
 
   .body {
-    margin-top: 2rem;
+    /* margin-top: 2rem; */
+  }
+
+  .image-video {
+    margin: 4rem auto;
   }
 `;
 
@@ -111,7 +116,15 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
     id,
     attributes: {
       slug,
-      video: { videoId, vimeoH },
+      video: {
+        videoId,
+        vimeoH,
+        videoThumb: {
+          data: {
+            attributes: { alternativeText: thumbAlt, localFile: videoThumb },
+          },
+        },
+      },
       title,
       bannerImage: {
         data: {
@@ -130,8 +143,6 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
       },
     },
   } = caseStudy;
-
-  console.log(body);
 
   const renderedBody = (
     <div className="body">
@@ -165,7 +176,16 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
           </>
         )}
 
-        {isTemplatePage && <VimeoEmbed videoId={videoId} vimeoH={vimeoH} videoTitle={title} />}
+        {/* {isTemplatePage && <VimeoEmbed videoId={videoId} vimeoH={vimeoH} videoTitle={title} />} */}
+        {isTemplatePage && (
+          <ImageVideo
+            image={getImage(videoThumb)}
+            alt={thumbAlt}
+            video={videoId}
+            vimeoH={vimeoH}
+            className="image-video"
+          />
+        )}
         <div className={isTemplatePage ? "stuff-container stuff-container--template" : "stuff-container"}>
           <div className="left-part">
             {!isTemplatePage && (

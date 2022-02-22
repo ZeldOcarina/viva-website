@@ -25,7 +25,7 @@ function CaseStudiesPage({
 
 export const query = graphql`
   query CaseStudies {
-    caseStudies: strapiApiCaseStudiesPopulate0BodyImageIconBannerimageFeatureVideo {
+    caseStudies: strapiApiCaseStudiesPopulate0BodyImageIconBannerimageFeatureVideoVideothumb {
       data {
         id
         attributes {
@@ -33,6 +33,18 @@ export const query = graphql`
           title
           video {
             videoId
+            videoThumb {
+              data {
+                attributes {
+                  alternativeText
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+                }
+              }
+            }
             vimeoH
           }
           bannerImage {

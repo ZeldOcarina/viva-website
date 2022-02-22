@@ -19,7 +19,7 @@ const rawSingleTypes = [
   "old-way-and-new-ways?populate=*",
   "home-team-section?populate[teamMember][populate]=*",
   "home-q-and-a-section?populate=*",
-  "case-studies?populate[0]=body.image,icon,bannerImage,feature,video",
+  "case-studies?populate[0]=body.image,icon,bannerImage,feature,video.videoThumb",
 ];
 
 const singleTypes = rawSingleTypes.map((singleType) => {
