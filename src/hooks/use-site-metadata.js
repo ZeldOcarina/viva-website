@@ -8,6 +8,7 @@ export default function useSiteMetadata() {
           navbarLinks {
             name
             url
+            type
           }
           description
           siteUrl

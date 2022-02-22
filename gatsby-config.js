@@ -19,6 +19,7 @@ const rawSingleTypes = [
   "old-way-and-new-ways?populate=*",
   "home-team-section?populate[teamMember][populate]=*",
   "home-q-and-a-section?populate=*",
+  "case-studies?populate[0]=body.image,icon,bannerImage,feature,video",
 ];
 
 const singleTypes = rawSingleTypes.map((singleType) => {
@@ -30,8 +31,9 @@ module.exports = {
     siteUrl: "https://vivadigitalconepts.com",
     title: "Viva Digital",
     navbarLinks: [
-      { name: "Dashboard", url: "https://www.ddsturningpoint.com/dasbhoard" },
-      { name: "AHP", url: "https://www.ddsturningpoint.com/orientation" },
+      { name: "Case Studies", url: "/case-studies", type: "internal" },
+      { name: "Dashboard", url: "https://www.ddsturningpoint.com/dasbhoard", type: "external" },
+      { name: "AHP", url: "https://www.ddsturningpoint.com/orientation", type: "external" },
     ],
     socialLinks: {
       facebook: "https://www.facebook.com/VivaReferralSystem",

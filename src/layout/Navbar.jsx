@@ -62,6 +62,7 @@ const Wrapper = styled.nav`
     position: relative;
     display: block;
     width: 11rem;
+    min-width: max-content;
     height: max-content;
 
     img {
@@ -146,7 +147,7 @@ const Navbar = () => {
           </Link>
         </div>
         <ul className="ul">
-          {navbarLinks.map(({ name, url }, i) => {
+          {navbarLinks.map(({ name, url, type }, i) => {
             const isAhp = name === "AHP";
             return (
               /* eslint-disable */
@@ -157,9 +158,16 @@ const Navbar = () => {
                 onMouseLeave={isAhp ? handleMouseLeave : null}
               >
                 {/* eslint-enable */}
-                <a href={`${url}`} className={isAhp ? "link--ahp" : "link"}>
-                  {name}
-                </a>
+                {type === "external" ? (
+                  <a href={`${url}`} className={isAhp ? "link--ahp" : "link"}>
+                    {name}
+                  </a>
+                ) : (
+                  <Link to={url} className="link">
+                    {name}
+                  </Link>
+                )}
+
                 {isAhp && (
                   /* eslint-disable */
                   <div

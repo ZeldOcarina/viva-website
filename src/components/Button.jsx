@@ -1,3 +1,4 @@
+import { Link } from "gatsby";
 import React from "react";
 import styled, { css } from "styled-components";
 import respond from "../styles/abstracts/mediaqueries";
@@ -35,10 +36,14 @@ const Wrapper = styled.button`
   }
 `;
 
-const Button = ({ text, className, children, url }) => {
+const Button = ({ text, className, children, url, isInternal }) => {
   return (
     <Wrapper className={className || "btn"}>
-      <a href={url || "https://calendly.com/viva-concepts/schedule-a-call"}>{text || children}</a>
+      {isInternal ? (
+        <Link to={url}>{text || children}</Link>
+      ) : (
+        <a href={url || "https://calendly.com/viva-concepts/schedule-a-call"}>{text || children}</a>
+      )}
     </Wrapper>
   );
 };

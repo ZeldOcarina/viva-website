@@ -10,12 +10,12 @@ const Seo = (props) => {
       <title>{props.title || "Viva Digital"}</title>
       {/* * *
        * GOOGLE FONTS FAMILY LINK:
-       * https://fonts.google.com/share?selection.family=Nunito%20Sans:wght@400;600;700%7COpen%20Sans:ital,wght@0,300;0,400;1,300;1,400
+       * https://fonts.google.com/share?selection.family=Nunito%20Sans:wght@400;600;700%7COpen%20Sans:ital,wght@0,300;0,400;0,600;1,300;1,400
        * * */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
       <link
-        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Open+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
         rel="stylesheet"
       />
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
