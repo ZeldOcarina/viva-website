@@ -5,6 +5,7 @@ import Seo from "../components/Seo";
 import Layout from "../layout/Layout";
 import CaseStudiesHero from "../sections/case-studies/CaseStudiesHero";
 import CaseStudiesSummary from "../sections/case-studies/CaseStudiesSummary";
+import ScheduleConsultationButton from "../components/ScheduleConsultationButton";
 
 function CaseStudiesPage({
   location,
@@ -18,6 +19,7 @@ function CaseStudiesPage({
       <Layout>
         <CaseStudiesHero />
         <CaseStudiesSummary caseStudiesData={caseStudiesData} />
+        <ScheduleConsultationButton />
       </Layout>
     </>
   );

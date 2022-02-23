@@ -147,10 +147,10 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
   const renderedBody = (
     <div className="body">
       {body.map((element, i) => {
-        console.log(element);
-        if (element.text) return <p>{element.text}</p>;
+        if (element.text) return <p key={i}>{element.text}</p>;
         return (
           <GatsbyImage
+            key={i}
             className="image"
             image={getImage(element.image.data.attributes.localFile)}
             alt={element.image.data.attributes.alternativeText}
