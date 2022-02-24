@@ -61,7 +61,7 @@ const Wrapper = styled.nav`
   .link {
     position: relative;
     display: block;
-    width: 11rem;
+    //width: 11rem;
     min-width: max-content;
     height: max-content;
 

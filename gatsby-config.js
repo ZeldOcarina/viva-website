@@ -32,6 +32,7 @@ module.exports = {
     title: "Viva Digital",
     navbarLinks: [
       { name: "Case Studies", url: "/case-studies", type: "internal" },
+      { name: "Blog", url: "/blog", type: "internal" },
       { name: "Dashboard", url: "https://www.ddsturningpoint.com/dasbhoard", type: "external" },
       { name: "AHP", url: "https://www.ddsturningpoint.com/orientation", type: "external" },
     ],

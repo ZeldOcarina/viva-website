@@ -3,13 +3,15 @@ import { graphql } from "gatsby";
 
 import Seo from "../components/Seo";
 import Layout from "../layout/Layout";
-import CaseStudiesHero from "../sections/case-studies/CaseStudiesHero";
+import InternalPageHero from "../sections/case-studies/InternalPageHero";
 import CaseStudiesSummary from "../sections/case-studies/CaseStudiesSummary";
 import ScheduleConsultationButton from "../components/ScheduleConsultationButton";
+import { getImage } from "gatsby-plugin-image";
 
 function CaseStudiesPage({
   location,
   data: {
+    file,
     caseStudies: { data: caseStudiesData },
   },
 }) {
@@ -17,7 +19,12 @@ function CaseStudiesPage({
     <>
       <Seo location={location} />
       <Layout>
-        <CaseStudiesHero />
+        <InternalPageHero
+          image={getImage(file)}
+          imageAlt="Smiling dentist girl"
+          title="Case Studies"
+          subtitle="Viva System drives new patients to your practice"
+        />
         <CaseStudiesSummary caseStudiesData={caseStudiesData} />
         <ScheduleConsultationButton />
       </Layout>
@@ -27,6 +34,11 @@ function CaseStudiesPage({
 
 export const query = graphql`
   query CaseStudies {
+    file(relativePath: { eq: "case-studies-banner.png" }) {
+      childImageSharp {
+        gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+      }
+    }
     caseStudies: strapiApiCaseStudiesPopulate0BodyImageIconBannerimageFeatureVideoVideothumb {
       data {
         id

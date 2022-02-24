@@ -1,8 +1,8 @@
-import { StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image";
 import React from "react";
 import styled from "styled-components";
 
-const StyledCaseStudiesHero = styled.header`
+const StyledInternalPageHero = styled.header`
   .image-container {
     margin: 4rem 0;
     position: relative;
@@ -10,6 +10,9 @@ const StyledCaseStudiesHero = styled.header`
 
   .banner-image {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .text-container {
@@ -30,23 +33,18 @@ const StyledCaseStudiesHero = styled.header`
   }
 `;
 
-const CaseStudiesHero = () => {
+const InternalPageHero = ({ image, imageAlt, title, subtitle }) => {
   return (
-    <StyledCaseStudiesHero className="container">
+    <StyledInternalPageHero className="container">
       <div className="image-container">
-        <StaticImage
-          src="../../images/case-studies-banner.png"
-          alt="Smiling dentist girl"
-          quality={100}
-          className="banner-image"
-        />
+        <GatsbyImage image={image} alt={imageAlt} quality={100} className="banner-image" />
         <div className="text-container">
-          <h1>Case Studies</h1>
-          <p>Viva System drives new patients to your practice</p>
+          <h1>{title}</h1>
+          <p>{subtitle}</p>
         </div>
       </div>
-    </StyledCaseStudiesHero>
+    </StyledInternalPageHero>
   );
 };
 
-export default CaseStudiesHero;
+export default InternalPageHero;

@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
 import { MdOutlineEditCalendar } from "react-icons/md";
-import { useRef } from "react";
 
 const StyledScheduleConsultationButton = styled.a`
   display: flex;
