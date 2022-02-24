@@ -1,16 +1,23 @@
 import React from "react";
 import { graphql } from "gatsby";
+import { getImage } from "gatsby-plugin-image";
 
 import Seo from "../components/Seo";
 import Layout from "../layout/Layout";
 import InternalPageHero from "../sections/case-studies/InternalPageHero";
 import ScheduleConsultationButton from "../components/ScheduleConsultationButton";
-import { getImage } from "gatsby-plugin-image";
+import PostsSummary from "../components/PostsSummary";
 
-function BlogListPage({ location, data: { file } }) {
+function BlogListPage({
+  location,
+  data: {
+    file,
+    posts: { data: posts },
+  },
+}) {
   return (
     <>
-      <Seo location={location} />
+      <Seo location={location} title="Viva Concepts | Blog" />
       <Layout>
         <InternalPageHero
           image={getImage(file)}
@@ -18,7 +25,7 @@ function BlogListPage({ location, data: { file } }) {
           title="Blog"
           subtitle="Learn the ropes, from new patient acquisition to referral"
         />
-        {/* <CaseStudiesSummary caseStudiesData={caseStudiesData} /> */}
+        <PostsSummary postsData={posts} />
         <ScheduleConsultationButton />
       </Layout>
     </>
@@ -30,6 +37,27 @@ export const query = graphql`
     file(relativePath: { eq: "blog-banner.png" }) {
       childImageSharp {
         gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+      }
+    }
+    posts: strapiApiPostsPopulate {
+      data {
+        attributes {
+          title
+          copy
+          image {
+            data {
+              attributes {
+                alternativeText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+                  }
+                }
+              }
+            }
+          }
+        }
+        id
       }
     }
   }

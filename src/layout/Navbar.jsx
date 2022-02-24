@@ -45,25 +45,34 @@ const Wrapper = styled.nav`
   }
 
   .link {
-    color: var(--white);
+    color: #c3c3c3;
     transition: color 0.2s ease-in-out;
+    position: relative;
+    display: block;
+    min-width: max-content;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    &--active {
+      --border-thickness: 5px;
+      border-top: var(--border-thickness) solid var(--navbar-active-color);
+      color: var(--white);
+
+      .link__content {
+        transform: translateY(calc(-3px));
+      }
+    }
 
     &:hover {
       color: ${darken(0.1, "#fff")};
     }
 
     &--ahp {
-      color: var(--white);
+      color: #c3c3c3;
+
       display: block;
     }
-  }
-
-  .link {
-    position: relative;
-    display: block;
-    //width: 11rem;
-    min-width: max-content;
-    height: max-content;
 
     img {
       width: 100%;
@@ -163,8 +172,8 @@ const Navbar = () => {
                     {name}
                   </a>
                 ) : (
-                  <Link to={url} className="link">
-                    {name}
+                  <Link to={url} className="link" activeClassName="link--active">
+                    <span className="link__content">{name}</span>
                   </Link>
                 )}
 

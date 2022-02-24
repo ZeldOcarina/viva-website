@@ -20,6 +20,7 @@ const rawSingleTypes = [
   "home-team-section?populate[teamMember][populate]=*",
   "home-q-and-a-section?populate=*",
   "case-studies?populate[0]=body.image,icon,bannerImage,feature,video.videoThumb",
+  "posts?populate=*",
 ];
 
 const singleTypes = rawSingleTypes.map((singleType) => {

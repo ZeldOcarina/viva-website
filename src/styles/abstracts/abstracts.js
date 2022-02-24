@@ -10,6 +10,7 @@ export default createGlobalStyle`
     --color-secondary: #ED1C24;
 ;   --black: #000000;
     --white: #ffffff;
+    --navbar-active-color: #ED1C24;
 
     //FONT FAMILY
     --title-font: "Nunito Sans", sans-serif;
