@@ -97,6 +97,7 @@ module.exports = {
       resolve: "gatsby-source-strapi",
       options: {
         apiURL: "https://admin.vivadigitalconcepts.com",
+        //collectionTypes: [{ singularName: "post", queryParams: { populate: "*" } }],
         collectionTypes: [],
         singleTypes,
         // Extract images from markdown fields.
@@ -116,16 +117,6 @@ module.exports = {
         //headers: {},
       },
     },
-    /*{
-      resolve: `gatsby-source-strapi`,
-      options: {
-        apiURL: `https://admin.vivadigitalconcepts.com/api`,
-        queryLimit: 1000, // Default to 100
-        //contentTypes: [`article`, `user`],
-        singleTypes: [`home-hero?populate=*`],
-        // Possibility to login with a strapi user, when content types are not publically available (optional).
-      },
-    },*/
     {
       resolve: `gatsby-plugin-webfonts`,
       options: {
