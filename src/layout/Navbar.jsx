@@ -172,7 +172,7 @@ const Navbar = () => {
                     {name}
                   </a>
                 ) : (
-                  <Link to={url} className="link" activeClassName="link--active">
+                  <Link to={url} className="link" activeClassName="link--active" partiallyActive={true}>
                     <span className="link__content">{name}</span>
                   </Link>
                 )}

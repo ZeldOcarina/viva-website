@@ -41,6 +41,7 @@ const PostsSummary = ({ postsData }) => {
             },
           },
           id,
+          slug,
         }) => {
           const paragraphs = copy.split("\n").filter((text) => text !== "");
 
@@ -49,14 +50,14 @@ const PostsSummary = ({ postsData }) => {
               <GatsbyImage image={getImage(localFile)} alt={alternativeText} className="image" />
               <h2>{title}</h2>
               {paragraphs.map((paragraph, i) => {
-                if (i >= 3) return;
+                if (i >= 3) return "";
                 return (
                   <p className="summary-paragraph" key={i}>
                     {paragraph}
                   </p>
                 );
               })}
-              <Button isInternal url={`/`} className="btn--read-more">
+              <Button isInternal url={`/blog/${slug}`} className="btn--read-more">
                 Read More
               </Button>
             </section>
