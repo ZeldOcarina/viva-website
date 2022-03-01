@@ -117,38 +117,6 @@ const Paginator = ({ pageNumber, humanPageNumber, numberOfPages, previousPagePat
 
   if (!numberOfPages > 1) return <></>;
 
-  // {previousPagePath && (
-  //   <div className="page-number">
-  //     <Link to={previousPagePath} className="page-link">
-  //       <span>{"<"}</span>
-  //     </Link>
-  //   </div>
-  // )}
-  // {pages.map((pageItem) => pageItem)}
-  // <div className="page-number">
-  //   <Link to={`/blog/${humanPageNumber}`} className="page-link page-link--active">
-  //     <span>{humanPageNumber}</span>
-  //   </Link>
-  // </div>
-  // {nextPagePath && (
-  //   <div className="page-number">
-  //     <Link to={nextPagePath} className="page-link">
-  //       <span>&gt;</span>
-  //     </Link>
-  //   </div>
-  // )}
-  console.log(`***************`);
-  console.log(`NUMBER OF PAGES:`);
-  console.log(`***************`);
-  console.log(numberOfPages);
-  console.log(`***************`);
-  console.log("PAGE NUMBER");
-  console.log(`***************`);
-  console.log(pageNumber);
-
-  console.log(numberOfPages === humanPageNumber && numberOfPages > 2);
-  console.log(linkArray7);
-
   return (
     <StyledPaginator className="paginator">
       {numberOfPages > 1 && humanPageNumber !== 1 && (

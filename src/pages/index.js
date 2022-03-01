@@ -8,7 +8,7 @@ import HomeTestimonials from "../sections/HomeTestimonials";
 import Divider from "../components/Divider";
 import HomeMorePatients from "../sections/HomeMorePatients";
 import HomeFeatures from "../sections/HomeFeatures";
-import HomeProblems from "../sections/HomeProblems";
+//import HomeProblems from "../sections/HomeProblems";
 import HomeFounder from "../sections/HomeFounder";
 import HomeScale from "../sections/HomeScale";
 import HomeMarketing from "../sections/HomeMarketing";
@@ -19,6 +19,7 @@ import HomeCosts from "../sections/HomeCosts";
 import HomeOldWayNewWay from "../sections/HomeOldWayNewWay";
 import HomeTeam from "../sections/HomeTeam";
 import HomeQuestions from "../sections/HomeQuestions";
+import ScheduleConsultationButton from "../components/ScheduleConsultationButton";
 
 const IndexPage = ({ location }) => {
   return (
@@ -32,7 +33,7 @@ const IndexPage = ({ location }) => {
           <Divider />
           <HomeMorePatients />
           <HomeFeatures />
-          <HomeProblems />
+          {/* <HomeProblems /> */}
           <HomeFounder />
           <HomeScale />
           <HomeMarketing />
@@ -45,6 +46,7 @@ const IndexPage = ({ location }) => {
           <HomeOldWayNewWay />
           <HomeTeam />
           <HomeQuestions />
+          <ScheduleConsultationButton />
         </main>
       </Layout>
     </>

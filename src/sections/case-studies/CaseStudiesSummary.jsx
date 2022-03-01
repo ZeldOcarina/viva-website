@@ -6,6 +6,7 @@ import CaseStudy from "../../components/CaseStudy";
 const StyledCaseStudiesSummary = styled.main``;
 
 const CaseStudiesSummary = ({ caseStudiesData }) => {
+  console.log(caseStudiesData);
   return (
     <StyledCaseStudiesSummary className="container">
       {caseStudiesData.map((caseStudy, i) => {

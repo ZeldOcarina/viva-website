@@ -46,7 +46,6 @@ const HomeQuestions = () => {
       <div className="questions-container">
         {questionAnswerBlock.map((questionBlock) => {
           const { id, question, answer } = questionBlock;
-          console.log(questionBlock);
           return (
             <div key={id} className="question-box">
               <h5 className="question">{question}</h5>

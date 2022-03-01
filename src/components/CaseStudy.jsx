@@ -115,7 +115,6 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
   const {
     id,
     attributes: {
-      slug,
       video: {
         videoId,
         vimeoH,
@@ -191,7 +190,7 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
             {!isTemplatePage && (
               <>
                 <p className="intro">{body[0].text}</p>
-                <Button isInternal url={`/case-studies/${slug}`} className="btn--read-more">
+                <Button isInternal url={`/case-studies/${caseStudy.attributes.slug || ""}`} className="btn--read-more">
                   Read More
                 </Button>
               </>

@@ -1,9 +1,8 @@
 import { graphql, useStaticQuery } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+
 import React from "react";
 import styled from "styled-components";
-import Button from "../components/Button";
-import ImageVideo from "../components/ImageVideo";
+import CaseStudiesSummary from "./case-studies/CaseStudiesSummary";
 
 const StyledHomeTestimonials = styled.section`
   text-align: center;
@@ -61,117 +60,101 @@ const StyledHomeTestimonials = styled.section`
 
 const HomeTestimonials = () => {
   const {
-    homeTestimonials: {
+    caseStudies: { data },
+    homeTestimonialsData: {
       data: {
-        attributes: { homeTestimonial, title, subtitle },
+        attributes: { title, subtitle },
       },
     },
   } = useStaticQuery(query);
+
+  console.log(data);
 
   return (
     <StyledHomeTestimonials className="container">
       <h2>{title}</h2>
       <p className="subtitle">{subtitle}</p>
       <div className="testimonials-container">
-        {homeTestimonial.map(
-          ({
-            businessLogo: {
-              data: { attributes: logo },
-            },
-            cta,
-            ctaLink,
-            id,
-            name,
-            quote,
-            summary,
-            videoId,
-            videoH,
-            testimonialFeature,
-            thumbImage: {
-              data: { attributes: thumbImage },
-            },
-          }) => {
-            const logoImage = getImage(logo.localFile) || logo.localFile.publicURL;
-
-            return (
-              <div className="card" key={id}>
-                <h3>{name}</h3>
-                <ImageVideo
-                  image={getImage(thumbImage.localFile)}
-                  alt={thumbImage.alternativeText}
-                  video={videoId}
-                  vimeoH={videoH}
-                ></ImageVideo>
-                <blockquote>{quote}</blockquote>
-                <p>{summary}</p>
-                <div className="features-container">
-                  {getImage(logo.localFile) ? (
-                    <GatsbyImage image={logoImage} alt={logo.alternativeText} />
-                  ) : (
-                    <img src={logoImage} alt={logo.alternativeText} />
-                  )}
-                  <ul>
-                    {testimonialFeature.map(({ feature, id }) => {
-                      return <li key={id}>{feature}</li>;
-                    })}
-                  </ul>
-                </div>
-                <Button url={ctaLink}>{cta}</Button>
-              </div>
-            );
-          }
-        )}
+        <CaseStudiesSummary caseStudiesData={data} />;
       </div>
     </StyledHomeTestimonials>
   );
 };
 
 const query = graphql`
-  query HomeTestimonials {
-    homeTestimonials: strapiApiHomeTestimonialsSectionPopulateHometestimonialPopulate {
+  query HomeCaseStudies {
+    caseStudies: strapiApiCaseStudiesPopulate0BodyImageIconBannerimageFeatureVideoVideothumb {
       data {
+        id
         attributes {
-          subtitle
+          slug
           title
-          homeTestimonial {
-            cta
-            ctaLink
-            id
-            name
-            quote
-            summary
+          video {
             videoId
-            videoH
-            testimonialFeature {
-              feature
-              id
-            }
-            thumbImage {
+            videoThumb {
               data {
                 attributes {
+                  alternativeText
                   localFile {
                     childImageSharp {
-                      gatsbyImageData(placeholder: TRACED_SVG, layout: FULL_WIDTH)
+                      gatsbyImageData
                     }
                   }
-                  alternativeText
                 }
               }
             }
-            businessLogo {
-              data {
-                attributes {
-                  localFile {
-                    publicURL
-                    childImageSharp {
-                      gatsbyImageData(placeholder: BLURRED)
-                    }
+            vimeoH
+          }
+          bannerImage {
+            data {
+              attributes {
+                alternativeText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
                   }
-                  alternativeText
                 }
               }
             }
           }
+          body {
+            text
+            image {
+              data {
+                attributes {
+                  alternativeText
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+                }
+              }
+            }
+          }
+          feature {
+            feature
+            featureIntro
+            id
+          }
+          icon {
+            data {
+              attributes {
+                alternativeText
+                localFile {
+                  publicURL
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    homeTestimonialsData: strapiApiHomeTestimonialsSectionPopulateHometestimonialPopulate {
+      data {
+        attributes {
+          title
+          subtitle
         }
       }
     }
