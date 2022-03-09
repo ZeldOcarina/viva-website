@@ -1,9 +1,10 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Button from "../components/Button";
 
 import listIcon from "../images/icons/green-list-icon.svg";
+import respond from "../styles/abstracts/mediaqueries";
 
 const StyledHomeCosts = styled.section`
   h2,
@@ -32,6 +33,13 @@ const StyledHomeCosts = styled.section`
     justify-items: center;
     align-items: center;
     gap: 5rem;
+
+    ${respond(
+      "small-phone-land",
+      css`
+        grid-template-columns: 1fr;
+      `
+    )}
   }
 
   .left-container {

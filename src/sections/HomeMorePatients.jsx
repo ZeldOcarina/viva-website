@@ -1,11 +1,19 @@
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Button from "../components/Button";
+import respond from "../styles/abstracts/mediaqueries";
 
 const StyledHomeMorePatients = styled.section`
   padding-top: 2rem;
+
+  ${respond(
+    "tab-port",
+    css`
+      padding-bottom: 4rem;
+    `
+  )}
 
   h2 {
     text-align: center;

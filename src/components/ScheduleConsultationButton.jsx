@@ -1,5 +1,6 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import respond from "../styles/abstracts/mediaqueries";
 
 import { MdOutlineEditCalendar } from "react-icons/md";
 
@@ -13,7 +14,6 @@ const StyledScheduleConsultationButton = styled.a`
   background-color: var(--color-primary-dark);
   width: 10rem;
   height: 10rem;
-  border-radius: 50%;
   margin: 0 5rem 5rem 0;
   padding: 2rem;
   border-radius: 10px;
@@ -21,6 +21,14 @@ const StyledScheduleConsultationButton = styled.a`
   height: max-content;
   transition: all 0.3s ease-in-out;
   box-sizing: border-box;
+  z-index: 100;
+
+  ${respond(
+    "phone-land",
+    css`
+      border-radius: 50%;
+    `
+  )}
 
   &:hover {
     border: 3px solid #c3b0ff;
@@ -28,6 +36,13 @@ const StyledScheduleConsultationButton = styled.a`
 
   .icon {
     font-size: 3.5rem;
+
+    ${respond(
+      "phone-land",
+      css`
+        font-size: 3rem;
+      `
+    )}
   }
 
   .icon-container {
@@ -39,12 +54,19 @@ const StyledScheduleConsultationButton = styled.a`
 
   .icon-text {
     color: var(--white);
+
+    ${respond(
+      "phone-land",
+      css`
+        display: none;
+      `
+    )}
   }
 `;
 
 const ScheduleConsultationButton = () => {
   return (
-    <StyledScheduleConsultationButton href="https://google.com">
+    <StyledScheduleConsultationButton href="https://calendly.com/viva-concepts/schedule-a-call">
       <div className="icon-container">
         <span className="icon-text">Schedule Your Consultation</span>
         <MdOutlineEditCalendar color="white" className="icon" />

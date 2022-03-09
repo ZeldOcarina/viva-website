@@ -1,7 +1,8 @@
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import respond from "../styles/abstracts/mediaqueries";
 
 const StyledHomeTeam = styled.section`
   font-size: 1.6rem;
@@ -16,19 +17,89 @@ const StyledHomeTeam = styled.section`
     width: 70%;
     margin: 0 auto;
 
+    ${respond(
+      "tab-land",
+      css`
+        width: 100%;
+      `
+    )}
+
     .figure {
       margin-right: 3rem;
+
+      ${respond(
+        "tab-land",
+        css`
+          margin-right: 0;
+        `
+      )}
     }
     .figure--alt {
       margin-left: 3rem;
+
+      ${respond(
+        "tab-land",
+        css`
+          margin-left: 0;
+          grid-column: 2 / 3;
+        `
+      )}
+      ${respond(
+        "small-phone-land",
+        css`
+          grid-column: 1 / 3;
+        `
+      )}
     }
   }
 
   .team-member {
     display: flex;
 
+    ${respond(
+      "tab-land",
+      css`
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        justify-items: center;
+      `
+    )}
+    ${respond(
+      "small-phone-land",
+      css`
+        grid-template-columns: 1fr;
+      `
+    )}
+
     &--alt {
       flex-direction: row-reverse;
+
+      ${respond(
+        "small-phone-land",
+        css`
+          grid-template-columns: 1fr;
+          flex-direction: column;
+          display: grid;
+        `
+      )}
+
+      .text {
+        ${respond(
+          "tab-land",
+          css`
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+          `
+        )}
+        ${respond(
+          "small-phone-land",
+          css`
+            grid-column: 1 / 3;
+            grid-row: 2 / 3;
+          `
+        )}
+      }
     }
 
     &:not(:last-child) {
@@ -53,6 +124,13 @@ const StyledHomeTeam = styled.section`
   .image {
     width: 35rem;
     border-radius: 10px;
+
+    ${respond(
+      "small-phone-land",
+      css`
+        width: 30rem;
+      `
+    )}
   }
 `;
 

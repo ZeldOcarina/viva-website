@@ -26,6 +26,13 @@ const Wrapper = styled.div`
   .enlightment-title {
     width: 60%;
     margin: 0 auto;
+
+    ${respond(
+      "small-phone-land",
+      css`
+        width: 100%;
+      `
+    )}
   }
 
   h5 {
@@ -36,10 +43,31 @@ const Wrapper = styled.div`
   .features {
     display: flex;
     flex-wrap: wrap;
-    gap: 4rem;
-    grid-template-columns: 1fr 1fr;
-    margin: 4rem 0;
     justify-content: center;
+    gap: 4rem;
+    margin: 4rem 0;
+
+    ${respond(
+      "tab-port",
+      css`
+        padding: 0;
+        gap: 0;
+      `
+    )}
+    ${respond(
+      "phone-land",
+      css`
+        padding: 0;
+        gap: 2rem;
+      `
+    )}
+    ${respond(
+      "small-phone-land",
+      css`
+        width: 100%;
+        justify-content: space-evenly;
+      `
+    )}
 
     ${respond(
       "phone-port",
@@ -50,12 +78,27 @@ const Wrapper = styled.div`
 
     .feature {
       width: 40%;
+
+      ${respond(
+        "small-phone-land",
+        css`
+          width: 45%;
+        `
+      )}
     }
   }
 
   .last-feature {
     width: 50%;
     margin: 0 auto;
+
+    ${respond(
+      "phone-land",
+      css`
+        width: 75% !important;
+      `
+    )}
+    ${respond("small-phone-land", css``)}
 
     h5,
     p {
@@ -99,6 +142,12 @@ const Wrapper = styled.div`
     width: 60%;
 
     ${respond(
+      "phone-land",
+      css`
+        width: 80%;
+      `
+    )}
+    ${respond(
       "phone-port",
       css`
         width: 100%;
@@ -141,16 +190,16 @@ const EnlightmentTemplate = ({
   },
 }) => {
   const image = getImage(localFile);
-
   return (
-    <Wrapper last={last}>
+    <Wrapper>
       <article>
         <ImageVideo alt={alternativeText} image={image} video={videoId} vimeoH={vimeoH} noVideo={noVideo} />
         <h2 className="text-center enlightment-title">{title}</h2>
         <div className="features">
-          {textBlock.map(({ id, text, title, hasTextCenter }) => {
+          {textBlock.map(({ id, text, title, hasTextCenter }, i) => {
+            const isLarge = title.toLowerCase() === "unique useful insight";
             return (
-              <div className="feature" key={id}>
+              <div className={isLarge ? "feature last-feature" : "feature"} key={id}>
                 <h5 className={hasTextCenter ? "text-center" : ""}>{title}</h5>
                 <p className={hasTextCenter ? "text-center" : ""}>{text}</p>
               </div>

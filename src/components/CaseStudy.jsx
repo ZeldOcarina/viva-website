@@ -1,5 +1,6 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import respond from "../styles/abstracts/mediaqueries";
 
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
@@ -10,6 +11,13 @@ import ImageVideo from "./ImageVideo";
 const StyledCaseStudy = styled.div`
   .case-study-banner {
     height: 40rem;
+
+    ${respond(
+      "tab-port",
+      css`
+        height: auto;
+      `
+    )}
   }
 
   h2 {
@@ -20,6 +28,14 @@ const StyledCaseStudy = styled.div`
     margin-top: 1.5rem;
     font-size: 1.8rem;
     line-height: 1.4;
+
+    ${respond(
+      "small-phone-land",
+      css`
+        font-size: 1.6rem;
+        text-align: left;
+      `
+    )}
   }
 
   .feature-item {
@@ -39,16 +55,59 @@ const StyledCaseStudy = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 3rem;
+    max-width: 100%;
+
+    ${respond(
+      "small-phone-land",
+      css`
+        grid-template-columns: 1fr;
+        margin-bottom: 2rem;
+      `
+    )}
 
     &--template {
       margin-top: 6rem;
       gap: 6rem;
+
+      ${respond(
+        "small-phone-land",
+        css`
+          margin-top: 4rem;
+          gap: 3rem;
+        `
+      )}
+    }
+
+    .left-part {
+      max-width: 100%;
+
+      .image {
+        max-width: 50%;
+      }
+    }
+
+    .right-part {
+      ${respond(
+        "small-phone-land",
+        css`
+          display: grid;
+          grid-template-columns: 1fr;
+          justify-items: center;
+        `
+      )}
     }
   }
 
   .logo {
     width: 50%;
     margin-bottom: 2rem;
+
+    ${respond(
+      "small-phone-land",
+      css`
+        width: 35%;
+      `
+    )}
   }
 
   .case-study-hr {
@@ -84,6 +143,13 @@ const StyledCaseStudy = styled.div`
       z-index: 2;
       text-align: center;
       width: 100%;
+
+      ${respond(
+        "small-phone-land",
+        css`
+          font-size: 2.5em;
+        `
+      )}
     }
   }
 
@@ -103,11 +169,46 @@ const StyledCaseStudy = styled.div`
   }
 
   .body {
-    /* margin-top: 2rem; */
+    max-width: 100%;
   }
 
   .image-video {
     margin: 4rem auto;
+
+    ${respond(
+      "small-phone-land",
+      css`
+        width: 100%;
+        margin: 4rem auto 0 auto;
+      `
+    )}
+  }
+
+  .feature-item {
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  .btn--read-more {
+    ${respond(
+      "small-phone-land",
+      css`
+        margin: 4rem auto 0 auto;
+        display: none;
+      `
+    )}
+
+    &--mobile {
+      display: none;
+      margin: 0 auto 0 auto;
+      ${respond(
+        "small-phone-land",
+        css`
+          display: block;
+        `
+      )}
+    }
   }
 `;
 
@@ -209,6 +310,18 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
               })}
             </ul>
           </div>
+          {!isTemplatePage && (
+            <>
+              <p className="intro">{body[0].text}</p>
+              <Button
+                isInternal
+                url={`/case-studies/${caseStudy.attributes.slug || ""}`}
+                className="btn--read-more--mobile"
+              >
+                Read More
+              </Button>
+            </>
+          )}
         </div>
       </section>
       {isTemplatePage && (

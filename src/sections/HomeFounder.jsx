@@ -1,14 +1,22 @@
 import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import SectionTitle from "../components/SectionTitle";
 import { getImage } from "gatsby-plugin-image";
+import respond from "../styles/abstracts/mediaqueries";
 
 import Button from "../components/Button";
 import ImageVideo from "../components/ImageVideo";
 
 const StyledHomeFounder = styled.section`
   text-align: center;
+
+  ${respond(
+    "tab-port",
+    css`
+      padding: 4rem 0;
+    `
+  )}
   .btn {
     margin: 4rem auto 0 auto;
   }

@@ -1,10 +1,17 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Button from "./Button";
+import respond from "../styles/abstracts/mediaqueries";
 
 const StyledPostsSummary = styled.main`
+  ${respond(
+    "small-phone-land",
+    css`
+      margin-bottom: 2rem;
+    `
+  )}
   .image {
     width: 100%;
     margin-bottom: 2rem;
@@ -14,11 +21,25 @@ const StyledPostsSummary = styled.main`
     &:not(:last-child) {
       margin-bottom: 1rem;
     }
+
+    ${respond(
+      "small-phone-land",
+      css`
+        width: 100%;
+      `
+    )}
   }
 
   h2 {
     margin-bottom: 2rem;
     max-width: 75%;
+
+    ${respond(
+      "small-phone-land",
+      css`
+        max-width: 100%;
+      `
+    )}
   }
 
   .btn--read-more {

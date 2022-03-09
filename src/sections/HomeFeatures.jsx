@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import respond from "../styles/abstracts/mediaqueries";
 
 const StyledHomeFeatures = styled.section`
   background-color: var(--black);
@@ -16,10 +17,26 @@ const StyledHomeFeatures = styled.section`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
+
+    ${respond(
+      "small-phone-land",
+      css`
+        grid-template-columns: 1fr;
+        gap: 5rem;
+      `
+    )}
   }
 
   .feature-card {
     text-align: center;
+
+    ${respond(
+      "small-phone-land",
+      css`
+        width: 80%;
+        margin: 0 auto;
+      `
+    )}
     h5 {
       color: var(--white);
       font-size: 2rem;

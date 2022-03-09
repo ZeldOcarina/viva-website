@@ -1,15 +1,30 @@
 import { graphql, useStaticQuery } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import ImageVideo from "../components/ImageVideo";
 import SectionTitle from "../components/SectionTitle";
+import respond from "../styles/abstracts/mediaqueries";
 
 const StyledHomeScale = styled.section`
   text-align: center;
+
   .title {
     max-width: 50%;
+
+    ${respond(
+      "tab-land",
+      css`
+        max-width: 60%;
+      `
+    )}
+    ${respond(
+      "tab-port",
+      css`
+        max-width: 70%;
+      `
+    )}
   }
 `;
 

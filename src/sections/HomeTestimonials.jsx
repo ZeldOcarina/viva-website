@@ -1,7 +1,8 @@
 import { graphql, useStaticQuery } from "gatsby";
 
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import respond from "../styles/abstracts/mediaqueries";
 import CaseStudiesSummary from "./case-studies/CaseStudiesSummary";
 
 const StyledHomeTestimonials = styled.section`
@@ -18,6 +19,13 @@ const StyledHomeTestimonials = styled.section`
     display: flex;
     margin-top: 4rem;
     gap: 2rem;
+
+    ${respond(
+      "small-phone-land",
+      css`
+        gap: 0;
+      `
+    )}
   }
   .card {
     text-align: left;

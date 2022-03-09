@@ -11,9 +11,10 @@ const StyledHomeQuestions = styled.section`
     grid-gap: 4rem;
 
     ${respond(
-      "phone-port",
+      "small-phone-land",
       css`
         grid-template-columns: 1fr;
+        margin-bottom: 4rem;
       `
     )}
 

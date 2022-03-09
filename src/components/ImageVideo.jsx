@@ -13,6 +13,19 @@ const Wrapper = styled.div`
   width: 70%;
   margin: 0 auto;
 
+  ${respond(
+    "phone-land",
+    css`
+      width: 80%;
+    `
+  )}
+  ${respond(
+    "phone-port",
+    css`
+      width: 100%;
+    `
+  )}
+
   .play-icon {
     position: absolute;
     top: 50%;
@@ -22,6 +35,13 @@ const Wrapper = styled.div`
     cursor: pointer;
     opacity: 0.8;
     transition: transform 0.3s ease-in-out;
+
+    ${respond(
+      "small-phone-land",
+      css`
+        width: 6rem;
+      `
+    )}
 
     &:hover {
       transform: translate(-50%, -50%) scale(1.1);

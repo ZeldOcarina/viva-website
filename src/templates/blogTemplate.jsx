@@ -9,6 +9,8 @@ import ScheduleConsultationButton from "../components/ScheduleConsultationButton
 
 const StyledBlogTemplate = styled.main`
   margin: 6rem auto;
+  min-height: calc(100vh - 7rem - 10rem - 19rem);
+
   .image {
     width: 100%;
     margin-bottom: 2rem;

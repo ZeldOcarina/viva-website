@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import respond from "../styles/abstracts/mediaqueries";
 
 const StyledHomeDifference = styled.section`
   text-align: center;
@@ -12,12 +13,27 @@ const StyledHomeDifference = styled.section`
     width: 85%;
     margin: 4rem auto 0 auto;
 
+    ${respond(
+      "small-phone-land",
+      css`
+        width: 100%;
+        justify-content: space-evenly;
+      `
+    )}
+
     .difference {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 25rem;
       gap: 2rem;
+
+      ${respond(
+        "small-phone-land",
+        css`
+          width: 15rem;
+        `
+      )}
     }
     .difference-title {
       text-transform: uppercase;

@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import respond from "../styles/abstracts/mediaqueries";
 
 const StyledHomeCustomerLogos = styled.section`
   padding-top: 0;
@@ -22,6 +23,13 @@ const StyledHomeCustomerLogos = styled.section`
     display: flex;
     align-items: center;
     width: 16rem;
+
+    ${respond(
+      "small-phone-land",
+      css`
+        width: 12rem;
+      `
+    )}
   }
 
   .logo {

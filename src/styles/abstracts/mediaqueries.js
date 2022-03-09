@@ -1,31 +1,35 @@
 function respond(breakpoint, css) {
   switch (breakpoint) {
     case "iphone-5":
-      return `@media only screen and (max-width: 21.875em) {
+      return `@media only screen and (max-width: ${350 / 16}em) {
                 ${css}
               }`; // 350px
     case "phone-port":
-      return `@media only screen and (max-width: 28.125em) {
+      return `@media only screen and (max-width: ${450 / 16}em) {
                 ${css}
               }`; // 450px
-    case "phone-land":
-      return `@media only screen and (max-width: 51.25em) {
+    case "small-phone-land":
+      return `@media only screen and (max-width: ${736 / 16}em) {
                 ${css}
-              }`; // 820px
+              }`; // 926px
+    case "phone-land":
+      return `@media only screen and (max-width: ${926 / 16}em) {
+                ${css}
+              }`; // 926px
     case "tab-port":
-      return `@media only screen and (max-width: 56.25em) {
+      return `@media only screen and (max-width: ${1024 / 16}em) {
                 ${css}
               }`; // 900px
     case "tab-land":
-      return `@media only screen and (max-width: 75em) {
+      return `@media only screen and (max-width: ${1366 / 16}em) {
                 ${css}
-              }`; // 1200px
+              }`; // 1366px
     case "laptop":
-      return `@media only screen and (max-width: 102.18em) {
+      return `@media only screen and (max-width: ${1635 / 16}em) {
                 ${css}
               }`; // 450px
     case "big-laptop":
-      return `@media only screen and (max-width: 115em) {
+      return `@media only screen and (max-width: ${1740 / 16}em) {
                 ${css}
               }`; // 1740px
     case "big-desktop":
@@ -33,7 +37,7 @@ function respond(breakpoint, css) {
                 ${css}
               }`; // 1740px
     case "4k-tv":
-      return `@media only screen and (min-width: 237.5em) {
+      return `@media only screen and (min-width: ${3800 / 16}em) {
                 ${css}
               }`; // 3800px
     default:
