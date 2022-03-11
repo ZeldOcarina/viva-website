@@ -15,7 +15,7 @@ const StyledScheduleConsultationButton = styled.a`
   width: max-content;
   height: max-content;
   margin: 0 5rem 5rem 0;
-  padding: 1rem 2rem;
+  padding: 2rem;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
   box-sizing: border-box;
@@ -29,6 +29,12 @@ const StyledScheduleConsultationButton = styled.a`
       height: 8rem;
     `
   )}
+  // TWEAK APPEARANCE ON SAFARI
+  @media not all and (min-resolution:.001dpcm) {
+    @media {
+      padding: 1rem 2rem;
+    }
+  }
 
   &:hover {
     border: 3px solid #c3b0ff;
