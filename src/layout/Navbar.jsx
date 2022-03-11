@@ -142,6 +142,15 @@ const Wrapper = styled.nav`
   .hamburger {
     display: none;
     width: 3rem;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
 
     ${respond(
       "phone-port",
@@ -181,7 +190,10 @@ const Navbar = ({ setIsNavbarOpen }) => {
             <img src={vivaIcon} className="logo" alt="Viva Concepts Logo" />
           </Link>
         </div>
-        <img src={hamburgerIcon} alt="Open menu" className="hamburger" onClick={handleHamburgerClick} />
+        <button className="hamburger" onClick={handleHamburgerClick}>
+          <img src={hamburgerIcon} alt="Open menu" className="hamburger" />
+        </button>
+
         <ul className="ul">
           {navbarLinks.map(({ name, url, type, subitems }, i) => {
             return (

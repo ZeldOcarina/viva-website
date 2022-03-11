@@ -34,6 +34,15 @@ const StyledMobileNavbar = styled.nav`
     right: 4rem;
     width: 4rem;
     height: 4rem;
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .link {
@@ -108,7 +117,9 @@ const MobileNavbar = ({ isNavbarOpen, setIsNavbarOpen }) => {
 
   return (
     <StyledMobileNavbar isNavbarOpen={isNavbarOpen}>
-      <img src={closeIcon} alt="Close Icon" className="close-icon" onClick={closeNavbar} />
+      <button onClick={closeNavbar} className="close-icon">
+        <img src={closeIcon} alt="Close Icon" />
+      </button>
       <div className="mobile-items">
         <ul>
           {navbarLinks.map(({ name, url, type, subitems }) => {

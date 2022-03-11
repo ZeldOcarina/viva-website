@@ -85,36 +85,36 @@ module.exports = {
     },
   },
   plugins: [
-    // {
-    //   resolve: "gatsby-plugin-google-tagmanager",
-    //   options: {
-    //     id: "GTM-NKBGQLK",
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-KNQ562J",
 
-    //     // Include GTM in development.
-    //     //
-    //     // Defaults to false meaning GTM will only be loaded in production.
-    //     includeInDevelopment: true,
+        // Include GTM in development.
+        //
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: true,
 
-    //     // datalayer to be set before GTM is loaded
-    //     // should be an object or a function that is executed in the browser
-    //     //
-    //     // Defaults to null
-    //     defaultDataLayer: { platform: "gatsby" },
+        // datalayer to be set before GTM is loaded
+        // should be an object or a function that is executed in the browser
+        //
+        // Defaults to null
+        defaultDataLayer: { platform: "gatsby" },
 
-    //     // Specify optional GTM environment details.
-    //     // gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING",
-    //     // gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME",
-    //     //dataLayerName: "GTM-NKBGQLK",
+        // Specify optional GTM environment details.
+        // gtmAuth: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_AUTH_STRING",
+        // gtmPreview: "YOUR_GOOGLE_TAGMANAGER_ENVIRONMENT_PREVIEW_NAME",
+        //dataLayerName: "GTM-NKBGQLK",
 
-    //     // Name of the event that is triggered
-    //     // on every Gatsby route change.
-    //     //
-    //     // Defaults to gatsby-route-change
-    //     routeChangeEventName: "gatsby-route-change",
-    //     // Defaults to false
-    //     enableWebVitalsTracking: true,
-    //   },
-    // },
+        // Name of the event that is triggered
+        // on every Gatsby route change.
+        //
+        // Defaults to gatsby-route-change
+        routeChangeEventName: "gatsby-route-change",
+        // Defaults to false
+        enableWebVitalsTracking: true,
+      },
+    },
     "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
