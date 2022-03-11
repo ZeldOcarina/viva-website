@@ -12,13 +12,11 @@ const StyledScheduleConsultationButton = styled.a`
   bottom: 0;
   right: 0;
   background-color: var(--color-primary-dark);
-  width: 10rem;
-  height: 10rem;
-  margin: 0 5rem 5rem 0;
-  padding: 2rem;
-  border-radius: 10px;
   width: max-content;
   height: max-content;
+  margin: 0 5rem 5rem 0;
+  padding: 1rem 2rem;
+  border-radius: 10px;
   transition: all 0.3s ease-in-out;
   box-sizing: border-box;
   z-index: 100;
@@ -27,6 +25,8 @@ const StyledScheduleConsultationButton = styled.a`
     "phone-land",
     css`
       border-radius: 50%;
+      width: 8rem;
+      height: 8rem;
     `
   )}
 

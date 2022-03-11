@@ -5,3 +5,4 @@ public
 .env.production
 GTM--CookieHub_v2.json
 .DS_STORE
+.vercel

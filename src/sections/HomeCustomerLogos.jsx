@@ -54,7 +54,7 @@ const StyledHomeCustomerLogos = styled.section`
 
   .logo {
     width: 100%;
-    height: max-content;
+    height: auto;
   }
 `;
 
