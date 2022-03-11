@@ -31,7 +31,7 @@ const Seo = (props) => {
       <meta property="og:type" content="website" />
       <meta property="og:title" content={props.title || "Viva Digital"} />
       <meta property="og:description" content={DESCRIPTION} />
-      <meta property="og:image" content="https://viva-website-tau.vercel.app/scresnshot.png" />
+      <meta property="og:image" content="https://viva-website-tau.vercel.app/screenshot.png" />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
