@@ -323,8 +323,6 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
     </div>
   );
 
-  console.log(isTemplatePage);
-
   return (
     <StyledCaseStudy>
       <section key={id}>
