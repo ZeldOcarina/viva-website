@@ -9,7 +9,7 @@ function respond(breakpoint, css) {
                 ${css}
               }`; // 450px
     case "small-phone-land":
-      return `@media only screen and (max-width: ${736 / 16}em) {
+      return `@media only screen and (max-width: ${847 / 16}em) {
                 ${css}
               }`; // 926px
     case "phone-land":

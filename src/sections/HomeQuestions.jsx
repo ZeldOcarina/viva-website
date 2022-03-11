@@ -5,6 +5,12 @@ import SectionTitle from "../components/SectionTitle";
 import respond from "../styles/abstracts/mediaqueries";
 
 const StyledHomeQuestions = styled.section`
+  ${respond(
+    "phone-port",
+    css`
+      padding: 0 !important;
+    `
+  )}
   .questions-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -15,6 +21,13 @@ const StyledHomeQuestions = styled.section`
       css`
         grid-template-columns: 1fr;
         margin-bottom: 4rem;
+      `
+    )}
+    ${respond(
+      "phone-port",
+      css`
+        width: 95%;
+        margin: 0 auto 6rem auto;
       `
     )}
 

@@ -12,13 +12,21 @@ const StyledHomeFounder = styled.section`
   text-align: center;
 
   ${respond(
-    "tab-port",
+    "phone-port",
     css`
-      padding: 4rem 0;
+      padding: 6rem 0;
     `
   )}
+
   .btn {
     margin: 4rem auto 0 auto;
+
+    ${respond(
+      "phone-port",
+      css`
+        width: 95% !important;
+      `
+    )}
   }
 `;
 

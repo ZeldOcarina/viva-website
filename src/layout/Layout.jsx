@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import InternalNavbar from "./InternalNavbar";
+import MobileNavbar from "./MobileNavbar";
 
-const Layout = ({ children, location, internal }) => {
+const Layout = ({ children, location }) => {
+  const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   return (
     <>
-      {internal ? <InternalNavbar /> : <Navbar location={location} />}
+      <Navbar location={location} setIsNavbarOpen={setIsNavbarOpen} />
       {children}
       <Footer>I am a footer</Footer>
+      <MobileNavbar isNavbarOpen={isNavbarOpen} setIsNavbarOpen={setIsNavbarOpen} />
     </>
   );
 };

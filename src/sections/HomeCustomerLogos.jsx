@@ -6,10 +6,24 @@ import respond from "../styles/abstracts/mediaqueries";
 const StyledHomeCustomerLogos = styled.section`
   padding-top: 0;
 
+  ${respond(
+    "phone-port",
+    css`
+      margin-top: 2.5rem;
+    `
+  )}
+
   h2 {
     text-align: center;
     font-weight: 600;
     margin-bottom: 3rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        margin-bottom: 1.5rem;
+      `
+    )}
   }
 
   .logos {
@@ -28,6 +42,12 @@ const StyledHomeCustomerLogos = styled.section`
       "small-phone-land",
       css`
         width: 12rem;
+      `
+    )}
+    ${respond(
+      "phone-port",
+      css`
+        width: 10rem;
       `
     )}
   }

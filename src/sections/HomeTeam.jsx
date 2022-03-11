@@ -8,6 +8,14 @@ const StyledHomeTeam = styled.section`
   font-size: 1.6rem;
   font-family: "Nunito", sans-serif;
 
+  ${respond(
+    "phone-port",
+    css`
+      margin-bottom: 4rem;
+      padding-top: 0;
+    `
+  )}
+
   .title {
     margin-bottom: 4rem;
     text-align: center;
@@ -119,6 +127,14 @@ const StyledHomeTeam = styled.section`
     margin-top: 1.6rem;
     font-style: italic;
     font-size: 1.6rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        width: 95%;
+        margin: 0 auto;
+      `
+    )}
   }
 
   .image {

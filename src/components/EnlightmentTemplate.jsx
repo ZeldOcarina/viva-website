@@ -85,6 +85,13 @@ const Wrapper = styled.div`
           width: 45%;
         `
       )}
+      ${respond(
+        "phone-port",
+        css`
+          width: 95%;
+          margin: 0 auto;
+        `
+      )}
     }
   }
 
@@ -98,7 +105,12 @@ const Wrapper = styled.div`
         width: 75% !important;
       `
     )}
-    ${respond("small-phone-land", css``)}
+    ${respond(
+      "phone-port",
+      css`
+        width: 100% !important;
+      `
+    )}
 
     h5,
     p {
@@ -112,10 +124,20 @@ const Wrapper = styled.div`
       )}
     }
 
+    .text-center {
+      ${respond(
+        "phone-port",
+        css`
+          text-align: left !important;
+        `
+      )}
+    }
+
     ${respond(
       "phone-port",
       css`
-        width: 100%;
+        width: 95% !important;
+        margin: 0 auto;
       `
     )}
   }
@@ -169,10 +191,19 @@ const Wrapper = styled.div`
 
   hr {
   }
+
+  .button {
+    ${respond(
+      "phone-port",
+      css`
+        width: 95% !important;
+        margin: 0 auto;
+      `
+    )}
+  }
 `;
 
 const EnlightmentTemplate = ({
-  last,
   noVideo,
   attributes: {
     cta,
@@ -207,7 +238,7 @@ const EnlightmentTemplate = ({
           })}
         </div>
         {hasCta && (
-          <Button text={cta} url={ctaLink}>
+          <Button text={cta} url={ctaLink} className="button">
             {cta}
           </Button>
         )}

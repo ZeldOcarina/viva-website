@@ -9,6 +9,11 @@ export default function useSiteMetadata() {
             name
             url
             type
+            subitems {
+              name
+              url
+              type
+            }
           }
           description
           siteUrl

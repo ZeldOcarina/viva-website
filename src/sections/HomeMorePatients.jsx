@@ -11,9 +11,21 @@ const StyledHomeMorePatients = styled.section`
   ${respond(
     "tab-port",
     css`
-      padding-bottom: 4rem;
+      padding-bottom: 4rem !important;
+      width: 95% !important;
     `
   )}
+
+  .title {
+    margin-bottom: 4rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        margin-bottom: 2rem;
+      `
+    )}
+  }
 
   h2 {
     text-align: center;
@@ -31,6 +43,18 @@ const StyledHomeMorePatients = styled.section`
     align-items: flex-start;
     gap: 3rem;
     font-size: 1.6rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        grid-template-columns: 1fr;
+      `
+    )}
+
+    .image {
+      width: 50%;
+      margin: 0 auto;
+    }
   }
 
   .cta {
@@ -63,9 +87,9 @@ const HomeMorePatients = () => {
 
   return (
     <StyledHomeMorePatients className="container">
-      <h2 className="mb-4">{title}</h2>
+      <h2 className="title">{title}</h2>
       <div className="bottom-container">
-        <GatsbyImage image={getImage(localFile)} alt={alternativeText} />
+        <GatsbyImage image={getImage(localFile)} alt={alternativeText} className="image" />
         <div className="copy">
           <p className="bold">{subtitle}</p>
           {splittedCopy.map((paragraph, i) => {

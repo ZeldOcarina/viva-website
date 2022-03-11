@@ -1,9 +1,17 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import respond from "../../styles/abstracts/mediaqueries";
 
 import CaseStudy from "../../components/CaseStudy";
 
-const StyledCaseStudiesSummary = styled.main``;
+const StyledCaseStudiesSummary = styled.main`
+  ${respond(
+    "phone-port",
+    css`
+      padding: 0 !important;
+    `
+  )}
+`;
 
 const CaseStudiesSummary = ({ caseStudiesData }) => {
   return (

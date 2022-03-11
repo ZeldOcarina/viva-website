@@ -1,19 +1,49 @@
+import React from "react";
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import respond from "../styles/abstracts/mediaqueries";
 
 const StyledHomeMarketing = styled.section`
   padding-top: 6rem;
 
-  h2 {
+  ${respond(
+    "phone-port",
+    css`
+      padding-bottom: 6rem;
+    `
+  )}
+
+  .image {
+    width: 50%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .title {
     text-align: center;
+    margin-bottom: 4rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        margin-bottom: 2rem;
+      `
+    )}
   }
 
   .copy {
     p {
       margin-bottom: 1rem;
     }
+
+    ${respond(
+      "phone-port",
+      css`
+        width: 95%;
+        margin: 0 auto;
+      `
+    )}
   }
 
   .bottom-container {
@@ -22,6 +52,13 @@ const StyledHomeMarketing = styled.section`
     align-items: flex-start;
     gap: 3rem;
     font-size: 1.6rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        grid-template-columns: 1fr;
+      `
+    )}
   }
 
   .red-text {
@@ -29,6 +66,14 @@ const StyledHomeMarketing = styled.section`
     color: var(--color-secondary);
     font-weight: 700;
     font-size: 2rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        width: 95%;
+        margin: 2.5rem auto 0 auto;
+      `
+    )}
   }
 `;
 
@@ -56,10 +101,10 @@ const HomeMarketing = () => {
 
   return (
     <StyledHomeMarketing className="container">
-      <h2 className="mb-4">{title}</h2>
+      <h2 className="title">{title}</h2>
       <div className="bottom-container">
         <div className="left-container">
-          <GatsbyImage image={getImage(localFile)} alt={alternativeText} />
+          <GatsbyImage image={getImage(localFile)} alt={alternativeText} className="image" />
           <p className="red-text">
             {redText} <span className="underlined">{underlinedWord}</span>.
           </p>

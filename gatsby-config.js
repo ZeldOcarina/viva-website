@@ -35,7 +35,48 @@ module.exports = {
       { name: "Case Studies", url: "/case-studies", type: "internal" },
       { name: "Blog", url: "/blog", type: "internal" },
       { name: "Dashboard", url: "https://www.ddsturningpoint.com/dasbhoard", type: "external" },
-      { name: "AHP", url: "https://www.ddsturningpoint.com/orientation", type: "external" },
+      {
+        name: "AHP",
+        url: "https://www.ddsturningpoint.com/orientation",
+        type: "external",
+        subitems: [
+          {
+            name: "ORIENTATION",
+            url: "https://www.ddsturningpoint.com/orientation",
+            type: "external",
+          },
+          {
+            name: "STEP 1",
+            url: "https://www.ddsturningpoint.com/stepone",
+            type: "external",
+          },
+          {
+            name: "STEP 2",
+            url: "https://www.ddsturningpoint.com/step-2",
+            type: "external",
+          },
+          {
+            name: "STEP 3",
+            url: "https://www.ddsturningpoint.com/step-three",
+            type: "external",
+          },
+          {
+            name: "STEP 4",
+            url: "https://www.ddsturningpoint.com/step-four",
+            type: "external",
+          },
+          {
+            name: "ADMIN FORMS",
+            url: "https://www.ddsturningpoint.com/admin-forms",
+            type: "external",
+          },
+          {
+            name: "HAT WRITE-UPS",
+            url: "https://www.ddsturningpoint.com/hat-write-ups",
+            type: "external",
+          },
+        ],
+      },
     ],
     socialLinks: {
       facebook: "https://www.facebook.com/VivaReferralSystem",
@@ -97,24 +138,8 @@ module.exports = {
       resolve: "gatsby-source-strapi",
       options: {
         apiURL: "https://admin.vivadigitalconcepts.com",
-        //collectionTypes: [{ singularName: "post", queryParams: { populate: "*" } }],
         collectionTypes: [],
         singleTypes,
-        // Extract images from markdown fields.
-        // markdownImages: {
-        //   typesToParse: {
-        //     Article: ['body'],
-        //     ComponentBlockBody: ['text'],
-        //   },
-        // },
-        // Only include specific locale.
-        //locale: 'en', // default to all
-        // Include drafts in build.
-        //preview: true, // defaults to false
-        // Use application token.
-        //token: 'xxx',
-        // Add additional headers.
-        //headers: {},
       },
     },
     {

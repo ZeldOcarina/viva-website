@@ -1,16 +1,41 @@
 import { graphql, useStaticQuery } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import respond from "../styles/abstracts/mediaqueries";
 
 import ImageVideo from "../components/ImageVideo";
 
 const StyledHero = styled.section`
   text-align: center;
 
+  ${respond(
+    "phone-port",
+    css`
+      padding: 0;
+      margin-top: 3rem;
+    `
+  )}
+
+  h1 {
+    ${respond(
+      "phone-port",
+      css`
+        font-size: 2.5rem;
+      `
+    )}
+  }
+
   p {
     font-family: var(--title-font);
     margin-bottom: 3rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        font-size: 1.9rem;
+      `
+    )}
   }
 `;
 

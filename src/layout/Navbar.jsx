@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
 import styled, { css } from "styled-components";
 import { darken } from "polished";
 import respond from "../styles/abstracts/mediaqueries";
+
 import vivaIcon from "../images/icons/viva-icon.svg";
+import hamburgerIcon from "../images/icons/hamburger.svg";
 
 import useSiteMetadata from "../hooks/use-site-metadata";
 import { Link } from "gatsby";
@@ -24,7 +27,8 @@ const Wrapper = styled.nav`
     ${respond(
       "phone-port",
       css`
-        justify-content: center;
+        justify-content: space-between;
+        padding: 0 3rem !important;
       `
     )}
   }
@@ -36,6 +40,13 @@ const Wrapper = styled.nav`
     gap: 3rem;
     text-transform: capitalize;
     height: 100%;
+
+    ${respond(
+      "phone-port",
+      css`
+        display: none;
+      `
+    )}
 
     li {
       height: 100%;
@@ -127,9 +138,21 @@ const Wrapper = styled.nav`
   .square-shown {
     visibility: visible;
   }
+
+  .hamburger {
+    display: none;
+    width: 3rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        display: block;
+      `
+    )}
+  }
 `;
 
-const Navbar = () => {
+const Navbar = ({ setIsNavbarOpen }) => {
   const [height, setHeight] = useState("73px");
   const [isHovered, setIsHovered] = useState(false);
   const { navbarLinks } = useSiteMetadata();
@@ -146,6 +169,9 @@ const Navbar = () => {
   function handleMouseLeave() {
     setIsHovered(false);
   }
+  function handleHamburgerClick() {
+    setIsNavbarOpen(true);
+  }
 
   return (
     <Wrapper ref={navbarRef} height={height} isHovered={isHovered}>
@@ -155,20 +181,20 @@ const Navbar = () => {
             <img src={vivaIcon} className="logo" alt="Viva Concepts Logo" />
           </Link>
         </div>
+        <img src={hamburgerIcon} alt="Open menu" className="hamburger" onClick={handleHamburgerClick} />
         <ul className="ul">
-          {navbarLinks.map(({ name, url, type }, i) => {
-            const isAhp = name === "AHP";
+          {navbarLinks.map(({ name, url, type, subitems }, i) => {
             return (
               /* eslint-disable */
               <li
                 key={i}
                 className="li"
-                onMouseEnter={isAhp ? handleMouseEnter : null}
-                onMouseLeave={isAhp ? handleMouseLeave : null}
+                onMouseEnter={subitems ? handleMouseEnter : null}
+                onMouseLeave={subitems ? handleMouseLeave : null}
               >
                 {/* eslint-enable */}
                 {type === "external" ? (
-                  <a href={`${url}`} className={isAhp ? "link--ahp" : "link"}>
+                  <a href={`${url}`} className={subitems ? "link--ahp" : "link"}>
                     {name}
                   </a>
                 ) : (
@@ -177,7 +203,7 @@ const Navbar = () => {
                   </Link>
                 )}
 
-                {isAhp && (
+                {subitems && (
                   /* eslint-disable */
                   <div
                     className={isHovered ? "square square-shown" : "square"}
@@ -187,27 +213,13 @@ const Navbar = () => {
                   >
                     {/* eslint-enable */}
                     <ul>
-                      <li>
-                        <a href="https://www.ddsturningpoint.com/orientation">ORIENTATION</a>
-                      </li>
-                      <li>
-                        <a href="https://www.ddsturningpoint.com/stepone">STEP 1</a>
-                      </li>
-                      <li>
-                        <a href="https://www.ddsturningpoint.com/step-2">STEP 2</a>
-                      </li>
-                      <li>
-                        <a href="https://www.ddsturningpoint.com/step-three">STEP 3</a>
-                      </li>
-                      <li>
-                        <a href="https://www.ddsturningpoint.com/step-four">STEP 4</a>
-                      </li>
-                      <li>
-                        <a href="https://www.ddsturningpoint.com/admin-forms">ADMIN FORMS</a>
-                      </li>
-                      <li>
-                        <a href="https://www.ddsturningpoint.com/hat-write-ups">HAT WRITE-UPS</a>
-                      </li>
+                      {subitems.map(({ name, url, type }) => {
+                        return (
+                          <li key={uuidv4()}>
+                            {type === "external" ? <a href={url}>{name}</a> : <Link to={url}>{name}</Link>}
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 )}

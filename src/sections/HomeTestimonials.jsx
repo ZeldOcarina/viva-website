@@ -8,12 +8,28 @@ import CaseStudiesSummary from "./case-studies/CaseStudiesSummary";
 const StyledHomeTestimonials = styled.section`
   text-align: center;
   padding-bottom: 3rem;
+
+  ${respond(
+    "phone-port",
+    css`
+      margin-top: 3rem;
+      padding-bottom: 0;
+    `
+  )}
+
   h2 {
     margin-bottom: 2rem;
   }
   .subtitle {
     width: 80%;
     margin: 0 auto;
+
+    ${respond(
+      "phone-port",
+      css`
+        width: 100%;
+      `
+    )}
   }
   .testimonials-container {
     display: flex;
@@ -76,14 +92,12 @@ const HomeTestimonials = () => {
     },
   } = useStaticQuery(query);
 
-  console.log(data);
-
   return (
     <StyledHomeTestimonials className="container">
       <h2>{title}</h2>
       <p className="subtitle">{subtitle}</p>
       <div className="testimonials-container">
-        <CaseStudiesSummary caseStudiesData={data} />;
+        <CaseStudiesSummary caseStudiesData={data} />
       </div>
     </StyledHomeTestimonials>
   );

@@ -28,6 +28,13 @@ const StyledPostsSummary = styled.main`
         width: 100%;
       `
     )}
+    ${respond(
+      "phone-port",
+      css`
+        width: 95%;
+        margin: 0 auto;
+      `
+    )}
   }
 
   h2 {
@@ -40,10 +47,25 @@ const StyledPostsSummary = styled.main`
         max-width: 100%;
       `
     )}
+    ${respond(
+      "phone-port",
+      css`
+        width: 95%;
+        margin: 0 auto 2rem auto;
+      `
+    )}
   }
 
   .btn--read-more {
     margin-top: 3rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        width: 95% !important;
+        margin: 3rem auto 0 auto;
+      `
+    )}
   }
 `;
 

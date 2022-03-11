@@ -1,13 +1,22 @@
 import { graphql, useStaticQuery } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import respond from "../styles/abstracts/mediaqueries";
+
 import ImageVideo from "../components/ImageVideo";
 
 const StyledHomeBottomTestimonials = styled.section`
   text-align: center;
 
-  h2 {
+  ${respond(
+    "phone-port",
+    css`
+      padding: 0 !important;
+    `
+  )}
+
+  .title {
     margin-bottom: 3rem;
   }
 
@@ -29,7 +38,7 @@ const HomeBottomTestimonials = () => {
 
   return (
     <StyledHomeBottomTestimonials className="container">
-      <h2>{title}</h2>
+      <h2 className="title">{title}</h2>
       <div className="video-container">
         {videoTestimonial.map(
           ({

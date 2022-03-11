@@ -43,6 +43,17 @@ const StyledCaseStudy = styled.div`
     font-size: 1.6rem;
   }
 
+  .title {
+    ${respond(
+      "phone-port",
+      css`
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+      `
+    )}
+  }
+
   .bold {
     font-weight: 600;
   }
@@ -57,11 +68,27 @@ const StyledCaseStudy = styled.div`
     gap: 3rem;
     max-width: 100%;
 
+    .left-part {
+      ${respond(
+        "phone-port",
+        css`
+          width: 95vw;
+        `
+      )}
+    }
+
     ${respond(
       "small-phone-land",
       css`
         grid-template-columns: 1fr;
         margin-bottom: 2rem;
+      `
+    )}
+    ${respond(
+      "phone-port",
+      css`
+        width: 95%;
+        margin: 0 auto 2rem auto;
       `
     )}
 
@@ -82,7 +109,12 @@ const StyledCaseStudy = styled.div`
       max-width: 100%;
 
       .image {
-        max-width: 50%;
+        ${respond(
+          "phone-port",
+          css`
+            max-width: 100%;
+          `
+        )}
       }
     }
 
@@ -150,11 +182,25 @@ const StyledCaseStudy = styled.div`
           font-size: 2.5em;
         `
       )}
+      ${respond(
+        "phone-port",
+        css`
+          padding: 4rem;
+          font-size: 2.2em;
+        `
+      )}
     }
   }
 
   .btn {
     margin: 0 auto;
+
+    ${respond(
+      "phone-port",
+      css`
+        width: 95% !important;
+      `
+    )}
 
     &--read-more {
       margin-top: 3rem;
@@ -260,6 +306,8 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
     </div>
   );
 
+  console.log(isTemplatePage);
+
   return (
     <StyledCaseStudy>
       <section key={id}>
@@ -267,12 +315,12 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
           <div className="banner-container">
             <div className="banner-container__layer"></div>
             <GatsbyImage className="case-study-banner" image={getImage(localFile)} alt={alternativeText} />
-            <h2>{title}</h2>
+            <h2 className="title">{title}</h2>
           </div>
         ) : (
           <>
             <GatsbyImage className="case-study-banner" image={getImage(localFile)} alt={alternativeText} />
-            <h2>{title}</h2>
+            <h2 className="title">{title}</h2>
           </>
         )}
 
@@ -312,7 +360,7 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
           </div>
           {!isTemplatePage && (
             <>
-              <p className="intro">{body[0].text}</p>
+              {/* <p className="intro">{body[0].text}</p> */}
               <Button
                 isInternal
                 url={`/case-studies/${caseStudy.attributes.slug || ""}`}

@@ -1,7 +1,8 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ReactMarkdown from "react-markdown";
+import respond from "../styles/abstracts/mediaqueries";
 
 import Layout from "../layout/Layout";
 import Seo from "../components/Seo";
@@ -18,6 +19,14 @@ const StyledBlogTemplate = styled.main`
   .content {
     width: 75%;
 
+    ${respond(
+      "phone-port",
+      css`
+        width: 95%;
+        margin: 0 auto;
+      `
+    )}
+
     p {
       margin-bottom: 1.5rem;
     }
@@ -31,6 +40,16 @@ const StyledBlogTemplate = styled.main`
   h2 {
     margin-bottom: 2rem;
     max-width: 75%;
+
+    ${respond(
+      "phone-port",
+      css`
+        width: 95%;
+        margin: 0 auto 2rem auto;
+        text-align: left;
+        max-width: 100%;
+      `
+    )}
   }
 
   .btn--read-more {

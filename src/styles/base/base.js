@@ -132,7 +132,8 @@ button {
   ${respond(
     "phone-port",
     css`
-      padding: 0 2rem;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
     `
   )}
   ${respond(

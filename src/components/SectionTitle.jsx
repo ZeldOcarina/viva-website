@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import respond from "../styles/abstracts/mediaqueries";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   width: max-content;

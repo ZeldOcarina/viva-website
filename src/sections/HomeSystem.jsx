@@ -1,20 +1,55 @@
 import { graphql, useStaticQuery } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import respond from "../styles/abstracts/mediaqueries";
+
 import Button from "../components/Button";
 
 const StyledHomeSystem = styled.section`
   padding-top: 6rem;
 
-  h2 {
+  ${respond(
+    "phone-port",
+    css`
+      padding-top: 1rem;
+    `
+  )}
+
+  .title {
     text-align: center;
+    margin-bottom: 4rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        margin-bottom: 2rem;
+      `
+    )}
+  }
+
+  .image {
+    ${respond(
+      "phone-port",
+      css`
+        margin-left: 50%;
+        transform: translateX(-50%);
+      `
+    )}
   }
 
   .copy {
     p {
       margin-bottom: 1rem;
     }
+
+    ${respond(
+      "phone-port",
+      css`
+        width: 95%;
+        margin: 0 auto;
+      `
+    )}
   }
 
   .bottom-container {
@@ -23,11 +58,26 @@ const StyledHomeSystem = styled.section`
     align-items: flex-start;
     gap: 3rem;
     font-size: 1.6rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        grid-template-columns: 1fr;
+      `
+    )}
   }
 
   .button {
     background-color: var(--color-secondary);
     margin: 3rem auto 0 auto;
+
+    ${respond(
+      "phone-port",
+      css`
+        width: 95% !important;
+        margin: 2rem auto 0 auto;
+      `
+    )}
   }
 `;
 
@@ -59,10 +109,10 @@ const HomeSystem = () => {
 
   return (
     <StyledHomeSystem className="container">
-      <h2 className="mb-4">{title}</h2>
+      <h2 className="title">{title}</h2>
       <div className="bottom-container">
         <div className="left-container">
-          <GatsbyImage image={getImage(localFile)} alt={alternativeText} />
+          <GatsbyImage image={getImage(localFile)} alt={alternativeText} className="image" />
         </div>
 
         <div className="copy">

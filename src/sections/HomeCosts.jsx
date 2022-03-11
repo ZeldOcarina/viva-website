@@ -7,9 +7,23 @@ import listIcon from "../images/icons/green-list-icon.svg";
 import respond from "../styles/abstracts/mediaqueries";
 
 const StyledHomeCosts = styled.section`
+  ${respond(
+    "phone-port",
+    css`
+      margin-bottom: 4rem;
+    `
+  )}
   h2,
   .subtitle {
     text-align: center;
+
+    ${respond(
+      "phone-port",
+      css`
+        margin-top: 3rem;
+        width: 100%;
+      `
+    )}
   }
 
   .subtitle {
@@ -17,12 +31,26 @@ const StyledHomeCosts = styled.section`
     line-height: 1.5;
     margin: 1rem auto 0 auto;
     font-size: 1.8rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        width: 100%;
+      `
+    )}
   }
 
   .red-text {
     color: var(--color-secondary);
     font-size: 2.2rem;
     margin-bottom: 1.5rem;
+
+    ${respond(
+      "phone-port",
+      css`
+        margin-top: 2rem;
+      `
+    )}
   }
 
   .section-container {
@@ -53,6 +81,13 @@ const StyledHomeCosts = styled.section`
       text-align: center;
       line-height: 1.5;
       width: 70%;
+
+      ${respond(
+        "phone-port",
+        css`
+          width: 100%;
+        `
+      )}
     }
 
     .logo {
@@ -74,6 +109,14 @@ const StyledHomeCosts = styled.section`
   .background-secondary {
     margin: 5rem auto 0 auto;
     background-color: var(--color-secondary);
+
+    ${respond(
+      "phone-port",
+      css`
+        margin-top: 2rem;
+        width: 95% !important;
+      `
+    )}
   }
 `;
 

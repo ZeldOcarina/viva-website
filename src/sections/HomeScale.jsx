@@ -25,6 +25,12 @@ const StyledHomeScale = styled.section`
         max-width: 70%;
       `
     )}
+    ${respond(
+      "phone-port",
+      css`
+        max-width: 100%;
+      `
+    )}
   }
 `;
 

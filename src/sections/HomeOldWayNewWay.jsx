@@ -1,10 +1,21 @@
 import { graphql, useStaticQuery } from "gatsby";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import respond from "../styles/abstracts/mediaqueries";
+
 import EnlightmentTemplate from "../components/EnlightmentTemplate";
 
 const StyledOldWayNewWay = styled.section`
   font-size: 1.8rem;
+  .container {
+    ${respond(
+      "phone-port",
+      css`
+        padding: 0 !important;
+        width: 100%;
+      `
+    )}
+  }
 `;
 
 const OldWayNewWay = () => {
