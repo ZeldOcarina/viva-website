@@ -48,6 +48,14 @@ const StyledMobileNavbar = styled.nav`
     li {
       &:not(:last-child) {
         margin-bottom: 2rem;
+
+        ${respond(
+          "iphone-5",
+          css`
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+          `
+        )}
       }
     }
 
@@ -62,6 +70,13 @@ const StyledMobileNavbar = styled.nav`
       a {
         color: var(--white);
         font-size: 1.6rem;
+
+        ${respond(
+          "iphone-5",
+          css`
+            font-size: 1.4rem;
+          `
+        )}
       }
     }
   }

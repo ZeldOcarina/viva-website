@@ -45,6 +45,12 @@ const StyledInternalPageHero = styled.header`
           font-size: 2.5rem;
         `
       )}
+      ${respond(
+        "iphone-5",
+        css`
+          font-size: 2rem;
+        `
+      )}
     }
     p {
       width: 60%;
@@ -56,6 +62,12 @@ const StyledInternalPageHero = styled.header`
         "phone-port",
         css`
           font-size: 1.6rem;
+        `
+      )}
+      ${respond(
+        "iphone-5",
+        css`
+          font-size: 1.2rem;
         `
       )}
     }

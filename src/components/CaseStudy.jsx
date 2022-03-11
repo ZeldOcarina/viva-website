@@ -38,18 +38,25 @@ const StyledCaseStudy = styled.div`
     )}
   }
 
+  .feature-list {
+    ${respond(
+      "iphone-5",
+      css`
+        padding: 0;
+        margin: 0;
+      `
+    )}
+  }
+
   .feature-item {
     list-style: inside;
     font-size: 1.6rem;
-  }
 
-  .title {
     ${respond(
-      "phone-port",
+      "iphone-5",
       css`
-        width: 95%;
-        margin-left: auto;
-        margin-right: auto;
+        list-style: none;
+        font-size: 1.4rem;
       `
     )}
   }
@@ -187,6 +194,16 @@ const StyledCaseStudy = styled.div`
         css`
           padding: 4rem;
           font-size: 2.2em;
+          width: 95%;
+          margin-left: auto;
+          margin-right: auto;
+        `
+      )}
+       
+    ${respond(
+        "iphone-5",
+        css`
+          font-size: 2rem;
         `
       )}
     }
@@ -348,7 +365,7 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
           </div>
           <div className="right-part">
             <img className="logo" src={publicURL} alt={iconAlt} />
-            <ul>
+            <ul className="feature-list">
               {feature.map(({ id, feature, featureIntro }) => {
                 return (
                   <li key={id} className="feature-item">
