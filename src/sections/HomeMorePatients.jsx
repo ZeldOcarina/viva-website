@@ -12,7 +12,6 @@ const StyledHomeMorePatients = styled.section`
     "tab-port",
     css`
       padding-bottom: 4rem !important;
-      width: 95% !important;
     `
   )}
 
@@ -45,6 +44,12 @@ const StyledHomeMorePatients = styled.section`
     font-size: 1.6rem;
 
     ${respond(
+      "tab-port",
+      css`
+        grid-template-columns: 0.7fr 1fr;
+      `
+    )}
+    ${respond(
       "phone-port",
       css`
         grid-template-columns: 1fr;
@@ -52,7 +57,7 @@ const StyledHomeMorePatients = styled.section`
     )}
 
     .image {
-      width: 50%;
+      width: 100%;
       margin: 0 auto;
     }
   }

@@ -51,7 +51,7 @@ const Wrapper = styled.div`
       "tab-port",
       css`
         padding: 0;
-        gap: 0;
+        gap: 2rem;
       `
     )}
     ${respond(
@@ -100,9 +100,16 @@ const Wrapper = styled.div`
     margin: 0 auto;
 
     ${respond(
+      "tab-land",
+      css`
+        width: 50% !important;
+      `
+    )}
+    ${respond(
       "phone-land",
       css`
         width: 75% !important;
+        margin: 5rem auto 0 auto;
       `
     )}
     ${respond(
@@ -193,6 +200,7 @@ const Wrapper = styled.div`
   }
 
   .button {
+    margin: 0 auto;
     ${respond(
       "phone-port",
       css`

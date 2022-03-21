@@ -15,7 +15,7 @@ const StyledHomeMarketing = styled.section`
   )}
 
   .image {
-    width: 50%;
+    width: 100%;
     margin-left: 50%;
     transform: translateX(-50%);
   }
@@ -53,6 +53,12 @@ const StyledHomeMarketing = styled.section`
     gap: 3rem;
     font-size: 1.6rem;
 
+    ${respond(
+      "tab-port",
+      css`
+        grid-template-columns: 0.7fr 1fr;
+      `
+    )}
     ${respond(
       "phone-port",
       css`

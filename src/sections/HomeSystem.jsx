@@ -29,6 +29,7 @@ const StyledHomeSystem = styled.section`
   }
 
   .image {
+    width: 100%;
     ${respond(
       "phone-port",
       css`
@@ -59,6 +60,12 @@ const StyledHomeSystem = styled.section`
     gap: 3rem;
     font-size: 1.6rem;
 
+    ${respond(
+      "tab-port",
+      css`
+        grid-template-columns: 0.7fr 1fr;
+      `
+    )}
     ${respond(
       "phone-port",
       css`

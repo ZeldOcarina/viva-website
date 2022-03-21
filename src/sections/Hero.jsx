@@ -3,6 +3,7 @@ import { getImage } from "gatsby-plugin-image";
 import React from "react";
 import styled, { css } from "styled-components";
 import respond from "../styles/abstracts/mediaqueries";
+import { useMediaQuery } from "react-responsive";
 
 import ImageVideo from "../components/ImageVideo";
 
@@ -40,11 +41,13 @@ const StyledHero = styled.section`
 `;
 
 const Hero = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 28.125em)" });
   const {
     strapiApiHomeHeroPopulate: {
       data: {
         attributes: {
           title,
+          titleSecondPart,
           subtitle,
           videoId,
           vimeoH,
@@ -60,7 +63,18 @@ const Hero = () => {
 
   return (
     <StyledHero className="container">
-      <h1>{title}</h1>
+      {isMobile ? (
+        <h1>
+          {title} {titleSecondPart}
+        </h1>
+      ) : (
+        <h1>
+          {title}
+          <br />
+          {titleSecondPart}
+        </h1>
+      )}
+
       <p>{subtitle}</p>
       <ImageVideo image={getImage(localFile)} alt={alternativeText} video={videoId} vimeoH={vimeoH} />
     </StyledHero>
@@ -76,6 +90,7 @@ const query = graphql`
         attributes {
           subtitle
           title
+          titleSecondPart
           videoThumb {
             data {
               attributes {

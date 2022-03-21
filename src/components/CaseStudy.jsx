@@ -13,7 +13,7 @@ const StyledCaseStudy = styled.div`
     height: 40rem;
 
     ${respond(
-      "tab-port",
+      "tab-land",
       css`
         height: auto;
       `
@@ -74,6 +74,7 @@ const StyledCaseStudy = styled.div`
     grid-template-columns: 2fr 1fr;
     gap: 3rem;
     max-width: 100%;
+    text-align: left;
 
     .left-part {
       ${respond(
