@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import ReactMarkdown from "react-markdown";
 
 import Button from "./Button";
 import respond from "../styles/abstracts/mediaqueries";
@@ -92,14 +93,16 @@ const PostsSummary = ({ postsData }) => {
             <section key={id}>
               <GatsbyImage image={getImage(localFile)} alt={alternativeText} className="image" />
               <h2>{title}</h2>
+
               {paragraphs.map((paragraph, i) => {
                 if (i >= 3) return "";
                 return (
-                  <p className="summary-paragraph" key={i}>
+                  <ReactMarkdown className="summary-paragraph" key={i}>
                     {paragraph}
-                  </p>
+                  </ReactMarkdown>
                 );
               })}
+
               <Button isInternal url={`/blog/${slug}`} className="btn--read-more">
                 Read More
               </Button>
