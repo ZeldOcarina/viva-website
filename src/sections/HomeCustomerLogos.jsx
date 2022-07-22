@@ -59,13 +59,13 @@ const StyledHomeCustomerLogos = styled.section`
 `;
 
 const HomeCustomerLogos = () => {
-  const {
-    homeCustomerLogos: {
-      data: {
-        attributes: { title, customerLogo },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     homeCustomerLogos: {
+//       data: {
+//         attributes: { title, customerLogo },
+//       },
+//     },
+//   } = useStaticQuery(query);
   return (
     <StyledHomeCustomerLogos className="container">
       <h2>{title}</h2>
@@ -94,28 +94,28 @@ const HomeCustomerLogos = () => {
   );
 };
 
-const query = graphql`
-  query HomeCustomerLogos {
-    homeCustomerLogos: strapiApiHomeCustomerLogosPopulate0CustomerlogoPopulate1CustomerlogoLogo {
-      data {
-        attributes {
-          customerLogo {
-            id
-            logo {
-              data {
-                attributes {
-                  alternativeText
-                  localFile {
-                    publicURL
-                  }
-                }
-              }
-            }
-          }
-          title
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeCustomerLogos {
+//     homeCustomerLogos: strapiApiHomeCustomerLogosPopulate0CustomerlogoPopulate1CustomerlogoLogo {
+//       data {
+//         attributes {
+//           customerLogo {
+//             id
+//             logo {
+//               data {
+//                 attributes {
+//                   alternativeText
+//                   localFile {
+//                     publicURL
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//           title
+//         }
+//       }
+//     }
+//   }
+// `;
 export default HomeCustomerLogos;

@@ -135,11 +135,16 @@ module.exports = {
       __key: "images",
     },
     {
-      resolve: "gatsby-source-strapi",
+      resolve: "gatsby-source-airtable",
       options: {
-        apiURL: "https://admin.vivadigitalconcepts.com",
-        collectionTypes: [],
-        singleTypes,
+        apiKey: process.env.GATSBY_AIRTABLE_API,
+        concurrency: 5,
+        tables: [
+         {
+            baseId: process.env.GATSBY_AIRTABLE_BASE_ID,
+            tableName: `Hero`,
+         }
+        ]
       },
     },
     {

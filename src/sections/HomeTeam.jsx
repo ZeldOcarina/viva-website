@@ -151,13 +151,13 @@ const StyledHomeTeam = styled.section`
 `;
 
 const HomeTeam = () => {
-  const {
-    homeTeam: {
-      data: {
-        attributes: { title, teamMember },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     homeTeam: {
+//       data: {
+//         attributes: { title, teamMember },
+//       },
+//     },
+//   } = useStaticQuery(query);
   return (
     <StyledHomeTeam className="container">
       <h2 className="title">{title}</h2>
@@ -196,34 +196,34 @@ const HomeTeam = () => {
   );
 };
 
-const query = graphql`
-  query HomeTeam {
-    homeTeam: strapiApiHomeTeamSectionPopulateTeammemberPopulate {
-      data {
-        attributes {
-          title
-          teamMember {
-            id
-            name
-            position
-            text
-            avatar {
-              data {
-                attributes {
-                  alternativeText
-                  localFile {
-                    childImageSharp {
-                      gatsbyImageData(placeholder: TRACED_SVG)
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeTeam {
+//     homeTeam: strapiApiHomeTeamSectionPopulateTeammemberPopulate {
+//       data {
+//         attributes {
+//           title
+//           teamMember {
+//             id
+//             name
+//             position
+//             text
+//             avatar {
+//               data {
+//                 attributes {
+//                   alternativeText
+//                   localFile {
+//                     childImageSharp {
+//                       gatsbyImageData(placeholder: TRACED_SVG)
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default HomeTeam;

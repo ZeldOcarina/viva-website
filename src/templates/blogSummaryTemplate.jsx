@@ -20,14 +20,14 @@ function BlogListPage(props) {
   // const limit = 3;
   // const index = setIndex(location, limit);
   // const currentPagePosts = posts.slice(index, limit + index);
-  const {
-    location,
-    data: {
-      file,
-      posts: { nodes },
-    },
-    pageContext: { pageNumber, humanPageNumber, numberOfPages, previousPagePath, nextPagePath },
-  } = props;
+//   const {
+//     location,
+//     data: {
+//       file,
+//       posts: { nodes },
+//     },
+//     pageContext: { pageNumber, humanPageNumber, numberOfPages, previousPagePath, nextPagePath },
+//   } = props;
 
   const posts = nodes.map((post) => {
     return post.post;
@@ -53,38 +53,38 @@ function BlogListPage(props) {
   );
 }
 
-export const query = graphql`
-  query Blog($skip: Int!, $limit: Int!) {
-    file(relativePath: { eq: "blog-banner.png" }) {
-      childImageSharp {
-        gatsbyImageData(quality: 100, layout: FULL_WIDTH)
-      }
-    }
-    posts: allBlogPost(sort: { order: DESC, fields: post___attributes___createdAt }, limit: $limit, skip: $skip) {
-      nodes {
-        post {
-          slug
-          attributes {
-            title
-            copy
-            image {
-              data {
-                attributes {
-                  alternativeText
-                  localFile {
-                    childImageSharp {
-                      gatsbyImageData(quality: 100)
-                    }
-                  }
-                }
-              }
-            }
-          }
-          id
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query Blog($skip: Int!, $limit: Int!) {
+//     file(relativePath: { eq: "blog-banner.png" }) {
+//       childImageSharp {
+//         gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+//       }
+//     }
+//     posts: allBlogPost(sort: { order: DESC, fields: post___attributes___createdAt }, limit: $limit, skip: $skip) {
+//       nodes {
+//         post {
+//           slug
+//           attributes {
+//             title
+//             copy
+//             image {
+//               data {
+//                 attributes {
+//                   alternativeText
+//                   localFile {
+//                     childImageSharp {
+//                       gatsbyImageData(quality: 100)
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//           id
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default BlogListPage;

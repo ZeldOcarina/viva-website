@@ -31,24 +31,24 @@ const StyledHomeFounder = styled.section`
 `;
 
 const HomeFounder = () => {
-  const {
-    homeFounder: {
-      data: {
-        attributes: {
-          title,
-          cta,
-          ctaLink,
-          videoId,
-          videoH,
-          videoThumb: {
-            data: {
-              attributes: { localFile, alternativeText },
-            },
-          },
-        },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     homeFounder: {
+//       data: {
+//         attributes: {
+//           title,
+//           cta,
+//           ctaLink,
+//           videoId,
+//           videoH,
+//           videoThumb: {
+//             data: {
+//               attributes: { localFile, alternativeText },
+//             },
+//           },
+//         },
+//       },
+//     },
+//   } = useStaticQuery(query);
   return (
     <StyledHomeFounder className="container">
       <SectionTitle title={title} />
@@ -60,32 +60,32 @@ const HomeFounder = () => {
   );
 };
 
-const query = graphql`
-  query HomeFounder {
-    homeFounder: strapiApiHomeFounderSectionPopulate {
-      data {
-        attributes {
-          cta
-          ctaLink
-          title
-          videoId
-          vimeoH
-          videoThumb {
-            data {
-              attributes {
-                alternativeText
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeFounder {
+//     homeFounder: strapiApiHomeFounderSectionPopulate {
+//       data {
+//         attributes {
+//           cta
+//           ctaLink
+//           title
+//           videoId
+//           vimeoH
+//           videoThumb {
+//             data {
+//               attributes {
+//                 alternativeText
+//                 localFile {
+//                   childImageSharp {
+//                     gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default HomeFounder;

@@ -58,24 +58,24 @@ const StyledBlogTemplate = styled.main`
 `;
 
 const BlogTemplate = (props) => {
-  const {
-    pageContext: {
-      blogPost: {
-        post: {
-          attributes: {
-            copy,
-            title,
-            image: {
-              data: {
-                attributes: { localFile, alternativeText },
-              },
-            },
-          },
-        },
-      },
-    },
-    location,
-  } = props;
+//   const {
+//     pageContext: {
+//       blogPost: {
+//         post: {
+//           attributes: {
+//             copy,
+//             title,
+//             image: {
+//               data: {
+//                 attributes: { localFile, alternativeText },
+//               },
+//             },
+//           },
+//         },
+//       },
+//     },
+//     location,
+//   } = props;
 
   return (
     <>

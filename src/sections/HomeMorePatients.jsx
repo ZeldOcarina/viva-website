@@ -69,23 +69,23 @@ const StyledHomeMorePatients = styled.section`
 `;
 
 const HomeMorePatients = () => {
-  const {
-    morePatientsSection: {
-      data: {
-        attributes: {
-          copy,
-          cta,
-          image: {
-            data: {
-              attributes: { alternativeText, localFile },
-            },
-          },
-          subtitle,
-          title,
-        },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     morePatientsSection: {
+//       data: {
+//         attributes: {
+//           copy,
+//           cta,
+//           image: {
+//             data: {
+//               attributes: { alternativeText, localFile },
+//             },
+//           },
+//           subtitle,
+//           title,
+//         },
+//       },
+//     },
+//   } = useStaticQuery(query);
 
   //Parse new lines to paragraphs and filter out empty strings from the array
   const splittedCopy = copy.split("\n").filter((item) => item);
@@ -107,31 +107,31 @@ const HomeMorePatients = () => {
   );
 };
 
-const query = graphql`
-  query HomeMorePatients {
-    morePatientsSection: strapiApiHomeMorePatientsSectionPopulate {
-      data {
-        attributes {
-          copy
-          cta
-          subtitle
-          title
-          image {
-            data {
-              attributes {
-                alternativeText
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeMorePatients {
+//     morePatientsSection: strapiApiHomeMorePatientsSectionPopulate {
+//       data {
+//         attributes {
+//           copy
+//           cta
+//           subtitle
+//           title
+//           image {
+//             data {
+//               attributes {
+//                 alternativeText
+//                 localFile {
+//                   childImageSharp {
+//                     gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default HomeMorePatients;

@@ -121,29 +121,29 @@ const StyledHomeCosts = styled.section`
 `;
 
 const HomeCosts = () => {
-  const {
-    homeCosts: {
-      data: {
-        attributes: {
-          title,
-          subtitle,
-          logo: {
-            data: {
-              attributes: {
-                alternativeText,
-                localFile: { publicURL },
-              },
-            },
-          },
-          redTitle,
-          features,
-          cta,
-          ctaLink,
-          featuresListItem,
-        },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     homeCosts: {
+//       data: {
+//         attributes: {
+//           title,
+//           subtitle,
+//           logo: {
+//             data: {
+//               attributes: {
+//                 alternativeText,
+//                 localFile: { publicURL },
+//               },
+//             },
+//           },
+//           redTitle,
+//           features,
+//           cta,
+//           ctaLink,
+//           featuresListItem,
+//         },
+//       },
+//     },
+//   } = useStaticQuery(query);
   return (
     <StyledHomeCosts className="container">
       <h2>{title}</h2>
@@ -172,35 +172,35 @@ const HomeCosts = () => {
   );
 };
 
-const query = graphql`
-  query HomeCosts {
-    homeCosts: strapiApiHomeCostsSectionPopulate {
-      data {
-        attributes {
-          cta
-          ctaLink
-          features
-          redTitle
-          subtitle
-          title
-          featuresListItem {
-            id
-            feature
-          }
-          logo {
-            data {
-              attributes {
-                alternativeText
-                localFile {
-                  publicURL
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeCosts {
+//     homeCosts: strapiApiHomeCostsSectionPopulate {
+//       data {
+//         attributes {
+//           cta
+//           ctaLink
+//           features
+//           redTitle
+//           subtitle
+//           title
+//           featuresListItem {
+//             id
+//             feature
+//           }
+//           logo {
+//             data {
+//               attributes {
+//                 alternativeText
+//                 localFile {
+//                   publicURL
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default HomeCosts;

@@ -84,23 +84,23 @@ const StyledHomeMarketing = styled.section`
 `;
 
 const HomeMarketing = () => {
-  const {
-    homeMarketing: {
-      data: {
-        attributes: {
-          title,
-          text,
-          redText,
-          underlinedWord,
-          image: {
-            data: {
-              attributes: { alternativeText, localFile },
-            },
-          },
-        },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     homeMarketing: {
+//       data: {
+//         attributes: {
+//           title,
+//           text,
+//           redText,
+//           underlinedWord,
+//           image: {
+//             data: {
+//               attributes: { alternativeText, localFile },
+//             },
+//           },
+//         },
+//       },
+//     },
+//   } = useStaticQuery(query);
 
   //Parse new lines to paragraphs and filter out empty strings from the array
   const copy = text.split("\n").filter((item) => item);
@@ -126,31 +126,31 @@ const HomeMarketing = () => {
   );
 };
 
-const query = graphql`
-  query HomeMarketing {
-    homeMarketing: strapiApiHomeMarketingSectionPopulate {
-      data {
-        attributes {
-          redText
-          text
-          title
-          underlinedWord
-          image {
-            data {
-              attributes {
-                alternativeText
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeMarketing {
+//     homeMarketing: strapiApiHomeMarketingSectionPopulate {
+//       data {
+//         attributes {
+//           redText
+//           text
+//           title
+//           underlinedWord
+//           image {
+//             data {
+//               attributes {
+//                 alternativeText
+//                 localFile {
+//                   childImageSharp {
+//                     gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default HomeMarketing;

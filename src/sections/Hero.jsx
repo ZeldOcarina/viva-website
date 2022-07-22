@@ -42,28 +42,28 @@ const StyledHero = styled.section`
 
 const Hero = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 28.125em)" });
-  const {
-    strapiApiHomeHeroPopulate: {
-      data: {
-        attributes: {
-          title,
-          titleSecondPart,
-          subtitle,
-          videoId,
-          vimeoH,
-          videoThumb: {
-            data: {
-              attributes: { alternativeText, localFile },
-            },
-          },
-        },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     strapiApiHomeHeroPopulate: {
+//       data: {
+//         attributes: {
+//           title,
+//           titleSecondPart,
+//           subtitle,
+//           videoId,
+//           vimeoH,
+//           videoThumb: {
+//             data: {
+//               attributes: { alternativeText, localFile },
+//             },
+//           },
+//         },
+//       },
+//     },
+//   } = useStaticQuery(query);
 
   return (
     <StyledHero className="container">
-      {isMobile ? (
+      {/* {isMobile ? (
         <h1>
           {title} {titleSecondPart}
         </h1>
@@ -73,40 +73,40 @@ const Hero = () => {
           <br />
           {titleSecondPart}
         </h1>
-      )}
+      )} */}
 
-      <p>{subtitle}</p>
-      <ImageVideo image={getImage(localFile)} alt={alternativeText} video={videoId} vimeoH={vimeoH} />
+      {/* <p>{subtitle}</p> */}
+      {/* <ImageVideo image={getImage(localFile)} alt={alternativeText} video={videoId} vimeoH={vimeoH} /> */}
     </StyledHero>
   );
 };
 
 export default Hero;
 
-const query = graphql`
-  query HomeHero {
-    strapiApiHomeHeroPopulate {
-      data {
-        attributes {
-          subtitle
-          title
-          titleSecondPart
-          videoThumb {
-            data {
-              attributes {
-                alternativeText
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(placeholder: TRACED_SVG, quality: 100, layout: CONSTRAINED)
-                  }
-                }
-              }
-            }
-          }
-          videoId
-          vimeoH
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeHero {
+//     strapiApiHomeHeroPopulate {
+//       data {
+//         attributes {
+//           subtitle
+//           title
+//           titleSecondPart
+//           videoThumb {
+//             data {
+//               attributes {
+//                 alternativeText
+//                 localFile {
+//                   childImageSharp {
+//                     gatsbyImageData(placeholder: TRACED_SVG, quality: 100, layout: CONSTRAINED)
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//           videoId
+//           vimeoH
+//         }
+//       }
+//     }
+//   }
+// `;

@@ -89,26 +89,26 @@ const StyledHomeSystem = styled.section`
 `;
 
 const HomeSystem = () => {
-  const {
-    homeSystem: {
-      data: {
-        attributes: {
-          title,
-          text,
-          firstBoldParagraph,
-          cta,
-          ctaLink,
-          image: {
-            data: [
-              {
-                attributes: { alternativeText, localFile },
-              },
-            ],
-          },
-        },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     homeSystem: {
+//       data: {
+//         attributes: {
+//           title,
+//           text,
+//           firstBoldParagraph,
+//           cta,
+//           ctaLink,
+//           image: {
+//             data: [
+//               {
+//                 attributes: { alternativeText, localFile },
+//               },
+//             ],
+//           },
+//         },
+//       },
+//     },
+//   } = useStaticQuery(query);
 
   // console.log(attributes);
   //Parse new lines to paragraphs and filter out empty strings from the array
@@ -136,32 +136,32 @@ const HomeSystem = () => {
   );
 };
 
-const query = graphql`
-  query HomeSystem {
-    homeSystem: strapiApiHomeSystemDeliversSectionPopulate {
-      data {
-        attributes {
-          cta
-          ctaLink
-          firstBoldParagraph
-          text
-          title
-          image {
-            data {
-              attributes {
-                alternativeText
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeSystem {
+//     homeSystem: strapiApiHomeSystemDeliversSectionPopulate {
+//       data {
+//         attributes {
+//           cta
+//           ctaLink
+//           firstBoldParagraph
+//           text
+//           title
+//           image {
+//             data {
+//               attributes {
+//                 alternativeText
+//                 localFile {
+//                   childImageSharp {
+//                     gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default HomeSystem;

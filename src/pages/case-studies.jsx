@@ -32,81 +32,81 @@ function CaseStudiesPage({
   );
 }
 
-export const query = graphql`
-  query CaseStudies {
-    file(relativePath: { eq: "case-studies-banner.png" }) {
-      childImageSharp {
-        gatsbyImageData(quality: 100, layout: FULL_WIDTH)
-      }
-    }
-    caseStudies: strapiApiCaseStudiesPopulate0BodyImageIconBannerimageFeatureVideoVideothumb {
-      data {
-        id
-        attributes {
-          slug
-          title
-          video {
-            videoId
-            videoThumb {
-              data {
-                attributes {
-                  alternativeText
-                  localFile {
-                    childImageSharp {
-                      gatsbyImageData
-                    }
-                  }
-                }
-              }
-            }
-            vimeoH
-          }
-          bannerImage {
-            data {
-              attributes {
-                alternativeText
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
-              }
-            }
-          }
-          body {
-            text
-            image {
-              data {
-                attributes {
-                  alternativeText
-                  localFile {
-                    childImageSharp {
-                      gatsbyImageData
-                    }
-                  }
-                }
-              }
-            }
-          }
-          feature {
-            feature
-            featureIntro
-            id
-          }
-          icon {
-            data {
-              attributes {
-                alternativeText
-                localFile {
-                  publicURL
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// export const query = graphql`
+//   query CaseStudies {
+//     file(relativePath: { eq: "case-studies-banner.png" }) {
+//       childImageSharp {
+//         gatsbyImageData(quality: 100, layout: FULL_WIDTH)
+//       }
+//     }
+//     caseStudies: strapiApiCaseStudiesPopulate0BodyImageIconBannerimageFeatureVideoVideothumb {
+//       data {
+//         id
+//         attributes {
+//           slug
+//           title
+//           video {
+//             videoId
+//             videoThumb {
+//               data {
+//                 attributes {
+//                   alternativeText
+//                   localFile {
+//                     childImageSharp {
+//                       gatsbyImageData
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//             vimeoH
+//           }
+//           bannerImage {
+//             data {
+//               attributes {
+//                 alternativeText
+//                 localFile {
+//                   childImageSharp {
+//                     gatsbyImageData
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//           body {
+//             text
+//             image {
+//               data {
+//                 attributes {
+//                   alternativeText
+//                   localFile {
+//                     childImageSharp {
+//                       gatsbyImageData
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//           feature {
+//             feature
+//             featureIntro
+//             id
+//           }
+//           icon {
+//             data {
+//               attributes {
+//                 alternativeText
+//                 localFile {
+//                   publicURL
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default CaseStudiesPage;

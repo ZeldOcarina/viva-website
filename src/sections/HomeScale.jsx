@@ -35,22 +35,22 @@ const StyledHomeScale = styled.section`
 `;
 
 const HomeScale = () => {
-  const {
-    howToScale: {
-      data: {
-        attributes: {
-          title,
-          videoId,
-          vimeoH,
-          videoThumb: {
-            data: {
-              attributes: { localFile, alternativeText },
-            },
-          },
-        },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     howToScale: {
+//       data: {
+//         attributes: {
+//           title,
+//           videoId,
+//           vimeoH,
+//           videoThumb: {
+//             data: {
+//               attributes: { localFile, alternativeText },
+//             },
+//           },
+//         },
+//       },
+//     },
+//   } = useStaticQuery(query);
 
   return (
     <StyledHomeScale className="container">
@@ -60,30 +60,30 @@ const HomeScale = () => {
   );
 };
 
-const query = graphql`
-  query HomeScale {
-    howToScale: strapiApiHomeHowToScalePopulate {
-      data {
-        attributes {
-          title
-          videoId
-          vimeoH
-          videoThumb {
-            data {
-              attributes {
-                alternativeText
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeScale {
+//     howToScale: strapiApiHomeHowToScalePopulate {
+//       data {
+//         attributes {
+//           title
+//           videoId
+//           vimeoH
+//           videoThumb {
+//             data {
+//               attributes {
+//                 alternativeText
+//                 localFile {
+//                   childImageSharp {
+//                     gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default HomeScale;

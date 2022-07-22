@@ -20,37 +20,21 @@ import HomeOldWayNewWay from "../sections/HomeOldWayNewWay";
 import HomeTeam from "../sections/HomeTeam";
 import HomeQuestions from "../sections/HomeQuestions";
 import ScheduleConsultationButton from "../components/ScheduleConsultationButton";
+import { graphql } from "gatsby";
 
-const IndexPage = ({ location }) => {
+const IndexPage = ({location}) => {
   return (
     <>
       <Seo location={location} />
       <Layout>
         <main>
-          <Hero />
-          <HomeCustomerLogos />
-          <HomeTestimonials />
-          <Divider />
-          <HomeMorePatients />
-          <HomeFeatures />
-          {/* <HomeProblems /> */}
-          <HomeFounder />
-          <HomeScale />
-          <HomeMarketing />
-          <HomeDifference />
-          <Divider />
-          <HomeSystem />
-          <Divider />
-          <HomeBottomTestimonials />
-          <HomeCosts />
-          <HomeOldWayNewWay />
-          <HomeTeam />
-          <HomeQuestions />
-          <ScheduleConsultationButton />
+          
         </main>
       </Layout>
     </>
   );
 };
+
+
 
 export default IndexPage;

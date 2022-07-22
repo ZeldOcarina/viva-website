@@ -53,13 +53,13 @@ const StyledHomeFeatures = styled.section`
 `;
 
 function HomeFeatures() {
-  const {
-    homeFeatures: {
-      data: {
-        attributes: { title, homeFeature },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     homeFeatures: {
+//       data: {
+//         attributes: { title, homeFeature },
+//       },
+//     },
+//   } = useStaticQuery(query);
 
   return (
     <StyledHomeFeatures>
@@ -95,31 +95,31 @@ function HomeFeatures() {
   );
 }
 
-const query = graphql`
-  query HomeFeatures {
-    homeFeatures: strapiApiHomeFeaturesSectionPopulateHomefeaturePopulate {
-      data {
-        attributes {
-          title
-          homeFeature {
-            id
-            description
-            title
-            featureImage {
-              data {
-                attributes {
-                  alternativeText
-                  localFile {
-                    publicURL
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeFeatures {
+//     homeFeatures: strapiApiHomeFeaturesSectionPopulateHomefeaturePopulate {
+//       data {
+//         attributes {
+//           title
+//           homeFeature {
+//             id
+//             description
+//             title
+//             featureImage {
+//               data {
+//                 attributes {
+//                   alternativeText
+//                   localFile {
+//                     publicURL
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default HomeFeatures;

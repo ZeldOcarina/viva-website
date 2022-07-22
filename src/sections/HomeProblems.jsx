@@ -32,23 +32,23 @@ const StyledHomeProblems = styled.section`
 `;
 
 const HomeProblems = () => {
-  const {
-    problemsSection: {
-      data: {
-        attributes: {
-          text,
-          cta,
-          image: {
-            data: {
-              attributes: { alternativeText, localFile },
-            },
-          },
-          featuredParagraph,
-          title,
-        },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     problemsSection: {
+//       data: {
+//         attributes: {
+//           text,
+//           cta,
+//           image: {
+//             data: {
+//               attributes: { alternativeText, localFile },
+//             },
+//           },
+//           featuredParagraph,
+//           title,
+//         },
+//       },
+//     },
+//   } = useStaticQuery(query);
 
   //Parse new lines to paragraphs and filter out empty strings from the array
   const splittedCopy = text.split("\n").filter((item) => item);
@@ -70,31 +70,31 @@ const HomeProblems = () => {
   );
 };
 
-const query = graphql`
-  query HomeProblems {
-    problemsSection: strapiApiHomeProblemsSectionPopulate {
-      data {
-        attributes {
-          text
-          cta
-          featuredParagraph
-          title
-          image {
-            data {
-              attributes {
-                alternativeText
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeProblems {
+//     problemsSection: strapiApiHomeProblemsSectionPopulate {
+//       data {
+//         attributes {
+//           text
+//           cta
+//           featuredParagraph
+//           title
+//           image {
+//             data {
+//               attributes {
+//                 alternativeText
+//                 localFile {
+//                   childImageSharp {
+//                     gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default HomeProblems;

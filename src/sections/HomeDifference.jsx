@@ -48,13 +48,13 @@ const StyledHomeDifference = styled.section`
 `;
 
 const HomeDifference = () => {
-  const {
-    homeDifference: {
-      data: {
-        attributes: { title, difference },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     homeDifference: {
+//       data: {
+//         attributes: { title, difference },
+//       },
+//     },
+//   } = useStaticQuery(query);
 
   return (
     <StyledHomeDifference className="container">
@@ -88,30 +88,30 @@ const HomeDifference = () => {
   );
 };
 
-const query = graphql`
-  query HomeDifference {
-    homeDifference: strapiApiHomeVivaDifferenceSectionPopulateDifferencePopulate {
-      data {
-        attributes {
-          title
-          difference {
-            title
-            id
-            icon {
-              data {
-                attributes {
-                  alternativeText
-                  localFile {
-                    publicURL
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeDifference {
+//     homeDifference: strapiApiHomeVivaDifferenceSectionPopulateDifferencePopulate {
+//       data {
+//         attributes {
+//           title
+//           difference {
+//             title
+//             id
+//             icon {
+//               data {
+//                 attributes {
+//                   alternativeText
+//                   localFile {
+//                     publicURL
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default HomeDifference;

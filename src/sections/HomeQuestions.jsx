@@ -46,13 +46,13 @@ const StyledHomeQuestions = styled.section`
 `;
 
 const HomeQuestions = () => {
-  const {
-    questionsAndAnswers: {
-      data: {
-        attributes: { title, questionAnswerBlock },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     questionsAndAnswers: {
+//       data: {
+//         attributes: { title, questionAnswerBlock },
+//       },
+//     },
+//   } = useStaticQuery(query);
 
   return (
     <StyledHomeQuestions className="container">
@@ -72,21 +72,21 @@ const HomeQuestions = () => {
   );
 };
 
-const query = graphql`
-  query HomeQuestions {
-    questionsAndAnswers: strapiApiHomeQAndASectionPopulate {
-      data {
-        attributes {
-          title
-          questionAnswerBlock {
-            answer
-            id
-            question
-          }
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeQuestions {
+//     questionsAndAnswers: strapiApiHomeQAndASectionPopulate {
+//       data {
+//         attributes {
+//           title
+//           questionAnswerBlock {
+//             answer
+//             id
+//             question
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default HomeQuestions;

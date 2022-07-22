@@ -28,13 +28,13 @@ const StyledHomeBottomTestimonials = styled.section`
 `;
 
 const HomeBottomTestimonials = () => {
-  const {
-    bottomTestimonials: {
-      data: {
-        attributes: { title, videoTestimonial },
-      },
-    },
-  } = useStaticQuery(query);
+//   const {
+//     bottomTestimonials: {
+//       data: {
+//         attributes: { title, videoTestimonial },
+//       },
+//     },
+//   } = useStaticQuery(query);
 
   return (
     <StyledHomeBottomTestimonials className="container">
@@ -68,33 +68,33 @@ const HomeBottomTestimonials = () => {
   );
 };
 
-const query = graphql`
-  query HomeBottomTestimonials {
-    bottomTestimonials: strapiApiHomeClientTestimonialsBottomSectionPopulateVideotestimonialPopulate {
-      data {
-        attributes {
-          title
-          videoTestimonial {
-            videoId
-            vimeoH
-            id
-            videoThumbnail {
-              data {
-                attributes {
-                  alternativeText
-                  localFile {
-                    childImageSharp {
-                      gatsbyImageData
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// const query = graphql`
+//   query HomeBottomTestimonials {
+//     bottomTestimonials: strapiApiHomeClientTestimonialsBottomSectionPopulateVideotestimonialPopulate {
+//       data {
+//         attributes {
+//           title
+//           videoTestimonial {
+//             videoId
+//             vimeoH
+//             id
+//             videoThumbnail {
+//               data {
+//                 attributes {
+//                   alternativeText
+//                   localFile {
+//                     childImageSharp {
+//                       gatsbyImageData
+//                     }
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default HomeBottomTestimonials;
