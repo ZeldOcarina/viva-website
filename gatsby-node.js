@@ -87,15 +87,15 @@ const { v4 } = require("uuid");
 //         caseStudy,
 //       },
 //     });
-//     //   caseStudy.data.forEach((caseStudy) => {
-//     //     createPage({
-//     //       path: `/case-studies/${caseStudy.attributes.slug}`,
-//     //       component: path.resolve("src/templates/caseStudyTemplate.jsx"),
-//     //       context: {
-//     //         caseStudy: caseStudy,
-//     //       },
-//     //     });
-//     //   });
+//       // caseStudy.data.forEach((caseStudy) => {
+//       //   createPage({
+//       //     path: `/case-studies/${caseStudy.attributes.slug}`,
+//       //     component: path.resolve("src/templates/caseStudyTemplate.jsx"),
+//       //     context: {
+//       //       caseStudy: caseStudy,
+//       //     },
+//       //   });
+//       // });
 //   });
 
 //   //console.log(result.data.caseStudies.data);

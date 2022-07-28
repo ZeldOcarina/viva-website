@@ -102,6 +102,8 @@ const HomeMarketing = () => {
 //     },
 //   } = useStaticQuery(query);
 
+const {marketing: {marketing: {title, text, redText, images, underlinedWord, alternativeText}}} = useStaticQuery(query)
+
   //Parse new lines to paragraphs and filter out empty strings from the array
   const copy = text.split("\n").filter((item) => item);
 
@@ -110,7 +112,7 @@ const HomeMarketing = () => {
       <h2 className="title">{title}</h2>
       <div className="bottom-container">
         <div className="left-container">
-          <GatsbyImage image={getImage(localFile)} alt={alternativeText} className="image" />
+          <GatsbyImage image={getImage(images.localFiles[0])} alt={alternativeText} className="image" />
           <p className="red-text">
             {redText} <span className="underlined">{underlinedWord}</span>.
           </p>
@@ -125,6 +127,27 @@ const HomeMarketing = () => {
     </StyledHomeMarketing>
   );
 };
+
+const query = graphql`
+   query Marketing {
+      marketing: airtable(table: {eq: "Home"}, data: {blockType: {eq: "Marketing"}}) {
+      marketing: data {
+      alternativeText
+      title
+      text
+      images {
+        localFiles {
+          childImageSharp {
+            gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+          }
+        }
+      }
+      underlinedWord
+      redText
+    }
+  }
+   }
+`
 
 // const query = graphql`
 //   query HomeMarketing {

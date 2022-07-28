@@ -89,28 +89,9 @@ const StyledHomeSystem = styled.section`
 `;
 
 const HomeSystem = () => {
-//   const {
-//     homeSystem: {
-//       data: {
-//         attributes: {
-//           title,
-//           text,
-//           firstBoldParagraph,
-//           cta,
-//           ctaLink,
-//           image: {
-//             data: [
-//               {
-//                 attributes: { alternativeText, localFile },
-//               },
-//             ],
-//           },
-//         },
-//       },
-//     },
-//   } = useStaticQuery(query);
 
-  // console.log(attributes);
+const {system: {system: {title, text, cta, ctaLink, firstBoldParagraph, images, alternativeText}}} = useStaticQuery(query)
+
   //Parse new lines to paragraphs and filter out empty strings from the array
   const copy = text.split("\n").filter((item) => item);
 
@@ -119,7 +100,7 @@ const HomeSystem = () => {
       <h2 className="title">{title}</h2>
       <div className="bottom-container">
         <div className="left-container">
-          <GatsbyImage image={getImage(localFile)} alt={alternativeText} className="image" />
+          <GatsbyImage image={getImage(images.localFiles[0])} alt={alternativeText} className="image" />
         </div>
 
         <div className="copy">
@@ -136,32 +117,27 @@ const HomeSystem = () => {
   );
 };
 
-// const query = graphql`
-//   query HomeSystem {
-//     homeSystem: strapiApiHomeSystemDeliversSectionPopulate {
-//       data {
-//         attributes {
-//           cta
-//           ctaLink
-//           firstBoldParagraph
-//           text
-//           title
-//           image {
-//             data {
-//               attributes {
-//                 alternativeText
-//                 localFile {
-//                   childImageSharp {
-//                     gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+const query = graphql`
+   query System {
+      system: airtable(table: {eq: "Home"}, data: {blockType: {eq: "System"}}) {
+      system: data {
+         title
+         alternativeText
+         text
+         cta
+         ctaLink
+         firstBoldParagraph
+         images {
+            localFiles {
+               childImageSharp {
+                  gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+                  }
+               }
+            }
+         }
+      }
+   }
+`
+
 
 export default HomeSystem;

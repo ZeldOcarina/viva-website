@@ -7,6 +7,8 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Button from "./Button";
 //import VimeoEmbed from "./VimeoEmbed";
 import ImageVideo from "./ImageVideo";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const StyledCaseStudy = styled.div`
   .case-study-banner {
@@ -276,77 +278,53 @@ const StyledCaseStudy = styled.div`
   }
 `;
 
-const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
-  const {
-    id,
-    attributes: {
-      video: {
-        videoId,
-        vimeoH,
-        videoThumb: {
-          data: {
-            attributes: { alternativeText: thumbAlt, localFile: videoThumb },
-          },
-        },
-      },
-      title,
-      bannerImage: {
-        data: {
-          attributes: { alternativeText, localFile },
-        },
-      },
-      body,
-      feature,
-      icon: {
-        data: {
-          attributes: {
-            alternativeText: iconAlt,
-            localFile: { publicURL },
-          },
-        },
-      },
-    },
-  } = caseStudy;
+const CaseStudy = ({ caseStudy, features, last, isTemplatePage }) => {
+
+   // Probably here caseStudy needs to be set up with it's own features. Features now is an array of all of them.
+
+   const {data: caseStudyData} = caseStudy;
+
+   console.log(features); // Array with all features
+
+   console.log(caseStudyData);
+
 
   const renderedBody = (
     <div className="body">
-      {body.map((element, i) => {
-        if (element.text) return <p key={i}>{element.text}</p>;
-        return (
-          <GatsbyImage
-            key={i}
-            className="image"
-            image={getImage(element.image.data.attributes.localFile)}
-            alt={element.image.data.attributes.alternativeText}
-          />
-        );
-      })}
+      {caseStudyData.bodyText && <p>{caseStudyData.bodyText}</p>}
+      {caseStudyData.bodyImage.localFiles[0] && <GatsbyImage
+        className="image"
+        image={getImage(caseStudyData.bodyImage.localFiles[0])}
+        // alt={element.image.caseStudyData.attributes.alternativeText}
+        alt="Alt text"
+      />}
+      
     </div>
   );
 
   return (
     <StyledCaseStudy>
-      <section key={id}>
+      <section key={caseStudyData.itemId}>
         {isTemplatePage ? (
           <div className="banner-container">
             <div className="banner-container__layer"></div>
-            <GatsbyImage className="case-study-banner" image={getImage(localFile)} alt={alternativeText} />
-            <h2 className="title">{title}</h2>
+            <GatsbyImage className="case-study-banner" image={getImage(caseStudyData.bannerImage.localFiles[0])} alt="Alt text" />
+            <h2 className="title">{caseStudyData.title}</h2>
           </div>
         ) : (
           <>
-            <GatsbyImage className="case-study-banner" image={getImage(localFile)} alt={alternativeText} />
-            <h2 className="title">{title}</h2>
+            <GatsbyImage className="case-study-banner" image={getImage(caseStudyData.bannerImage.localFiles[0])} alt="Alt text" />
+            <h2 className="title">{caseStudyData.title}</h2>
           </>
         )}
 
         {/* {isTemplatePage && <VimeoEmbed videoId={videoId} vimeoH={vimeoH} videoTitle={title} />} */}
         {isTemplatePage && (
           <ImageVideo
-            image={getImage(videoThumb)}
-            alt={thumbAlt}
-            video={videoId}
-            vimeoH={vimeoH}
+            image={getImage(caseStudyData.videoThumb.localFiles[0])}
+            alt="thumb alt"
+            video={caseStudyData.videoId}
+            vimeoH={caseStudyData.vimeoH}
             className="image-video"
           />
         )}
@@ -354,8 +332,8 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
           <div className="left-part">
             {!isTemplatePage && (
               <>
-                <p className="intro">{body[0].text}</p>
-                <Button isInternal url={`/case-studies/${caseStudy.attributes.slug || ""}`} className="btn--read-more">
+                <p className="intro">{caseStudyData.bodyText}</p>
+                <Button isInternal url={`/case-studies/${caseStudyData.slug || ""}`} className="btn--read-more">
                   Read More
                 </Button>
               </>
@@ -363,12 +341,12 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
             {isTemplatePage && renderedBody}
           </div>
           <div className="right-part">
-            <img className="logo" src={publicURL} alt={iconAlt} />
+            <img className="logo" src={caseStudyData.icon.localFiles[0]} alt="Icon alt" />
             <ul className="feature-list">
-              {feature.map(({ id, feature, featureIntro }) => {
+              {features.map(({data}, {data: featureId}) => {
                 return (
-                  <li key={id} className="feature-item">
-                    <span className="bold">{featureIntro}</span> {feature}
+                  <li key={featureId} className="feature-item">
+                    <span className="bold">{data.featureIntro}</span> {data.feature}
                   </li>
                 );
               })}
@@ -379,7 +357,7 @@ const CaseStudy = ({ caseStudy, last, isTemplatePage }) => {
               {/* <p className="intro">{body[0].text}</p> */}
               <Button
                 isInternal
-                url={`/case-studies/${caseStudy.attributes.slug || ""}`}
+                url={`/case-studies/${caseStudyData.slug || ""}`}
                 className="btn--read-more--mobile"
               >
                 Read More

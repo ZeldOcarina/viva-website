@@ -10,11 +10,11 @@ const StyledHomeBottomTestimonials = styled.section`
   text-align: center;
 
   ${respond(
-    "phone-port",
-    css`
+   "phone-port",
+   css`
       padding: 0 !important;
     `
-  )}
+)}
 
   .title {
     margin-bottom: 3rem;
@@ -28,45 +28,51 @@ const StyledHomeBottomTestimonials = styled.section`
 `;
 
 const HomeBottomTestimonials = () => {
-//   const {
-//     bottomTestimonials: {
-//       data: {
-//         attributes: { title, videoTestimonial },
-//       },
-//     },
-//   } = useStaticQuery(query);
+   //   const {
+   //     bottomTestimonials: {
+   //       data: {
+   //         attributes: { title, videoTestimonial },
+   //       },
+   //     },
+   //   } = useStaticQuery(query);
 
-  return (
-    <StyledHomeBottomTestimonials className="container">
-      <h2 className="title">{title}</h2>
-      <div className="video-container">
-        {videoTestimonial.map(
-          ({
-            videoId,
-            vimeoH,
-            id,
-            videoThumbnail: {
-              data: {
-                attributes: { localFile, alternativeText },
-              },
-            },
-          }) => {
-            return (
-              <ImageVideo
-                key={id}
-                className="video"
-                image={getImage(localFile)}
-                alt={alternativeText}
-                video={videoId}
-                vimeoH={vimeoH}
-              />
-            );
-          }
-        )}
-      </div>
-    </StyledHomeBottomTestimonials>
-  );
+   const { bottomTestimonals: { bottomTestimonals: { title, images, alternativeText, videoId, vimeoH } } } = useStaticQuery(query)
+
+   return (
+      <StyledHomeBottomTestimonials className="container">
+         <h2 className="title">{title}</h2>
+         <div className="video-container">
+            <ImageVideo
+               className="video"
+               image={getImage(images.localFiles[0])}
+               alt={alternativeText}
+               video={videoId}
+               vimeoH={vimeoH}
+            />
+         </div>
+      </StyledHomeBottomTestimonials>
+   );
 };
+
+const query = graphql`
+   query BottomTestimonals {
+      bottomTestimonals: airtable(table: {eq: "Home"}, data: {blockType: {eq: "BottomTestimonals"}}) {
+         bottomTestimonals: data {
+            title
+            videoId
+            vimeoH
+            alternativeText
+            images {
+               localFiles {
+                  childImageSharp {
+                     gatsbyImageData
+                  }
+               }
+            }
+         }
+      }
+   }
+`
 
 // const query = graphql`
 //   query HomeBottomTestimonials {

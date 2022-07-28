@@ -160,7 +160,7 @@ const HomeTeam = () => {
 //   } = useStaticQuery(query);
   return (
     <StyledHomeTeam className="container">
-      <h2 className="title">{title}</h2>
+      {/* <h2 className="title">{title}</h2>
       <div className="team-container">
         {teamMember.map(
           (
@@ -191,7 +191,7 @@ const HomeTeam = () => {
             );
           }
         )}
-      </div>
+      </div> */}
     </StyledHomeTeam>
   );
 };

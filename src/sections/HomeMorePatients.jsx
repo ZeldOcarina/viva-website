@@ -9,21 +9,21 @@ const StyledHomeMorePatients = styled.section`
   padding-top: 2rem;
 
   ${respond(
-    "tab-port",
-    css`
+   "tab-port",
+   css`
       padding-bottom: 4rem !important;
     `
-  )}
+)}
 
   .title {
     margin-bottom: 4rem;
 
     ${respond(
-      "phone-port",
-      css`
+   "phone-port",
+   css`
         margin-bottom: 2rem;
       `
-    )}
+)}
   }
 
   h2 {
@@ -44,17 +44,17 @@ const StyledHomeMorePatients = styled.section`
     font-size: 1.6rem;
 
     ${respond(
-      "tab-port",
-      css`
+   "tab-port",
+   css`
         grid-template-columns: 0.7fr 1fr;
       `
-    )}
+)}
     ${respond(
-      "phone-port",
-      css`
+   "phone-port",
+   css`
         grid-template-columns: 1fr;
       `
-    )}
+)}
 
     .image {
       width: 100%;
@@ -69,32 +69,17 @@ const StyledHomeMorePatients = styled.section`
 `;
 
 const HomeMorePatients = () => {
-//   const {
-//     morePatientsSection: {
-//       data: {
-//         attributes: {
-//           copy,
-//           cta,
-//           image: {
-//             data: {
-//               attributes: { alternativeText, localFile },
-//             },
-//           },
-//           subtitle,
-//           title,
-//         },
-//       },
-//     },
-//   } = useStaticQuery(query);
 
-  //Parse new lines to paragraphs and filter out empty strings from the array
-  const splittedCopy = copy.split("\n").filter((item) => item);
+   const {morePatients: {morePatients : {title, subtitle, images, alternativeText, cta, copy}}} = useStaticQuery(query)
 
-  return (
-    <StyledHomeMorePatients className="container">
-      <h2 className="title">{title}</h2>
+   //Parse new lines to paragraphs and filter out empty strings from the array
+     const splittedCopy = copy.split("\n").filter((item) => item);
+
+   return (
+      <StyledHomeMorePatients className="container">
+         <h2 className="title">{title}</h2>
       <div className="bottom-container">
-        <GatsbyImage image={getImage(localFile)} alt={alternativeText} className="image" />
+        <GatsbyImage image={getImage(images.localFiles[0])} alt={alternativeText} className="image" />
         <div className="copy">
           <p className="bold">{subtitle}</p>
           {splittedCopy.map((paragraph, i) => {
@@ -103,35 +88,29 @@ const HomeMorePatients = () => {
         </div>
       </div>
       <Button className="cta mt-2">{cta}</Button>
-    </StyledHomeMorePatients>
-  );
+      </StyledHomeMorePatients>
+   );
 };
 
-// const query = graphql`
-//   query HomeMorePatients {
-//     morePatientsSection: strapiApiHomeMorePatientsSectionPopulate {
-//       data {
-//         attributes {
-//           copy
-//           cta
-//           subtitle
-//           title
-//           image {
-//             data {
-//               attributes {
-//                 alternativeText
-//                 localFile {
-//                   childImageSharp {
-//                     gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+const query = graphql`
+   query MorePatients {
+      morePatients: airtable(table: {eq: "Home"}, data: {blockType: {eq: "MorePatients"}}) {
+      morePatients: data {
+         title
+         subtitle
+         alternativeText
+         copy
+         cta
+         images {
+            localFiles {
+               childImageSharp {
+                  gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
+                  }
+               }
+            }
+         }
+      }
+   }
+`
 
 export default HomeMorePatients;

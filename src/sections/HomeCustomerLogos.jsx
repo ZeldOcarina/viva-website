@@ -7,11 +7,11 @@ const StyledHomeCustomerLogos = styled.section`
   padding-top: 0;
 
   ${respond(
-    "phone-port",
-    css`
+   "phone-port",
+   css`
       margin-top: 2.5rem;
     `
-  )}
+)}
 
   h2 {
     text-align: center;
@@ -19,11 +19,11 @@ const StyledHomeCustomerLogos = styled.section`
     margin-bottom: 3rem;
 
     ${respond(
-      "phone-port",
-      css`
+   "phone-port",
+   css`
         margin-bottom: 1.5rem;
       `
-    )}
+)}
   }
 
   .logos {
@@ -39,17 +39,17 @@ const StyledHomeCustomerLogos = styled.section`
     width: 16rem;
 
     ${respond(
-      "small-phone-land",
-      css`
+   "small-phone-land",
+   css`
         width: 12rem;
       `
-    )}
+)}
     ${respond(
-      "phone-port",
-      css`
+   "phone-port",
+   css`
         width: 10rem;
       `
-    )}
+)}
   }
 
   .logo {
@@ -59,63 +59,42 @@ const StyledHomeCustomerLogos = styled.section`
 `;
 
 const HomeCustomerLogos = () => {
-//   const {
-//     homeCustomerLogos: {
-//       data: {
-//         attributes: { title, customerLogo },
-//       },
-//     },
-//   } = useStaticQuery(query);
-  return (
-    <StyledHomeCustomerLogos className="container">
-      <h2>{title}</h2>
-      <div className="logos">
-        {customerLogo.map(
-          ({
-            logo: {
-              data: {
-                attributes: {
-                  alternativeText,
-                  localFile: { publicURL },
-                },
-              },
-            },
-            id,
-          }) => {
-            return (
-              <div className="logo-container" key={id}>
-                <img className="logo" src={publicURL} alt={alternativeText} />
-              </div>
-            );
-          }
-        )}
-      </div>
-    </StyledHomeCustomerLogos>
-  );
+   
+   const { customerLogos: { customerLogos: { title, images } },
+   } = useStaticQuery(query)
+
+   return (
+      <StyledHomeCustomerLogos className="container">
+         <h2>{title}</h2>
+         <div className="logos">
+            {images.localFiles.map((logo) => {
+               return (
+                  <div className="logo-container" key={logo.id}>
+                     <img className="logo" src={logo.publicURL} alt="Company logo" />
+                  </div>
+               );
+            }
+            )}
+         </div>
+      </StyledHomeCustomerLogos>
+   );
 };
 
-// const query = graphql`
-//   query HomeCustomerLogos {
-//     homeCustomerLogos: strapiApiHomeCustomerLogosPopulate0CustomerlogoPopulate1CustomerlogoLogo {
-//       data {
-//         attributes {
-//           customerLogo {
-//             id
-//             logo {
-//               data {
-//                 attributes {
-//                   alternativeText
-//                   localFile {
-//                     publicURL
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//           title
-//         }
-//       }
-//     }
-//   }
-// `;
+
+const query = graphql`
+   query HomeCustomersLogos {
+      customerLogos: airtable(table: {eq: "Home"}, data: {blockType: {eq: "CustomerLogos"}}) {
+      customerLogos: data {
+      title
+      images {
+        localFiles {
+          publicURL
+          id
+        }
+      }
+    }
+  }
+   }
+`
+
 export default HomeCustomerLogos;

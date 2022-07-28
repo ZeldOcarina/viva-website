@@ -142,7 +142,18 @@ module.exports = {
         tables: [
          {
             baseId: process.env.GATSBY_AIRTABLE_BASE_ID,
-            tableName: `Hero`,
+            tableName: `Home`,
+            mapping: { images: `fileNode` },
+         },
+         {
+            baseId: process.env.GATSBY_AIRTABLE_BASE_ID,
+            tableName: `Differences`,
+            mapping: { icon: `fileNode` },
+         },
+         {
+            baseId: process.env.GATSBY_AIRTABLE_BASE_ID,
+            tableName: `CaseStudies`,
+            mapping: { icon: `fileNode`, image: `fileNode`, videoThumb: `fileNode`, bodyImage: `fileNode`, bannerImage: `fileNode` },
          }
         ]
       },

@@ -63,7 +63,7 @@ function HomeFeatures() {
 
   return (
     <StyledHomeFeatures>
-      <div className="container">
+      {/* <div className="container">
         <h2 className="mb-5">{title}</h2>
         <div className="features">
           {homeFeature.map(
@@ -90,7 +90,7 @@ function HomeFeatures() {
             }
           )}
         </div>
-      </div>
+      </div> */}
     </StyledHomeFeatures>
   );
 }

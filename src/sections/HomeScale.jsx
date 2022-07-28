@@ -35,55 +35,35 @@ const StyledHomeScale = styled.section`
 `;
 
 const HomeScale = () => {
-//   const {
-//     howToScale: {
-//       data: {
-//         attributes: {
-//           title,
-//           videoId,
-//           vimeoH,
-//           videoThumb: {
-//             data: {
-//               attributes: { localFile, alternativeText },
-//             },
-//           },
-//         },
-//       },
-//     },
-//   } = useStaticQuery(query);
+
+const {scale: {scale: {title, images, videoId, vimeoH, alternativeText}}} = useStaticQuery(query)
 
   return (
     <StyledHomeScale className="container">
       <SectionTitle title={title} className="title" />
-      <ImageVideo image={getImage(localFile)} alt={alternativeText} video={videoId} vimeoH={vimeoH} />
+      <ImageVideo image={getImage(images.localFiles[0])} alt={alternativeText} video={videoId} vimeoH={vimeoH} />
     </StyledHomeScale>
   );
 };
 
-// const query = graphql`
-//   query HomeScale {
-//     howToScale: strapiApiHomeHowToScalePopulate {
-//       data {
-//         attributes {
-//           title
-//           videoId
-//           vimeoH
-//           videoThumb {
-//             data {
-//               attributes {
-//                 alternativeText
-//                 localFile {
-//                   childImageSharp {
-//                     gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+const query = graphql`
+   query Scale {
+   scale: airtable(data: {blockType: {eq: "Scale"}}, table: {eq: "Home"}) {
+    scale: data {
+      title
+      videoId
+      vimeoH
+      images {
+        localFiles {
+          childImageSharp {
+            gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
+          }
+        }
+      }
+      alternativeText
+    }
+  }
+   }
+`
 
 export default HomeScale;

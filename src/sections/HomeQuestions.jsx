@@ -56,7 +56,7 @@ const HomeQuestions = () => {
 
   return (
     <StyledHomeQuestions className="container">
-      <SectionTitle title={title} />
+      {/* <SectionTitle title={title} />
       <div className="questions-container">
         {questionAnswerBlock.map((questionBlock) => {
           const { id, question, answer } = questionBlock;
@@ -67,7 +67,7 @@ const HomeQuestions = () => {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </StyledHomeQuestions>
   );
 };

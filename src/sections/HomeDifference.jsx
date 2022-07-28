@@ -58,7 +58,7 @@ const HomeDifference = () => {
 
   return (
     <StyledHomeDifference className="container">
-      <h2>{title}</h2>
+      {/* <h2>{title}</h2>
       <div className="differences">
         {difference.map(
           ({
@@ -83,7 +83,7 @@ const HomeDifference = () => {
             );
           }
         )}
-      </div>
+      </div> */}
     </StyledHomeDifference>
   );
 };

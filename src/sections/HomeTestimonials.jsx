@@ -92,16 +92,86 @@ const HomeTestimonials = () => {
 //     },
 //   } = useStaticQuery(query);
 
+const {caseStudies: {caseStudies}, features: {features}} = useStaticQuery(query)
+
   return (
     <StyledHomeTestimonials className="container">
-      <h2>{title}</h2>
-      <p className="subtitle">{subtitle}</p>
+      {/* <h2>{title}</h2>
+      <p className="subtitle">{subtitle}</p> */}
       <div className="testimonials-container">
-        <CaseStudiesSummary caseStudiesData={data} />
+        <CaseStudiesSummary caseStudiesData={caseStudies} features={features} />
       </div>
     </StyledHomeTestimonials>
   );
 };
+
+
+// It's an old query. I get features as a separate array of all of them
+
+const query = graphql`
+   query HomeCaseSudies {
+      caseStudies: allAirtable(
+         filter: {table: {eq: "CaseStudies"}, data: {blockType: {eq: "CaseStudy"}}}
+      ) {
+      caseStudies: nodes {
+      data {
+        itemId
+        title
+        slug
+        videoId
+        vimeoH
+        bodyText
+        bannerImage {
+          localFiles {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+        bodyImage {
+          localFiles {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+        icon {
+          localFiles {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+        image {
+          localFiles {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+        videoThumb {
+          localFiles {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+        }
+      }
+    }
+  }
+  features: allAirtable(
+    filter: {data: {blockType: {eq: "CaseFeature"}}, table: {eq: "CaseStudies"}}
+  ) {
+    features: nodes {
+      data {
+        featureId
+        featureIntro
+        feature
+      }
+    }
+  }
+   }
+`
 
 // const query = graphql`
 //   query HomeCaseStudies {

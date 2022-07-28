@@ -25,12 +25,12 @@ const OldWayNewWay = () => {
 
   return (
     <StyledOldWayNewWay>
-      <div className="container">
+      {/* <div className="container">
         {data.map((article, i) => {
           const last = i + 1 === data.length;
           return <EnlightmentTemplate {...article} key={article.id} last={last} noVideo={true} />;
         })}
-      </div>
+      </div> */}
     </StyledOldWayNewWay>
   );
 };

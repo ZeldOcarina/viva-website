@@ -11,20 +11,20 @@ const StyledHero = styled.section`
   text-align: center;
 
   ${respond(
-    "phone-port",
-    css`
+   "phone-port",
+   css`
       padding: 0;
       margin-top: 3rem;
     `
-  )}
+)}
 
   h1 {
     ${respond(
-      "phone-port",
-      css`
+   "phone-port",
+   css`
         font-size: 2.5rem;
       `
-    )}
+)}
   }
 
   p {
@@ -32,81 +32,64 @@ const StyledHero = styled.section`
     margin-bottom: 3rem;
 
     ${respond(
-      "phone-port",
-      css`
+   "phone-port",
+   css`
         font-size: 1.9rem;
       `
-    )}
+)}
   }
 `;
 
 const Hero = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 28.125em)" });
-//   const {
-//     strapiApiHomeHeroPopulate: {
-//       data: {
-//         attributes: {
-//           title,
-//           titleSecondPart,
-//           subtitle,
-//           videoId,
-//           vimeoH,
-//           videoThumb: {
-//             data: {
-//               attributes: { alternativeText, localFile },
-//             },
-//           },
-//         },
-//       },
-//     },
-//   } = useStaticQuery(query);
+   const isMobile = useMediaQuery({ query: "(max-width: 28.125em)" });
 
-  return (
-    <StyledHero className="container">
-      {/* {isMobile ? (
-        <h1>
-          {title} {titleSecondPart}
-        </h1>
-      ) : (
-        <h1>
-          {title}
-          <br />
-          {titleSecondPart}
-        </h1>
-      )} */}
 
-      {/* <p>{subtitle}</p> */}
-      {/* <ImageVideo image={getImage(localFile)} alt={alternativeText} video={videoId} vimeoH={vimeoH} /> */}
-    </StyledHero>
-  );
+   const { heroData: { heroData: {
+      title, titleSecondPart, subtitle, videoId, vimeoH, images, alternativeText
+   } } } = useStaticQuery(query);
+
+   return (
+      <StyledHero className="container">
+         {isMobile ? (
+            <h1>
+               {title} {titleSecondPart}
+            </h1>
+         ) : (
+            <h1>
+               {title}
+               <br />
+               {titleSecondPart}
+            </h1>
+         )}
+
+         <p>{subtitle}</p>
+         <ImageVideo image={getImage(images.localFiles[0])} alt={alternativeText} video={videoId} vimeoH={vimeoH} />
+      </StyledHero>
+   );
 };
+
+const query = graphql`
+  query HomeHero {
+   heroData: airtable(table: {eq: "Home"}, data: {blockType: {eq: "Hero"}}) {
+    heroData: data {
+      alternativeText
+      subtitle
+      title
+      titleSecondPart
+      videoId
+      vimeoH
+      images {
+        localFiles {
+          childImageSharp {
+            gatsbyImageData
+          }
+        }
+      }
+    }
+  }
+  }
+`
 
 export default Hero;
 
-// const query = graphql`
-//   query HomeHero {
-//     strapiApiHomeHeroPopulate {
-//       data {
-//         attributes {
-//           subtitle
-//           title
-//           titleSecondPart
-//           videoThumb {
-//             data {
-//               attributes {
-//                 alternativeText
-//                 localFile {
-//                   childImageSharp {
-//                     gatsbyImageData(placeholder: TRACED_SVG, quality: 100, layout: CONSTRAINED)
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//           videoId
-//           vimeoH
-//         }
-//       }
-//     }
-//   }
-// `;
+

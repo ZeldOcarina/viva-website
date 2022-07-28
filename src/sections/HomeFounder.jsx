@@ -31,28 +31,13 @@ const StyledHomeFounder = styled.section`
 `;
 
 const HomeFounder = () => {
-//   const {
-//     homeFounder: {
-//       data: {
-//         attributes: {
-//           title,
-//           cta,
-//           ctaLink,
-//           videoId,
-//           videoH,
-//           videoThumb: {
-//             data: {
-//               attributes: { localFile, alternativeText },
-//             },
-//           },
-//         },
-//       },
-//     },
-//   } = useStaticQuery(query);
+   
+const {founder: {founder: {title, images, videoId, vimeoH, alternativeText, cta, ctaLink}}} = useStaticQuery(query)
+
   return (
     <StyledHomeFounder className="container">
       <SectionTitle title={title} />
-      <ImageVideo image={getImage(localFile)} alt={alternativeText} video={videoId} vimeoH={videoH} />
+      <ImageVideo image={getImage(images.localFiles[0])} alt={alternativeText} video={videoId} vimeoH={vimeoH} />
       <Button className="btn" url={ctaLink}>
         {cta}
       </Button>
@@ -60,32 +45,26 @@ const HomeFounder = () => {
   );
 };
 
-// const query = graphql`
-//   query HomeFounder {
-//     homeFounder: strapiApiHomeFounderSectionPopulate {
-//       data {
-//         attributes {
-//           cta
-//           ctaLink
-//           title
-//           videoId
-//           vimeoH
-//           videoThumb {
-//             data {
-//               attributes {
-//                 alternativeText
-//                 localFile {
-//                   childImageSharp {
-//                     gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+const query = graphql`
+   query Founder {
+   founder: airtable(data: {blockType: {eq: "Founder"}}, table: {eq: "Home"}) {
+    founder: data {
+      title
+      videoId
+      vimeoH
+      images {
+        localFiles {
+          childImageSharp {
+            gatsbyImageData(placeholder: TRACED_SVG, layout: CONSTRAINED)
+          }
+        }
+      }
+      alternativeText
+      cta
+      ctaLink
+    }
+  }
+   }
+`
 
 export default HomeFounder;

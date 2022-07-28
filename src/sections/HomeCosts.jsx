@@ -146,7 +146,7 @@ const HomeCosts = () => {
 //   } = useStaticQuery(query);
   return (
     <StyledHomeCosts className="container">
-      <h2>{title}</h2>
+      {/* <h2>{title}</h2>
       <p className="subtitle">{subtitle}</p>
       <div className="section-container">
         <div className="left-container">
@@ -167,7 +167,7 @@ const HomeCosts = () => {
           })}
         </div>
       </div>
-      <Button text={cta} url={ctaLink} className="background-secondary" />
+      <Button text={cta} url={ctaLink} className="background-secondary" /> */}
     </StyledHomeCosts>
   );
 };
