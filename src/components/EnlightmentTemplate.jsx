@@ -10,11 +10,11 @@ import { getImage } from "gatsby-plugin-image";
 
 const Wrapper = styled.div`
   ${({ last }) =>
-    last
-      ? css`
+      last
+         ? css`
           margin-bottom: 0;
         `
-      : css`
+         : css`
           margin-bottom: 6rem;
         `}
 
@@ -28,11 +28,11 @@ const Wrapper = styled.div`
     margin: 0 auto;
 
     ${respond(
-      "small-phone-land",
-      css`
+            "small-phone-land",
+            css`
         width: 100%;
       `
-    )}
+         )}
   }
 
   h5 {
@@ -48,50 +48,50 @@ const Wrapper = styled.div`
     margin: 4rem 0;
 
     ${respond(
-      "tab-port",
-      css`
+            "tab-port",
+            css`
         padding: 0;
         gap: 2rem;
       `
-    )}
+         )}
     ${respond(
-      "phone-land",
-      css`
+            "phone-land",
+            css`
         padding: 0;
         gap: 2rem;
       `
-    )}
+         )}
     ${respond(
-      "small-phone-land",
-      css`
+            "small-phone-land",
+            css`
         width: 100%;
         justify-content: space-evenly;
       `
-    )}
+         )}
 
     ${respond(
-      "phone-port",
-      css`
+            "phone-port",
+            css`
         grid-template-columns: 1fr;
       `
-    )}
+         )}
 
     .feature {
       width: 40%;
 
       ${respond(
-        "small-phone-land",
-        css`
+            "small-phone-land",
+            css`
           width: 45%;
         `
-      )}
+         )}
       ${respond(
-        "phone-port",
-        css`
+            "phone-port",
+            css`
           width: 95%;
           margin: 0 auto;
         `
-      )}
+         )}
     }
   }
 
@@ -100,53 +100,53 @@ const Wrapper = styled.div`
     margin: 0 auto;
 
     ${respond(
-      "tab-land",
-      css`
+            "tab-land",
+            css`
         width: 50% !important;
       `
-    )}
+         )}
     ${respond(
-      "phone-land",
-      css`
+            "phone-land",
+            css`
         width: 75% !important;
         margin: 5rem auto 0 auto;
       `
-    )}
+         )}
     ${respond(
-      "phone-port",
-      css`
+            "phone-port",
+            css`
         width: 100% !important;
       `
-    )}
+         )}
 
     h5,
     p {
       text-align: center;
 
       ${respond(
-        "phone-port",
-        css`
+            "phone-port",
+            css`
           text-align: left;
         `
-      )}
+         )}
     }
 
     .text-center {
       ${respond(
-        "phone-port",
-        css`
+            "phone-port",
+            css`
           text-align: left !important;
         `
-      )}
+         )}
     }
 
     ${respond(
-      "phone-port",
-      css`
+            "phone-port",
+            css`
         width: 95% !important;
         margin: 0 auto;
       `
-    )}
+         )}
   }
 
   .btn {
@@ -156,11 +156,11 @@ const Wrapper = styled.div`
     text-transform: capitalize;
 
     ${respond(
-      "phone-port",
-      css`
+            "phone-port",
+            css`
         width: max-content;
       `
-    )}
+         )}
   }
 
   .enlightment-title {
@@ -171,17 +171,17 @@ const Wrapper = styled.div`
     width: 60%;
 
     ${respond(
-      "phone-land",
-      css`
+            "phone-land",
+            css`
         width: 80%;
       `
-    )}
+         )}
     ${respond(
-      "phone-port",
-      css`
+            "phone-port",
+            css`
         width: 100%;
       `
-    )}
+         )}
   }
 
   .new-title {
@@ -189,11 +189,11 @@ const Wrapper = styled.div`
     margin-top: 0;
 
     ${respond(
-      "tab-port",
-      css`
+            "tab-port",
+            css`
         width: 100%;
       `
-    )}
+         )}
   }
 
   hr {
@@ -202,58 +202,57 @@ const Wrapper = styled.div`
   .button {
     margin: 0 auto;
     ${respond(
-      "phone-port",
-      css`
+            "phone-port",
+            css`
         width: 95% !important;
         margin: 0 auto;
       `
-    )}
+         )}
   }
 `;
 
-const EnlightmentTemplate = ({
-  noVideo,
-  attributes: {
-    cta,
-    ctaLink,
-    hasCta,
-    textBlock,
-    title,
-    videoId,
-    videoThumb: {
-      data: {
-        attributes: { alternativeText, localFile },
-      },
-    },
-    vimeoH,
-  },
-}) => {
-  const image = getImage(localFile);
-  return (
-    <Wrapper>
-      <article>
-        <ImageVideo alt={alternativeText} image={image} video={videoId} vimeoH={vimeoH} noVideo={noVideo} />
-        <h2 className="text-center enlightment-title">{title}</h2>
-        <div className="features">
-          {textBlock.map(({ id, text, title, hasTextCenter }, i) => {
-            const isLarge = title.toLowerCase() === "unique useful insight";
-            return (
-              <div className={isLarge ? "feature last-feature" : "feature"} key={id}>
-                <h5 className={hasTextCenter ? "text-center" : ""}>{title}</h5>
-                <p className={hasTextCenter ? "text-center" : ""}>{text}</p>
-              </div>
-            );
-          })}
-        </div>
-        {hasCta && (
-          <Button text={cta} url={ctaLink} className="button">
-            {cta}
-          </Button>
-        )}
-        <Divider />
-      </article>
-    </Wrapper>
-  );
+const EnlightmentTemplate = ({ data }) => {
+
+   const image = getImage(data.image.localFiles[0].childImageSharp);
+
+   return (
+      <Wrapper>
+         <article>
+            <ImageVideo alt={data.alternativeText} image={image} noVideo={true} />
+            <h2 className="text-center enlightment-title">{data.title}</h2>
+            <div className="features">
+               <div className="feature">
+                  <h5>{data.oldWayTitle}</h5>
+                  <p>{data.oldWayCopy}</p>
+               </div>
+               <div className="feature">
+                  <h5>{data.newWayTitle}</h5>
+                  <p>{data.newWayCopy}</p>
+               </div>
+               <div className="feature">
+                  <h5>{data.oldResultTitle}</h5>
+                  <p>{data.oldResultCopy}</p>
+               </div>
+               <div className="feature">
+                  <h5>{data.newResultTitle}</h5>
+                  <p>{data.newResultCopy}</p>
+               </div>
+               {data.hasInsight && (
+                  <div className="feature last-feature">
+                     <h5 className="text-center">{data.insightTitle}</h5>
+                     <p className="text-center">{data.insightCopy}</p>
+                  </div>
+               )}
+            </div>
+            {data.hasCta && (
+               <Button text={data.cta} url={data.ctaLink} className="button">
+                  {data.cta}
+               </Button>
+            )}
+            <Divider />
+         </article>
+      </Wrapper>
+   );
 };
 
 export default EnlightmentTemplate;

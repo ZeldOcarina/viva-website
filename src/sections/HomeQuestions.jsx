@@ -46,47 +46,48 @@ const StyledHomeQuestions = styled.section`
 `;
 
 const HomeQuestions = () => {
-//   const {
-//     questionsAndAnswers: {
-//       data: {
-//         attributes: { title, questionAnswerBlock },
-//       },
-//     },
-//   } = useStaticQuery(query);
+
+   const {
+      faqSection: {faqSection: {title}},
+      faqItems: {faqItems}
+   } = useStaticQuery(query)
+
+   const sortedItems = faqItems.sort((a, b) => a.data.itemId - b.data.itemId)
 
   return (
     <StyledHomeQuestions className="container">
-      {/* <SectionTitle title={title} />
+      <SectionTitle title={title} />
       <div className="questions-container">
-        {questionAnswerBlock.map((questionBlock) => {
-          const { id, question, answer } = questionBlock;
+        {sortedItems.map((item) => {
           return (
-            <div key={id} className="question-box">
-              <h5 className="question">{question}</h5>
-              <p className="answer">{answer}</p>
+            <div key={item.data.itemId} className="question-box">
+              <h5 className="question">{item.data.title}</h5>
+              <p className="answer">{item.data.copy}</p>
             </div>
           );
         })}
-      </div> */}
+      </div>
     </StyledHomeQuestions>
   );
 };
 
-// const query = graphql`
-//   query HomeQuestions {
-//     questionsAndAnswers: strapiApiHomeQAndASectionPopulate {
-//       data {
-//         attributes {
-//           title
-//           questionAnswerBlock {
-//             answer
-//             id
-//             question
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+const query = graphql`
+  query HomeFaq {
+   faqSection: airtable(table: {eq: "Home"}, data: {blockType: {eq: "FaqSection"}}) {
+      faqSection: data {
+         title
+      }
+  }
+  faqItems: allAirtable(filter: {table: {eq: "Home"}, data: {blockType: {eq: "FaqItem"}}}) {
+   faqItems: nodes {
+      data {
+        itemId
+        title
+        copy
+      }
+    }
+  }
+  }
+`;
 
 export default HomeQuestions;

@@ -48,70 +48,59 @@ const StyledHomeDifference = styled.section`
 `;
 
 const HomeDifference = () => {
-//   const {
-//     homeDifference: {
-//       data: {
-//         attributes: { title, difference },
-//       },
-//     },
-//   } = useStaticQuery(query);
+
+const {
+   homeDifferenceSection: {homeDifferenceSection: {title}},
+   homeDifference: {homeDifference}
+} = useStaticQuery(query)
+
+const sortedDifferences = homeDifference.sort((a, b) => a.data.itemId - b.data.itemId)
 
   return (
     <StyledHomeDifference className="container">
-      {/* <h2>{title}</h2>
+      <h2>{title}</h2>
       <div className="differences">
-        {difference.map(
-          ({
-            title,
-            id,
-            icon: {
-              data: [
-                {
-                  attributes: {
-                    alternativeText,
-                    localFile: { publicURL },
-                  },
-                },
-              ],
-            },
-          }) => {
+        {sortedDifferences.map(
+          (difference, i) => {
             return (
-              <article className="difference" key={id}>
-                <img className="difference-image" src={publicURL} alt={alternativeText} />
-                <h5 className="difference-title">{title}</h5>
+              <article className="difference" key={i}>
+                <img className="difference-image" src={difference.data.images.localFiles[0].publicURL} alt={difference.data.alternativeText} />
+                <h5 className="difference-title">{difference.data.title}</h5>
               </article>
             );
           }
         )}
-      </div> */}
+      </div>
     </StyledHomeDifference>
   );
 };
 
-// const query = graphql`
-//   query HomeDifference {
-//     homeDifference: strapiApiHomeVivaDifferenceSectionPopulateDifferencePopulate {
-//       data {
-//         attributes {
-//           title
-//           difference {
-//             title
-//             id
-//             icon {
-//               data {
-//                 attributes {
-//                   alternativeText
-//                   localFile {
-//                     publicURL
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+const query = graphql`
+   query HomeDifference {
+      homeDifferenceSection: airtable(table: {eq: "Home"}, data: {blockType: {eq: "DifferenceSection"}}) {
+         homeDifferenceSection: data {
+            title
+         }
+      }
+      homeDifference: allAirtable(
+         filter: {data: {blockType: {eq: "Difference"}}, table: {eq: "Home"}}
+      ) {
+         homeDifference: nodes {
+            data {
+            itemId
+            title
+            alternativeText
+            images {
+               localFiles {
+                  publicURL
+               }
+            }
+            }
+         }
+      }
+   }
+`
+
+
 
 export default HomeDifference;

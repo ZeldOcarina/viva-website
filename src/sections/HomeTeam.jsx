@@ -151,79 +151,66 @@ const StyledHomeTeam = styled.section`
 `;
 
 const HomeTeam = () => {
-//   const {
-//     homeTeam: {
-//       data: {
-//         attributes: { title, teamMember },
-//       },
-//     },
-//   } = useStaticQuery(query);
+
+const {
+   teamSection: {teamSection: {title}},
+   teamMembers: {teamMembers}
+} = useStaticQuery(query)
+
+const sortedMembers = teamMembers.sort((a, b) => a.data.itemId - b.data.itemId)
+
   return (
     <StyledHomeTeam className="container">
-      {/* <h2 className="title">{title}</h2>
+      <h2 className="title">{title}</h2>
       <div className="team-container">
-        {teamMember.map(
-          (
-            {
-              id,
-              name,
-              position,
-              text,
-              avatar: {
-                data: {
-                  attributes: { localFile, alternativeText },
-                },
-              },
-            },
-            i
-          ) => {
+        {sortedMembers.map(
+          (member, i) => {
             return (
-              <article key={id} className={i % 2 === 0 ? "team-member" : "team-member team-member--alt"}>
+              <article key={member.data.itemId} className={i % 2 === 0 ? "team-member" : "team-member team-member--alt"}>
                 <figure className={i % 2 === 0 ? "figure" : "figure--alt"}>
-                  <GatsbyImage image={getImage(localFile)} alt={alternativeText} className="image" quality={100} />
+                  <GatsbyImage image={getImage(member.data.images.localFiles[0])} alt={member.data.alternativeText} className="image" quality={100} />
                   <figcaption className="bold name">
-                    <p>{name}</p> <p className="position">{position}</p>
+                    <p>{member.data.title}</p> <p className="position">{member.data.subtitle}</p>
                   </figcaption>
                 </figure>
 
-                <p className="text">{text}</p>
+                <p className="text">{member.data.copy}</p>
               </article>
             );
           }
         )}
-      </div> */}
+      </div>
     </StyledHomeTeam>
   );
 };
 
-// const query = graphql`
-//   query HomeTeam {
-//     homeTeam: strapiApiHomeTeamSectionPopulateTeammemberPopulate {
-//       data {
-//         attributes {
-//           title
-//           teamMember {
-//             id
-//             name
-//             position
-//             text
-//             avatar {
-//               data {
-//                 attributes {
-//                   alternativeText
-//                   localFile {
-//                     childImageSharp {
-//                       gatsbyImageData(placeholder: TRACED_SVG)
-//                     }
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+
+const query = graphql`
+  query HomeTeam {
+   teamSection: airtable(table: {eq: "Home"}, data: {blockType: {eq: "TeamSection"}}) {
+      teamSection: data {
+      title
+    }
+  }
+  teamMembers: allAirtable(filter: {table: {eq: "Home"}, data: {blockType: {eq: "TeamMember"}}}) {
+   teamMembers: nodes {
+      data {
+        itemId
+        title
+        subtitle
+        copy
+        alternativeText
+        images {
+          localFiles {
+            childImageSharp{
+               gatsbyImageData(placeholder: TRACED_SVG)
+            }
+          }
+        }
+      }
+    }
+  }
+  }
+`;
 
 export default HomeTeam;

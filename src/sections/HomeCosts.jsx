@@ -121,86 +121,74 @@ const StyledHomeCosts = styled.section`
 `;
 
 const HomeCosts = () => {
-//   const {
-//     homeCosts: {
-//       data: {
-//         attributes: {
-//           title,
-//           subtitle,
-//           logo: {
-//             data: {
-//               attributes: {
-//                 alternativeText,
-//                 localFile: { publicURL },
-//               },
-//             },
-//           },
-//           redTitle,
-//           features,
-//           cta,
-//           ctaLink,
-//           featuresListItem,
-//         },
-//       },
-//     },
-//   } = useStaticQuery(query);
+const {
+   costsSection: {costsSection},
+   costsListItems: {costsListItems}
+} = useStaticQuery(query)
+
+const sortedLestItems = costsListItems.sort((a, b) => a.data.itemId - b.data.itemId)
+
   return (
     <StyledHomeCosts className="container">
-      {/* <h2>{title}</h2>
-      <p className="subtitle">{subtitle}</p>
+      <h2>{costsSection.title}</h2>
+      <p className="subtitle">{costsSection.subtitle}</p>
       <div className="section-container">
         <div className="left-container">
-          <img className="logo" src={publicURL} alt={alternativeText} />
-          <h5 className="red-text">{redTitle}</h5>
-          <p className="features">{features}</p>
+          <img className="logo" src={costsSection.images.localFiles[0].publicURL} alt={costsSection.alternativeText} />
+          <h5 className="red-text">{costsSection.redText}</h5>
+          <p className="features">{costsSection.text}</p>
         </div>
         <div className="right-container">
-          {featuresListItem.map(({ id, feature }) => {
+          {sortedLestItems.map(( item, i ) => {
             return (
-              <ul key={id}>
+              <ul key={i}>
                 <li>
-                  <img src={listIcon} alt="Checkmark" />
-                  <span>{feature}</span>
+                  <img src={item.data.images.localFiles[0].publicURL} alt={item.data.alternativeText} />
+                  <span>{item.data.title}</span>
                 </li>
               </ul>
             );
           })}
         </div>
       </div>
-      <Button text={cta} url={ctaLink} className="background-secondary" /> */}
+      <Button text={costsSection.cta} url={costsSection.ctaLink} className="background-secondary" />
     </StyledHomeCosts>
   );
 };
 
-// const query = graphql`
-//   query HomeCosts {
-//     homeCosts: strapiApiHomeCostsSectionPopulate {
-//       data {
-//         attributes {
-//           cta
-//           ctaLink
-//           features
-//           redTitle
-//           subtitle
-//           title
-//           featuresListItem {
-//             id
-//             feature
-//           }
-//           logo {
-//             data {
-//               attributes {
-//                 alternativeText
-//                 localFile {
-//                   publicURL
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+const query = graphql`
+  query HomeCosts {
+   costsSection: airtable(table: {eq: "Home"}, data: {blockType: {eq: "CostsSection"}}) {
+    costsSection: data {
+      title
+      subtitle
+      cta
+      ctaLink
+      alternativeText
+      redText
+      text
+      images {
+        localFiles {
+          publicURL
+        }
+      }
+    }
+  }
+  costsListItems: allAirtable(filter: {table: {eq: "Home"}, data: {blockType: {eq: "CostsList"}}}) {
+    costsListItems: nodes {
+      data {
+        itemId
+        title
+        alternativeText
+        images {
+          localFiles {
+            publicURL
+          }
+        }
+      }
+    }
+  }
+  }
+`;
 
 export default HomeCosts;

@@ -14,13 +14,12 @@ const StyledCaseStudiesSummary = styled.main`
 `;
 
 const CaseStudiesSummary = ({ caseStudiesData, features }) => {
-
-
   return (
     <StyledCaseStudiesSummary className="container">
       {caseStudiesData.map((caseStudy, i) => {
-        const last = caseStudiesData.length === i + 1;
-        return <CaseStudy caseStudy={caseStudy} features={features} last={last} key={caseStudy.itemId} />;
+         const actualFeatures = features.filter(feature => feature.data.featureItemId === caseStudy.data.featureItemId)
+        const last = caseStudiesData.length === i + 1
+        return <CaseStudy caseStudy={caseStudy} features={actualFeatures} last={last} key={caseStudy.itemId} />;
       })}
     </StyledCaseStudiesSummary>
   );

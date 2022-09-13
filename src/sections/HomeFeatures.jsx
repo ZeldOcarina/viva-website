@@ -53,73 +53,61 @@ const StyledHomeFeatures = styled.section`
 `;
 
 function HomeFeatures() {
-//   const {
-//     homeFeatures: {
-//       data: {
-//         attributes: { title, homeFeature },
-//       },
-//     },
-//   } = useStaticQuery(query);
+
+const {
+   homeFeaturesSection: {homeFeaturesSection: {title}},
+   homeFeatures: {homeFeatures}
+} = useStaticQuery(query)
+
+const sortedFeatures = homeFeatures.sort((a, b) => a.data.itemId - b.data.itemId)
 
   return (
     <StyledHomeFeatures>
-      {/* <div className="container">
+      <div className="container">
         <h2 className="mb-5">{title}</h2>
         <div className="features">
-          {homeFeature.map(
-            ({
-              description,
-              id,
-              title,
-              featureImage: {
-                data: {
-                  attributes: {
-                    alternativeText,
-                    localFile: { publicURL },
-                  },
-                },
-              },
-            }) => {
+          {sortedFeatures.map(
+            (feature, i) => {
               return (
-                <div className="feature-card" key={id}>
-                  <img src={publicURL} alt={alternativeText} />
-                  <h5>{title}</h5>
-                  <p>{description}</p>
+                <div className="feature-card" key={i}>
+                  <img src={feature.data.images.localFiles[0].publicURL} alt={feature.data.alternativeText} />
+                  <h5>{feature.data.title}</h5>
+                  <p>{feature.data.copy}</p>
                 </div>
               );
             }
           )}
         </div>
-      </div> */}
+      </div>
     </StyledHomeFeatures>
   );
 }
 
-// const query = graphql`
-//   query HomeFeatures {
-//     homeFeatures: strapiApiHomeFeaturesSectionPopulateHomefeaturePopulate {
-//       data {
-//         attributes {
-//           title
-//           homeFeature {
-//             id
-//             description
-//             title
-//             featureImage {
-//               data {
-//                 attributes {
-//                   alternativeText
-//                   localFile {
-//                     publicURL
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
+
+
+const query = graphql`
+   query HomeFeatures {
+      homeFeaturesSection: airtable(table: {eq: "Home"}, data: {blockType: {eq: "Features"}}) {
+         homeFeaturesSection: data {
+         title
+         }
+      }
+      homeFeatures: allAirtable(filter: {data: {blockType: {eq: "Feature"}}, table: {eq: "Home"}}) {
+         homeFeatures: nodes {
+            data {
+               itemId
+               title
+               copy
+               alternativeText
+               images{
+                  localFiles{
+                     publicURL
+                  }
+               }
+            }
+         }
+      }
+   }
+`
 
 export default HomeFeatures;

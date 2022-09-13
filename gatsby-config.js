@@ -147,13 +147,13 @@ module.exports = {
          },
          {
             baseId: process.env.GATSBY_AIRTABLE_BASE_ID,
-            tableName: `Differences`,
-            mapping: { icon: `fileNode` },
+            tableName: `CaseStudies`,
+            mapping: { icon: `fileNode`, image: `fileNode`, videoThumb: `fileNode`, bodyImage: `fileNode`, bannerImage: `fileNode` },
          },
          {
             baseId: process.env.GATSBY_AIRTABLE_BASE_ID,
-            tableName: `CaseStudies`,
-            mapping: { icon: `fileNode`, image: `fileNode`, videoThumb: `fileNode`, bodyImage: `fileNode`, bannerImage: `fileNode` },
+            tableName: `OldNew`,
+            mapping: { image: `fileNode` },
          }
         ]
       },

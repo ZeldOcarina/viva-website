@@ -284,9 +284,8 @@ const CaseStudy = ({ caseStudy, features, last, isTemplatePage }) => {
 
    const {data: caseStudyData} = caseStudy;
 
-   console.log(features); // Array with all features
-
-   console.log(caseStudyData);
+   // Making features sorted by their own order
+   const sortedFeatures = features.sort((a, b) => a.data.featureId - b.data.featureId);
 
 
   const renderedBody = (
@@ -341,12 +340,12 @@ const CaseStudy = ({ caseStudy, features, last, isTemplatePage }) => {
             {isTemplatePage && renderedBody}
           </div>
           <div className="right-part">
-            <img className="logo" src={caseStudyData.icon.localFiles[0]} alt="Icon alt" />
+            <img className="logo" src={caseStudyData.icon.localFiles[0].publicURL} alt="Icon alt" />
             <ul className="feature-list">
-              {features.map(({data}, {data: featureId}) => {
+              {sortedFeatures.map(({data: feature}) => {
                 return (
-                  <li key={featureId} className="feature-item">
-                    <span className="bold">{data.featureIntro}</span> {data.feature}
+                  <li key={feature.featureId} className="feature-item">
+                    <span className="bold">{feature.featureIntro}</span> {feature.feature}
                   </li>
                 );
               })}

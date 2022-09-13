@@ -83,14 +83,6 @@ const StyledHomeTestimonials = styled.section`
 `;
 
 const HomeTestimonials = () => {
-//   const {
-//     caseStudies: { data },
-//     homeTestimonialsData: {
-//       data: {
-//         attributes: { title, subtitle },
-//       },
-//     },
-//   } = useStaticQuery(query);
 
 const {caseStudies: {caseStudies}, features: {features}} = useStaticQuery(query)
 
@@ -121,6 +113,7 @@ const query = graphql`
         videoId
         vimeoH
         bodyText
+        featureItemId
         bannerImage {
           localFiles {
             childImageSharp {
@@ -137,9 +130,7 @@ const query = graphql`
         }
         icon {
           localFiles {
-            childImageSharp {
-              gatsbyImageData
-            }
+            publicURL
           }
         }
         image {
@@ -164,6 +155,7 @@ const query = graphql`
   ) {
     features: nodes {
       data {
+        featureItemId
         featureId
         featureIntro
         feature
@@ -172,85 +164,5 @@ const query = graphql`
   }
    }
 `
-
-// const query = graphql`
-//   query HomeCaseStudies {
-//     caseStudies: strapiApiCaseStudiesPopulate0BodyImageIconBannerimageFeatureVideoVideothumb {
-//       data {
-//         id
-//         attributes {
-//           slug
-//           title
-//           video {
-//             videoId
-//             videoThumb {
-//               data {
-//                 attributes {
-//                   alternativeText
-//                   localFile {
-//                     childImageSharp {
-//                       gatsbyImageData
-//                     }
-//                   }
-//                 }
-//               }
-//             }
-//             vimeoH
-//           }
-//           bannerImage {
-//             data {
-//               attributes {
-//                 alternativeText
-//                 localFile {
-//                   childImageSharp {
-//                     gatsbyImageData
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//           body {
-//             text
-//             image {
-//               data {
-//                 attributes {
-//                   alternativeText
-//                   localFile {
-//                     childImageSharp {
-//                       gatsbyImageData
-//                     }
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//           feature {
-//             feature
-//             featureIntro
-//             id
-//           }
-//           icon {
-//             data {
-//               attributes {
-//                 alternativeText
-//                 localFile {
-//                   publicURL
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//     homeTestimonialsData: strapiApiHomeTestimonialsSectionPopulateHometestimonialPopulate {
-//       data {
-//         attributes {
-//           title
-//           subtitle
-//         }
-//       }
-//     }
-//   }
-// `;
 
 export default HomeTestimonials;
