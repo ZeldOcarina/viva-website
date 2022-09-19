@@ -8,13 +8,13 @@ import Layout from "../layout/Layout";
 
 const StyledCaseStudyTemplate = styled.div``;
 
-const caseStudyTemplate = ({ location, pageContext: { caseStudy } }) => {
+const caseStudyTemplate = ({ location, pageContext: { caseStudy, actualFeatures } }) => {
   return (
     <>
       <Seo location={location} />
       <Layout>
         <StyledCaseStudyTemplate className="container">
-          <CaseStudy caseStudy={caseStudy} isTemplatePage />
+          <CaseStudy caseStudy={caseStudy} features={actualFeatures} isTemplatePage />
           <ScheduleConsultationButton />
         </StyledCaseStudyTemplate>
         ;

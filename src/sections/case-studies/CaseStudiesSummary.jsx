@@ -19,7 +19,7 @@ const CaseStudiesSummary = ({ caseStudiesData, features }) => {
       {caseStudiesData.map((caseStudy, i) => {
          const actualFeatures = features.filter(feature => feature.data.featureItemId === caseStudy.data.featureItemId)
         const last = caseStudiesData.length === i + 1
-        return <CaseStudy caseStudy={caseStudy} features={actualFeatures} last={last} key={caseStudy.itemId} />;
+        return <CaseStudy caseStudy={caseStudy} features={actualFeatures} last={last} key={caseStudy.data.itemId} />;
       })}
     </StyledCaseStudiesSummary>
   );
