@@ -5,7 +5,7 @@ import respond from "../styles/abstracts/mediaqueries";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Button from "./Button";
-//import VimeoEmbed from "./VimeoEmbed";
+import VimeoEmbed from "./VimeoEmbed";
 import ImageVideo from "./ImageVideo";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -317,8 +317,8 @@ const CaseStudy = ({ caseStudy, features, last, isTemplatePage }) => {
           </>
         )}
 
-        {/* {isTemplatePage && <VimeoEmbed videoId={videoId} vimeoH={vimeoH} videoTitle={title} />} */}
-        {isTemplatePage && (
+        {isTemplatePage && <VimeoEmbed videoId={caseStudyData.videoId} vimeoH={caseStudyData.vimeoH}  />}
+        {/* {isTemplatePage && (
           <ImageVideo
             image={getImage(caseStudyData.videoThumb.localFiles[0])}
             alt="thumb alt"
@@ -326,7 +326,7 @@ const CaseStudy = ({ caseStudy, features, last, isTemplatePage }) => {
             vimeoH={caseStudyData.vimeoH}
             className="image-video"
           />
-        )}
+        )} */}
         <div className={isTemplatePage ? "stuff-container stuff-container--template" : "stuff-container"}>
           <div className="left-part">
             {!isTemplatePage && (

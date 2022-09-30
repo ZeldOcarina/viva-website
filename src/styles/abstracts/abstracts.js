@@ -3,12 +3,12 @@ import { createGlobalStyle } from "styled-components";
 export default createGlobalStyle`
   :root {
       // COLORS
-    --body-background: #E5E5E5;
+    --body-background: #ffffff;
     --color-primary: #000000;
     --color-primary-dark: #007BFF;
     --color-primary-light: #F3F9FF;
     --color-secondary: #ED1C24;
-;   --black: #000000;
+    --black: #000000;
     --white: #ffffff;
     --navbar-active-color: #ED1C24;
 

@@ -29,7 +29,7 @@ const StyledHomeCustomerLogos = styled.section`
   .logos {
     display: flex;
     justify-content: center;
-    gap: 4rem;
+    gap: 2rem;
     flex-wrap: wrap;
   }
 

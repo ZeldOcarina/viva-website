@@ -35,7 +35,8 @@ const IndexPage = ({location}) => {
           <HomeFeatures />
           {/* <HomeProblems /> */}
           <HomeFounder />
-          <HomeScale />
+          {/* <HomeScale /> */}
+          <HomeOldWayNewWay />
           <HomeMarketing />
           <HomeDifference />
           <Divider />
@@ -43,7 +44,6 @@ const IndexPage = ({location}) => {
           <Divider />
           <HomeBottomTestimonials />
           <HomeCosts />
-          <HomeOldWayNewWay />
           <HomeTeam />
           <HomeQuestions />
           <ScheduleConsultationButton />
@@ -52,6 +52,8 @@ const IndexPage = ({location}) => {
     </>
   );
 };
+
+
 
 
 

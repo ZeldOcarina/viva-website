@@ -81,37 +81,17 @@ exports.createPages = async ({
       }
   `);
 
-  console.log('###########');
-  console.log(result.data.caseStudies);
-
-  console.log('###########');
-
   result.data.caseStudies.caseStudies.forEach((caseStudy) => {
    const actualFeatures = result.data.features.features.filter(feature => feature.data.featureItemId === caseStudy.data.featureItemId);
       createPage({
          path:`/case-studies/${caseStudy.data.slug}`,
          component: path.resolve("src/templates/caseStudyTemplate.jsx"),
-         context: {
+        context: {
             caseStudy: caseStudy,
             actualFeatures: actualFeatures
          }
       })
   })
-
-   
-      // caseStudy.data.forEach((caseStudy) => {
-      //    const actualFeatures = result.data.features.filter(feature => feature.data.featureItemId === caseStudy.data.featureItemId)
-      //    createPage({
-      //       path: `/case-studies/${caseStudy.data.slug}`,
-      //       component: path.resolve("src/templates/caseStudyTemplate.jsx"),
-      //       context: {
-      //          caseStudy: caseStudy,
-      //          actualFeatures: actualFeatures
-      //       },
-      //    });
-      // });
-
-
 
 
    //   const result2 = await graphql(`
