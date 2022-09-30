@@ -4,15 +4,8 @@ import styled, { css } from "styled-components";
 import respond from "../../styles/abstracts/mediaqueries";
 
 const StyledInternalPageHero = styled.header`
-  ${respond(
-    "phone-port",
-    css`
-      padding: 0 !important;
-    `
-  )}
 
   .image-container {
-    margin: 4rem 0;
     position: relative;
   }
 
@@ -26,7 +19,7 @@ const StyledInternalPageHero = styled.header`
   .text-container {
     position: absolute;
     top: 50%;
-    left: 0;
+    left: 5%;
     transform: translateX(10rem) translateY(-50%);
 
     ${respond(
@@ -38,6 +31,7 @@ const StyledInternalPageHero = styled.header`
 
     h1 {
       margin: 0 0 0.3rem 0;
+      font-size: 6rem;
 
       ${respond(
         "phone-port",
@@ -57,6 +51,7 @@ const StyledInternalPageHero = styled.header`
       font-weight: 700;
       font-family: var(--title-font);
       line-height: 1.3;
+      font-size: 2.4rem;
 
       ${respond(
         "phone-port",
@@ -76,7 +71,7 @@ const StyledInternalPageHero = styled.header`
 
 const InternalPageHero = ({ image, imageAlt, title, subtitle }) => {
   return (
-    <StyledInternalPageHero className="container">
+    <StyledInternalPageHero>
       <div className="image-container">
         <GatsbyImage image={image} alt={imageAlt} quality={100} className="banner-image" />
         <div className="text-container">
