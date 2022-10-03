@@ -23,15 +23,29 @@ const StyledInternalPageHero = styled.header`
     transform: translateX(10rem) translateY(-50%);
 
     ${respond(
-      "phone-port",
-      css`
-        transform: translateX(10%) translateY(-50%);
-      `
-    )}
+        "ipad-pro-11-land",
+        css`
+          transform: translateX(0) translateY(-50%);
+        `
+      )}
+
 
     h1 {
       margin: 0 0 0.3rem 0;
       font-size: 6rem;
+
+      ${respond(
+        "ipad-pro-11-land",
+        css`
+          font-size: 5rem;
+        `
+      )}
+      ${respond(
+        "nexus-7",
+        css`
+          font-size: 3rem;
+        `
+      )}
 
       ${respond(
         "phone-port",
@@ -54,11 +68,26 @@ const StyledInternalPageHero = styled.header`
       font-size: 2.4rem;
 
       ${respond(
-        "phone-port",
+        "ipad-pro-11-land",
+        css`
+          font-size: 2rem;
+        `
+      )}
+
+      ${respond(
+        "nexus-7",
         css`
           font-size: 1.6rem;
         `
       )}
+
+      ${respond(
+        "phone-port",
+        css`
+          font-size: 1.2rem;
+        `
+      )}
+
       ${respond(
         "iphone-5",
         css`

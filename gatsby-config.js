@@ -32,6 +32,7 @@ module.exports = {
     siteUrl: "https://vivadigitalconepts.com",
     title: "Viva Digital",
     navbarLinks: [
+      { name: "What Do We Do", url: "/whatdowedo", type: "internal" },
       { name: "Blog", url: "/blog", type: "internal" },
       { name: "Dashboard", url: "https://www.ddsturningpoint.com/dasbhoard", type: "external" },
       {

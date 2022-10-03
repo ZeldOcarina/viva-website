@@ -25,7 +25,7 @@ const Wrapper = styled.nav`
     height: 100%;
 
     ${respond(
-      "phone-port",
+      "nexus-7",
       css`
         justify-content: space-between;
         padding: 0 3rem !important;
@@ -42,7 +42,7 @@ const Wrapper = styled.nav`
     height: 100%;
 
     ${respond(
-      "phone-port",
+      "nexus-7",
       css`
         display: none;
       `
@@ -153,7 +153,7 @@ const Wrapper = styled.nav`
     }
 
     ${respond(
-      "phone-port",
+      "nexus-7",
       css`
         display: block;
       `

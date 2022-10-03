@@ -20,7 +20,7 @@ const StyledMobileNavbar = styled.nav`
   transition: all 0.3s ease-in-out;
 
   ${respond(
-    "phone-port",
+    "nexus-7",
     css`
       display: flex;
       justify-content: center;

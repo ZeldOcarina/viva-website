@@ -1,13 +1,15 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import { getImage } from 'gatsby-plugin-image'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Seo from '../components/Seo'
 import Layout from '../layout/Layout'
 import InternalPageHero from '../sections/case-studies/InternalPageHero'
 import WdwdCards from '../sections/whatwedo/WdwdCards'
 import WdwdCosts from '../sections/whatwedo/WdwdCosts'
 import WdwdText from '../sections/whatwedo/WdwdText'
+import Divider from '../components/Divider'
+import respond from '../styles/abstracts/mediaqueries'
 
 const StyledWhatDoWeDo = styled.main`
     .main-video{
@@ -18,6 +20,13 @@ const StyledWhatDoWeDo = styled.main`
             object-fit: cover;
             width: 100%;
         }
+        ${respond(
+        "ipad-port",
+        css`
+          padding: 0 0 3rem 0;
+          width: 100%;
+        `
+      )}
     }
 `
 
@@ -39,6 +48,7 @@ const WhatDoWeDo = ({ location }) => {
                     <video src={wdwdHero.video.localFiles[0].publicURL} poster={wdwdHero.videoThumb.localFiles[0].publicURL} controls></video>
                 </div>
                 <WdwdCards />
+                <Divider />
                 <WdwdCosts />
                 <WdwdText />
             </Layout>

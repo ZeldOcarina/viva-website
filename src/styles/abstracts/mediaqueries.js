@@ -8,10 +8,18 @@ function respond(breakpoint, css) {
       return `@media only screen and (max-width: ${450 / 16}em) {
                 ${css}
               }`; // 450px
+    case "nexus-7":
+      return `@media only screen and (max-width: ${600 / 16}em) {
+                ${css}
+              }` // 600px
+    case "ipad-port":
+      return `@media only screen and (max-width: ${768 / 16}em) {
+                ${css}
+             }` // 768px
     case "small-phone-land":
       return `@media only screen and (max-width: ${847 / 16}em) {
                 ${css}
-              }`; // 926px
+              }`; // 847px
     case "phone-land":
       return `@media only screen and (max-width: ${926 / 16}em) {
                 ${css}
@@ -19,7 +27,11 @@ function respond(breakpoint, css) {
     case "tab-port":
       return `@media only screen and (max-width: ${1024 / 16}em) {
                 ${css}
-              }`; // 900px
+              }`; // 1024px
+    case "ipad-pro-11-land":
+      return `@media only screen and (max-width: ${1199 / 16}em) {
+                ${css}
+              }`; // 1199px 
     case "tab-land":
       return `@media only screen and (max-width: ${1366 / 16}em) {
                 ${css}
@@ -27,7 +39,7 @@ function respond(breakpoint, css) {
     case "laptop":
       return `@media only screen and (max-width: ${1635 / 16}em) {
                 ${css}
-              }`; // 450px
+              }`; // 1635px
     case "big-laptop":
       return `@media only screen and (max-width: ${1740 / 16}em) {
                 ${css}
